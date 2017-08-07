@@ -1,0 +1,52 @@
+group 'org.fundacionjala.at04.guiautomation'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '3.0.3'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.4.0'
+    testCompile group: 'info.cukes', name: 'cucumber-testng', version: '1.2.5'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
+}
+
+checkstyle {
+    toolVersion = '8.1'
+}
+
+findbugs {
+    toolVersion = "3.0.2"
+}
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+pmd {
+    toolVersion = '5.8.1'
+}
+tasks.withType(Pmd) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+test {
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED"
+    }
+}
