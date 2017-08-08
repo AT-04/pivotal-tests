@@ -10,13 +10,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public final class CommonActions {
 
     /**
-     * This is the class constructor.
+     * This is the constructor for the utility class.
      */
     private CommonActions() {
+
     }
 
     /**
-     * This method set content to the web element.
+     * This method set text content to a web element.
      *
      * @param webElement Is web element.
      * @param content    Is the content that will be set to the web element.
@@ -28,7 +29,7 @@ public final class CommonActions {
     }
 
     /**
-     * This method presses the web element.
+     * This method perform a click action in a web element.
      *
      * @param webElement Is the web element that will be pressed.
      */

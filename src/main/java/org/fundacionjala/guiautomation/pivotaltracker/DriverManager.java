@@ -20,12 +20,12 @@ public final class DriverManager {
     private WebDriverWait webDriverWait;
 
     /**
-     * This method is the class constructor.
+     * This method is the constructor class.
      */
     private DriverManager() {
         System.setProperty(CHROME_DRIVER, CHROME_DRIVER_PATH);
         webDriver = new ChromeDriver();
-        backPreviousWait();
+        restorePreviousTimeWait();
     }
 
     /**
@@ -41,7 +41,7 @@ public final class DriverManager {
     }
 
     /**
-     * This method  return the base url.
+     * This method return the base url.
      *
      * @return base url.
      */
@@ -50,7 +50,7 @@ public final class DriverManager {
     }
 
     /**
-     * This method return web driver.
+     * This method return the web driver.
      *
      * @return web driver.
      */
@@ -59,7 +59,7 @@ public final class DriverManager {
     }
 
     /**
-     * This method return web Driver Wait.
+     * This method return the web Driver Wait.
      *
      * @return Web Driver Wait.
      */
@@ -88,9 +88,9 @@ public final class DriverManager {
     /**
      * This method updates explicit and implicit time wait.
      *
-     * @param time it time wait.
+     * @param time is the time wait.
      */
-    public void setUpdateWait(int time) {
+    public void updateTimeWait(int time) {
         setImplicitTimeWait(time);
         setExplicitTimeWait(time);
     }
@@ -98,7 +98,7 @@ public final class DriverManager {
     /**
      * This method back previous wait.
      */
-    public void backPreviousWait() {
+    public void restorePreviousTimeWait() {
         final int implicitTimeWait = 15;
         final int explicitTimeWait = 30;
         setImplicitTimeWait(implicitTimeWait);

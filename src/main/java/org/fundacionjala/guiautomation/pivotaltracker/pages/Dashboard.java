@@ -45,7 +45,7 @@ public class Dashboard extends BasePage {
     }
 
     /**
-     * This verifies if is correct user logged.
+     * This verifies if the correct user is logged.
      *
      * @param username user name.
      * @return true if is correct user or false if it is not.
@@ -56,7 +56,7 @@ public class Dashboard extends BasePage {
     }
 
     /**
-     * This method closes the existing session.
+     * This method closes a existing session.
      *
      * @param signIn is signIn page object.
      * @return singIn page Object.

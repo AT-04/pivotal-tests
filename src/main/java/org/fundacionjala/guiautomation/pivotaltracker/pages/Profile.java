@@ -15,7 +15,7 @@ public class Profile extends BasePage {
     private WebElement userEmailLabel;
 
     /**
-     * This method verifies if is correct user logged.
+     * This method verifies if the correct user is logged.
      *
      * @param username Is the user name.
      * @return true or false.

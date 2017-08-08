@@ -12,7 +12,7 @@ public abstract class BasePage {
     protected WebDriver webDriver;
 
     /**
-     * This method is the class constructor.
+     * This method is the constructor class.
      */
     public BasePage() {
         webDriver = DriverManager.getInstance().getWebDriver();
@@ -39,9 +39,9 @@ public abstract class BasePage {
     }
 
     /**
-     * this method navigate to url.
+     * This method navigate to a specific url.
      *
-     * @param url Is the address of the web..
+     * @param url Is the address of the web.
      */
     public void navigateTo(String url) {
         webDriver.navigate().to(url);

@@ -32,7 +32,7 @@ public class SignIn extends BasePage {
     private WebElement signInAsOtherButton;
 
     /**
-     * This method is the class constructor.
+     * This method is the constructor class.
      *
      * @param username This variable contains the username.
      * @param password This variable contains the password.
@@ -69,14 +69,14 @@ public class SignIn extends BasePage {
     }
 
     /**
-     * This method presses the SignIn As Other Button.
+     * This method presses the SignIn As Other User Button.
      */
     protected void clickSignInAsOtherBtn() {
         CommonActions.clickButton(signInAsOtherButton);
     }
 
     /**
-     * This method executes the actions for the SignIn.
+     * This method executes the actions of the SignIn process.
      *
      * @return The Dashboard page.
      */
@@ -87,7 +87,7 @@ public class SignIn extends BasePage {
     }
 
     /**
-     * This method sign in.
+     * This method perform the sign in process with a username and password.
      *
      * @param username This variable contains the username.
      * @param password This variable contains the password.
@@ -96,10 +96,10 @@ public class SignIn extends BasePage {
     public static Dashboard signInAs(String username, String password) {
         Dashboard dashboard;
         try {
-            DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
+            DriverManager.getInstance().updateTimeWait(TIME_WAIT_DURATION);
             dashboard = new SignIn(username, password).createStrategy();
         } finally {
-            DriverManager.getInstance().backPreviousWait();
+            DriverManager.getInstance().restorePreviousTimeWait();
         }
         dashboard.navigateTo(URL);
         return dashboard;
@@ -147,7 +147,7 @@ public class SignIn extends BasePage {
     }
 
     /**
-     * This method get the username.
+     * This method return the username.
      *
      * @return the username.
      */
