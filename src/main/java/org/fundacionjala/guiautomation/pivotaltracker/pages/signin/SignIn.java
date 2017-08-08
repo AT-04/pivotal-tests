@@ -15,6 +15,7 @@ public class SignIn extends BasePage {
     private static final String LOGIN_SHORT_URL = "/signin";
     private final String username;
     private final String password;
+
     private static final int TIME_WAIT_DURATION = 3;
     private static final String URL = "https://www.pivotaltracker.com/dashboard";
 
@@ -29,7 +30,6 @@ public class SignIn extends BasePage {
 
     @FindBy(css = "div.app_signin_switch_accounts > a")
     private WebElement signInAsOtherButton;
-
 
     /**
      * This method is the class constructor.
@@ -76,6 +76,17 @@ public class SignIn extends BasePage {
     }
 
     /**
+     * This method executes the actions for the SignIn.
+     *
+     * @return The Dashboard page.
+     */
+    protected Dashboard signInActions() {
+        enterUserName();
+        enterPassword();
+        return new Dashboard();
+    }
+
+    /**
      * This method sign in.
      *
      * @param username This variable contains the username.
@@ -86,8 +97,7 @@ public class SignIn extends BasePage {
         Dashboard dashboard;
         try {
             DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
-            SignIn signInPage = new SignIn(username, password);
-            dashboard = signInPage.loginResult();
+            dashboard = new SignIn(username, password).createStrategy();
         } finally {
             DriverManager.getInstance().backPreviousWait();
         }
@@ -101,22 +111,11 @@ public class SignIn extends BasePage {
      *
      * @return dashboard object.
      */
-    private Dashboard loginResult() {
+    private Dashboard createStrategy() {
         Dashboard dashboard = isUserLogged()
                 ? strategyProcess(new OtherUserSignInStrategy())
                 : strategyProcess(new NormalSignInStrategy());
         return dashboard;
-    }
-
-    /**
-     * This method executes the actions for the SignIn.
-     *
-     * @return The Dashboard page.
-     */
-    protected Dashboard signInActions() {
-        enterUserName();
-        enterPassword();
-        return new Dashboard();
     }
 
     /**
@@ -148,7 +147,7 @@ public class SignIn extends BasePage {
     }
 
     /**
-     * this method get the username.
+     * This method get the username.
      *
      * @return the username.
      */

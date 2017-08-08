@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
  * Created by pivotal-test Team.
  */
 public final class DriverManager {
+
     private static final String BASE_URL = "https://www.pivotaltracker.com";
     private static final String CHROME_DRIVER = "webdriver.chrome.driver";
     private static final String CHROME_DRIVER_PATH = "drivers/chromedriver.exe";
@@ -85,7 +86,7 @@ public final class DriverManager {
     }
 
     /**
-     * This method update explicit and implicit time wait.
+     * This method updates explicit and implicit time wait.
      *
      * @param time it time wait.
      */

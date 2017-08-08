@@ -8,8 +8,8 @@ import org.fundacionjala.guiautomation.pivotaltracker.pages.Dashboard;
 public class OtherUserSignInStrategy implements SignInStrategy {
 
     /**
-     * This method logs in with another user account,
-     * if the user is the correct return dashboard page,
+     * This method perform the login with another user account.
+     * If the user is the correct return dashboard page,
      * if the user isn't correct return dashboard but
      * before leave the session and log in with the correct
      * user.

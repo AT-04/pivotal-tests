@@ -8,7 +8,7 @@ import org.fundacionjala.guiautomation.pivotaltracker.pages.Dashboard;
 public interface SignInStrategy {
 
     /**
-     * This method makes the process of sign in.
+     * This method performs the sign in process.
      *
      * @param signInPage is signIn page object.
      * @return Dashboard page object.

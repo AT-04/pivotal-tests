@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created by pivotal-test Team.
  */
 public abstract class BasePage {
+
     protected WebDriver webDriver;
 
     /**

@@ -8,7 +8,7 @@ import org.fundacionjala.guiautomation.pivotaltracker.pages.Dashboard;
 public class NormalSignInStrategy implements SignInStrategy {
 
     /**
-     * This method makes normal logging process.
+     * This method performs normal logging process.
      *
      * @param signInPage is SigIn page object.
      * @return dashboard page object.

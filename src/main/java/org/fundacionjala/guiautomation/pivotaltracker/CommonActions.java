@@ -13,7 +13,6 @@ public final class CommonActions {
      * This is the class constructor.
      */
     private CommonActions() {
-
     }
 
     /**
