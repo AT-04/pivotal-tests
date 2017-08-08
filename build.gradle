@@ -22,7 +22,7 @@ dependencies {
 }
 
 checkstyle {
-    toolVersion = '8.1'
+    toolVersion = '7.8'
 }
 
 findbugs {
