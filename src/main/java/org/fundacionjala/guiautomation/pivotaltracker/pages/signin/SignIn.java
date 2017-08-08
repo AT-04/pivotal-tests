@@ -1,0 +1,158 @@
+package org.fundacionjala.guiautomation.pivotaltracker.pages.signin;
+
+import org.fundacionjala.guiautomation.pivotaltracker.CommonActions;
+import org.fundacionjala.guiautomation.pivotaltracker.DriverManager;
+import org.fundacionjala.guiautomation.pivotaltracker.pages.BasePage;
+import org.fundacionjala.guiautomation.pivotaltracker.pages.Dashboard;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+/**
+ * Created by pivotal-test Team.
+ */
+public class SignIn extends BasePage {
+
+    private static final String LOGIN_SHORT_URL = "/signin";
+    private final String username;
+    private final String password;
+    private static final int TIME_WAIT_DURATION = 3;
+    private static final String URL = "https://www.pivotaltracker.com/dashboard";
+
+    @FindBy(id = "credentials_username")
+    private WebElement usernameInputField;
+
+    @FindBy(className = "app_signin_action_button")
+    private WebElement signInButton;
+
+    @FindBy(className = "credentials_password")
+    private WebElement passwordInputField;
+
+    @FindBy(css = "div.app_signin_switch_accounts > a")
+    private WebElement signInAsOtherButton;
+
+
+    /**
+     * This method is the class constructor.
+     *
+     * @param username This variable contains the username.
+     * @param password This variable contains the password.
+     */
+    public SignIn(String username, String password) {
+        this.username = username;
+        this.password = password;
+        loadUrlPage(LOGIN_SHORT_URL);
+    }
+
+    /**
+     * This method sets the user name to the username Input Field
+     * and presses the SignIn Button.
+     */
+    protected void enterUserName() {
+        CommonActions.setInputField(usernameInputField, username);
+        clickSignInButton();
+    }
+
+    /**
+     * This method sets the Password to the password Input Field
+     * and presses the SignIn Button.
+     */
+    protected void enterPassword() {
+        CommonActions.setInputField(passwordInputField, password);
+        clickSignInButton();
+    }
+
+    /**
+     * This method presses the SignIn Button.
+     */
+    private void clickSignInButton() {
+        CommonActions.clickButton(signInButton);
+    }
+
+    /**
+     * This method presses the SignIn As Other Button.
+     */
+    protected void clickSignInAsOtherBtn() {
+        CommonActions.clickButton(signInAsOtherButton);
+    }
+
+    /**
+     * This method sign in.
+     *
+     * @param username This variable contains the username.
+     * @param password This variable contains the password.
+     * @return The dashboard page.
+     */
+    public static Dashboard signInAs(String username, String password) {
+        Dashboard dashboard;
+        try {
+            DriverManager.getInstance().setUpdateWait(TIME_WAIT_DURATION);
+            SignIn signInPage = new SignIn(username, password);
+            dashboard = signInPage.loginResult();
+        } finally {
+            DriverManager.getInstance().backPreviousWait();
+        }
+        dashboard.navigateTo(URL);
+        return dashboard;
+    }
+
+    /**
+     * This method creates the strategy object,
+     * According to the process that is required.
+     *
+     * @return dashboard object.
+     */
+    private Dashboard loginResult() {
+        Dashboard dashboard = isUserLogged()
+                ? strategyProcess(new OtherUserSignInStrategy())
+                : strategyProcess(new NormalSignInStrategy());
+        return dashboard;
+    }
+
+    /**
+     * This method executes the actions for the SignIn.
+     *
+     * @return The Dashboard page.
+     */
+    protected Dashboard signInActions() {
+        enterUserName();
+        enterPassword();
+        return new Dashboard();
+    }
+
+    /**
+     * This method verifies if the user is logged in.
+     *
+     * @return True if the user is Logged in or False if the user is not Logged.
+     */
+    private boolean isUserLogged() {
+        return pageTitle().contains("Dashboard");
+    }
+
+    /**
+     * This method performs the strategy pattern process.
+     *
+     * @param signInStrategy Is the object of the strategy to be used .
+     * @return dashboard page object.
+     */
+    protected Dashboard strategyProcess(SignInStrategy signInStrategy) {
+        return signInStrategy.signInProcess(this);
+    }
+
+    /**
+     * This method verifies if the SigInAs button is visible.
+     *
+     * @return True if the SignInAs button is visible or false if it is not.
+     */
+    protected boolean isSignInAsOtherBtnVisible() {
+        return CommonActions.isVisible(signInAsOtherButton);
+    }
+
+    /**
+     * this method get the username.
+     *
+     * @return the username.
+     */
+    protected String getUsername() {
+        return username;
+    }
+}
