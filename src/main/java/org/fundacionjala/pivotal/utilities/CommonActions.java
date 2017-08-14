@@ -1,5 +1,6 @@
-package org.fundacionjala.pivotal;
+package org.fundacionjala.pivotal.utilities;
 
+import org.fundacionjala.pivotal.browser.DriverManager;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

@@ -1,9 +1,9 @@
 package org.fundacionjala.pivotal.pages.signin;
 
-import org.fundacionjala.pivotal.CommonActions;
-import org.fundacionjala.pivotal.DriverManager;
+import org.fundacionjala.pivotal.browser.DriverManager;
 import org.fundacionjala.pivotal.pages.BasePage;
-import org.fundacionjala.pivotal.pages.Dashboard;
+import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
+import org.fundacionjala.pivotal.utilities.CommonActions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
