@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.pages.signin;
 
-
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 
 /**

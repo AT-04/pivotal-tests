@@ -1,11 +1,17 @@
 package org.fundacionjala.pivotal.pages.dashboard;
 
-import org.fundacionjala.pivotal.utilities.CommonActions;
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.profile.Profile;
+import org.fundacionjala.pivotal.pages.project.CreateProjectForm;
+import org.fundacionjala.pivotal.pages.project.Project;
+import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.pages.signin.SignIn;
+import org.fundacionjala.pivotal.utilities.CommonActions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 /**
  * Created by pivotal-test Team.
@@ -13,7 +19,7 @@ import org.openqa.selenium.support.FindBy;
 public class Dashboard extends BasePage {
 
     @FindBy(css = "div[data-aid='ProfileDropdown'] > button")
-    private WebElement usernameButton;
+    private WebElement usernameLabel;
 
     @FindBy(css = "button[data-aid='ProfileDropdown__signout']")
     private WebElement signOutButton;
@@ -21,22 +27,34 @@ public class Dashboard extends BasePage {
     @FindBy(css = "a[data-aid='ProfileDropdown__profile']")
     private WebElement profileButton;
 
+    @FindBy(id = "create-project-button")
+    private WebElement projectBtn;
+
+    @FindBy(className = "tc_header_text_logo")
+    private WebElement logoLabel;
+
+    @FindBy(className = "projectTileHeader__projectName")
+    private List<WebElement> projectTitlesList;
+
+    @FindBy(id = "notice")
+    private WebElement noticeLabel;
+
     /**
-     * This method presses the user name Button.
+     * This method perform a click on the User Name label.
      */
     private void clickUsernameBtn() {
-        CommonActions.clickButton(usernameButton);
+        CommonActions.clickButton(usernameLabel);
     }
 
     /**
-     * This method presses the sign out Button.
+     * This method perform a click on the Sign Out Button.
      */
     private void clickSignOutBtn() {
         CommonActions.clickButton(signOutButton);
     }
 
     /**
-     * This method presses profile button.
+     * This method perform a click on the Profile button.
      *
      * @return profile object page.
      */
@@ -44,6 +62,39 @@ public class Dashboard extends BasePage {
         clickUsernameBtn();
         CommonActions.clickButton(profileButton);
         return new Profile();
+    }
+
+    /**
+     * This method perform a click on the Create New Project button.
+     *
+     * @return a Create Project Form instance.
+     */
+    public CreateProjectForm clickProjectBtn() {
+        CommonActions.clickButton(projectBtn);
+        return new CreateProjectForm();
+    }
+
+    /**
+     * This method perform a click on a Project Config icon of  a specified Project name.
+     *
+     * @param name is the name of the Project.
+     * @return a Project Settings Form class instance.
+     */
+    public ProjectSettingsForm clickProjectConfig(String name) {
+        String xpath = String.format("//a[text()='%s']/following::a[contains(@class,'SettingsIcon')]", name);
+        WebElement webElement = webDriver.findElement(By.xpath(xpath));
+        CommonActions.clickButton(webElement);
+        return new ProjectSettingsForm();
+    }
+
+    /**
+     * This method perform a click on the Logo label.
+     *
+     * @return a DashboardMenu class instance.
+     */
+    public DashboardMenu clickLogoLabel() {
+        CommonActions.clickButton(logoLabel);
+        return new DashboardMenu();
     }
 
     /**
@@ -67,5 +118,38 @@ public class Dashboard extends BasePage {
         clickUsernameBtn();
         clickSignOutBtn();
         return signIn;
+    }
+
+    /**
+     * This method perform a search of a Project name in the Dashboard.
+     *
+     * @param name is the project name.
+     * @return the search result.
+     */
+    public boolean isProjectFound(String name) {
+        WebElement webElement = CommonActions.findWebElement(projectTitlesList, name);
+        return webElement != null;
+    }
+
+    /**
+     * This method enters to a project main page specified by the name parameter.
+     *
+     * @param nameProject is the project name.
+     * @return a new Project instance.
+     */
+    public Project clickInProject(String nameProject) {
+        String xpath = String.format("//a[text()='%s']", nameProject);
+        WebElement webElement = webDriver.findElement(By.xpath(xpath));
+        CommonActions.clickButton(webElement);
+        return new Project();
+    }
+
+    /**
+     * This method return the text content of the notice in Dashboard.
+     *
+     * @return the notice content.
+     */
+    public String getNoticeText() {
+        return CommonActions.getTextContent(noticeLabel);
     }
 }

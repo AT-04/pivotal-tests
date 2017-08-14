@@ -1,9 +1,12 @@
 package org.fundacionjala.pivotal.utilities;
 
 import org.fundacionjala.pivotal.browser.DriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.List;
 
 /**
  * Created by pivotal-test Team.
@@ -40,6 +43,16 @@ public final class CommonActions {
     }
 
     /**
+     * This method perform a click in a non visible element in the UI.
+     *
+     * @param webElement the WebElement non visible in the UI.
+     */
+    public static void jsClickElement(WebElement webElement) {
+        ((JavascriptExecutor) DriverManager.getInstance().getWebDriver())
+                .executeScript("arguments[0].click();", webElement);
+    }
+
+    /**
      * This method verifies if a web element is visible.
      *
      * @param webElement is the web element.
@@ -51,5 +64,30 @@ public final class CommonActions {
         } catch (NoSuchElementException e) {
             return false;
         }
+    }
+
+    /**
+     * This method perform a search in a WebElement list based on a content string parameter.
+     *
+     * @param elements is the WebElements lists.
+     * @param content  is the content parameter.
+     * @return the WebElement search result.
+     */
+    public static WebElement findWebElement(List<WebElement> elements, String content) {
+        return elements.stream()
+                .filter(element -> content.equals(element.getText()))
+                .findAny()
+                .orElse(null);
+    }
+
+    /**
+     * This method return the text content of a WebElement.
+     *
+     * @param webElement is the WebElement to extract the text.
+     * @return the text content of the WebElement.
+     */
+    public static String getTextContent(WebElement webElement) {
+        DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        return webElement.getText();
     }
 }
