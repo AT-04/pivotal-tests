@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.browser;
 
+import org.fundacionjala.pivotal.utilities.Environment;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -12,8 +12,6 @@ import java.util.concurrent.TimeUnit;
 public final class DriverManager {
 
     private static final String BASE_URL = "https://www.pivotaltracker.com";
-    private static final String CHROME_DRIVER = "webdriver.chrome.driver";
-    private static final String CHROME_DRIVER_PATH = "drivers/chromedriver.exe";
 
     private static DriverManager instance;
     private WebDriver webDriver;
@@ -23,8 +21,8 @@ public final class DriverManager {
      * This method is the constructor class.
      */
     private DriverManager() {
-        System.setProperty(CHROME_DRIVER, CHROME_DRIVER_PATH);
-        webDriver = new ChromeDriver();
+        DriverType driverType = DriverType.valueOf(Environment.getInstance().getBrowser());
+        webDriver = DriverFactory.getDriverManager(driverType);
         restorePreviousTimeWait();
     }
 
