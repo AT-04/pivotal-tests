@@ -66,7 +66,6 @@ public final class RequestManager {
                 .post(endpoint);
     }
 
-
     /**
      * This method perform a PUT request based in a end point and body parameters.
      *

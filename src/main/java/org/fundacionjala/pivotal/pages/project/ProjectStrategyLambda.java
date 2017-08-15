@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotal.pages.project;
 
+import org.fundacionjala.pivotal.pages.Steps;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -19,11 +21,11 @@ public final class ProjectStrategyLambda {
     /**
      * This method execute the steps to perform the fill of the fields in the Create Project Form.
      *
-     * @param attributesMap     is the Map that contains the attributes.
-     * @param createProjectForm is the Create Project Form instance.
+     * @param attributesMap is the Map that contains the attributes.
+     * @param page          is the Create Project Form instance.
      */
-    public static void strategy(Map<ProjectAttributes, String> attributesMap, CreateProjectForm createProjectForm) {
-        Map<ProjectAttributes, ProjectStep> strategyOption = strategySetAttributes(attributesMap, createProjectForm);
+    public static void strategy(Map<ProjectAttributes, String> attributesMap, CreateProjectForm page) {
+        Map<ProjectAttributes, Steps> strategyOption = setAttributes(attributesMap, page);
         Set<ProjectAttributes> attributes = attributesMap.keySet();
         attributes.forEach((attributeItem) -> strategyOption.get(attributeItem).executeStep());
     }
@@ -31,19 +33,19 @@ public final class ProjectStrategyLambda {
     /**
      * This method completes the fields in the Create Project Form with a specific strategy.
      *
-     * @param attributesMap     is the Map that contains the attributes.
-     * @param createProjectForm is the Create Project Form instance.
+     * @param attributesMap is the Map that contains the attributes.
+     * @param page          is the Create Project Form instance.
      * @return the Map that contains Project Attributes with a specific Project Step.
      */
-    private static Map<ProjectAttributes, ProjectStep> strategySetAttributes(
-            Map<ProjectAttributes, String> attributesMap, CreateProjectForm createProjectForm) {
-        Map<ProjectAttributes, ProjectStep> strategyMap = new HashMap<>();
+    private static Map<ProjectAttributes, Steps> setAttributes(
+            Map<ProjectAttributes, String> attributesMap, CreateProjectForm page) {
+        Map<ProjectAttributes, Steps> strategyMap = new HashMap<>();
         strategyMap.put(ProjectAttributes.NAME,
-                () -> createProjectForm.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));
+                () -> page.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));
         strategyMap.put(ProjectAttributes.ACCOUNT,
-                () -> createProjectForm.setAccount(attributesMap.get(ProjectAttributes.ACCOUNT)));
+                () -> page.setAccount(attributesMap.get(ProjectAttributes.ACCOUNT)));
         strategyMap.put(ProjectAttributes.PRIVACY,
-                () -> createProjectForm.setPrivacy(attributesMap.get(ProjectAttributes.PRIVACY)));
+                () -> page.setPrivacy(attributesMap.get(ProjectAttributes.PRIVACY)));
         return strategyMap;
     }
 }

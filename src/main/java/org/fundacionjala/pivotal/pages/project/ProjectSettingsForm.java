@@ -1,6 +1,5 @@
 package org.fundacionjala.pivotal.pages.project;
 
-
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.utilities.CommonActions;

@@ -90,4 +90,13 @@ public final class CommonActions {
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
     }
+
+    /**
+     * This method get title of current page.
+     *
+     * @return title of the current page.
+     */
+    public static String getPageTitle() {
+        return DriverManager.getInstance().getWebDriver().getTitle();
+    }
 }

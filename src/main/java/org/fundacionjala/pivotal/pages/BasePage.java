@@ -18,32 +18,4 @@ public abstract class BasePage {
         webDriver = DriverManager.getInstance().getWebDriver();
         PageFactory.initElements(webDriver, this);
     }
-
-    /**
-     * This method get title of current page.
-     *
-     * @return title of the current page.
-     */
-    public String pageTitle() {
-        return webDriver.getTitle();
-    }
-
-    /**
-     * This method get url page.
-     *
-     * @param shortUrl url page.
-     */
-    public void loadUrlPage(String shortUrl) {
-        String longUrl = DriverManager.getInstance().getBaseUrl().concat(shortUrl);
-        webDriver.get(longUrl);
-    }
-
-    /**
-     * This method navigate to a specific url.
-     *
-     * @param url Is the address of the web.
-     */
-    public void navigateTo(String url) {
-        webDriver.navigate().to(url);
-    }
 }

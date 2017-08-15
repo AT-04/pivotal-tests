@@ -1,9 +1,10 @@
 package org.fundacionjala.pivotal.pages.signin;
 
-import org.fundacionjala.pivotal.utilities.CommonActions;
 import org.fundacionjala.pivotal.browser.DriverManager;
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
+import org.fundacionjala.pivotal.utilities.CommonActions;
+import org.fundacionjala.pivotal.utilities.Navigator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,12 +13,9 @@ import org.openqa.selenium.support.FindBy;
  */
 public class SignIn extends BasePage {
 
-    private static final String LOGIN_SHORT_URL = "/signin";
+    private static final int TIME_WAIT_DURATION = 3;
     private final String username;
     private final String password;
-
-    private static final int TIME_WAIT_DURATION = 3;
-    private static final String URL = "https://www.pivotaltracker.com/dashboard";
 
     @FindBy(id = "credentials_username")
     private WebElement usernameInputField;
@@ -40,7 +38,7 @@ public class SignIn extends BasePage {
     public SignIn(String username, String password) {
         this.username = username;
         this.password = password;
-        loadUrlPage(LOGIN_SHORT_URL);
+        Navigator.loadDashboardPage();
     }
 
     /**
@@ -101,7 +99,7 @@ public class SignIn extends BasePage {
         } finally {
             DriverManager.getInstance().restorePreviousTimeWait();
         }
-        dashboard.navigateTo(URL);
+        Navigator.loadDashboardPage();
         return dashboard;
     }
 
@@ -124,7 +122,7 @@ public class SignIn extends BasePage {
      * @return True if the user is Logged in or False if the user is not Logged.
      */
     private boolean isUserLogged() {
-        return pageTitle().contains("Dashboard");
+        return CommonActions.getPageTitle().contains("Dashboard");
     }
 
     /**
