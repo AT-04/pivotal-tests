@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.pages.signin;
 
-import org.fundacionjala.pivotal.pages.Dashboard;
+import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 
 /**
  * Created by pivotal-test Team.
