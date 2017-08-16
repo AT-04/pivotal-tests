@@ -62,6 +62,7 @@ public class RequestSteps {
     @When("^a PUT request to \"([^\"]*)\" with:$")
     public void aPUTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.put(DataInterpreter.builtEndPoint(param), map);
+        helper.setRequestStatus(response.getStatusCode());
     }
 
     /**
@@ -72,6 +73,7 @@ public class RequestSteps {
     @When("^a GET request to \"([^\"]*)\"$")
     public void aGETRequestTo(String param) {
         response = RequestManager.get(DataInterpreter.builtEndPoint(param));
+        helper.setRequestStatus(response.getStatusCode());
     }
 
     /**

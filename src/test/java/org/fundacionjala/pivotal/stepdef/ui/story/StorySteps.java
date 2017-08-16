@@ -2,10 +2,12 @@ package org.fundacionjala.pivotal.stepdef.ui.story;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
+
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.story.StoryAttributes;
 import org.fundacionjala.pivotal.pages.story.StoryBoard;
+import org.fundacionjala.pivotal.pages.story.StoryDeleteDialog;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 
@@ -18,6 +20,8 @@ public class StorySteps {
 
     private Dashboard dashboard;
     private Project project;
+    private StoryBoard storyBoard;
+    private StoryDeleteDialog storyDeleteDialog;
     private Helper helper;
 
     /**
@@ -49,8 +53,28 @@ public class StorySteps {
      */
     @When("^the user create a new story with the following parameters$")
     public void theUserCreateANewStoryWithTheFollowingParameters(Map<StoryAttributes, String> storyAttributesMap) {
-        StoryBoard storyBoard = project.enterStoryBoard();
+        StoryBoard storyBoard = project.enterAddStory();
         project = storyBoard.createdStory(storyAttributesMap);
         helper.setStoryVariable(storyAttributesMap.get(StoryAttributes.STORY_NAME));
+    }
+
+    /**
+     * this Step definition enter to story.
+     *
+     * @param data this variable contains the story name.
+     */
+    @And("^the user enters to \"([^\"]*)\" story page$")
+    public void theUserEntersToStoryPage(String data) {
+        storyBoard = project.enterExistingStory(DataInterpreter.getValue(data).toString());
+
+    }
+
+    /**
+     * this Step definition deletes the story.
+     */
+    @And("^And delete the Story$")
+    public void andDeleteTheStory() {
+        storyDeleteDialog = storyBoard.deleteStory();
+        project = storyDeleteDialog.confirm();
     }
 }
