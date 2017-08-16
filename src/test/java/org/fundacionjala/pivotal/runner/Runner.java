@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeTest;
  */
 @CucumberOptions(
         plugin = {"pretty"},
-        features = {"src/test/resources/features/ui/story"},
+        features = {"src/test/resources/features"},
         glue = {"org.fundacionjala.pivotal"})
 
 public class Runner extends AbstractTestNGCucumberTests {
