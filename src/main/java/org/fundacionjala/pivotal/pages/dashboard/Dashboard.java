@@ -2,11 +2,11 @@ package org.fundacionjala.pivotal.pages.dashboard;
 
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.profile.Profile;
-import org.fundacionjala.pivotal.pages.project.CreateProjectForm;
+import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.pages.signin.SignIn;
-import org.fundacionjala.pivotal.utilities.CommonActions;
+import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -69,9 +69,9 @@ public class Dashboard extends BasePage {
      *
      * @return a Create Project Form instance.
      */
-    public CreateProjectForm clickProjectBtn() {
+    public ProjectCreateForm clickProjectBtn() {
         CommonActions.clickButton(projectBtn);
-        return new CreateProjectForm();
+        return new ProjectCreateForm();
     }
 
     /**

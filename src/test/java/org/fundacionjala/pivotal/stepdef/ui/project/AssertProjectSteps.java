@@ -5,8 +5,8 @@ import cucumber.api.java.en.Then;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
-import org.fundacionjala.pivotal.utilities.DataBuilder;
-import org.fundacionjala.pivotal.utilities.Helper;
+import org.fundacionjala.pivotal.util.DataInterpreter;
+import org.fundacionjala.pivotal.util.Helper;
 
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
@@ -60,7 +60,7 @@ public class AssertProjectSteps {
      */
     @Then("^message \"([^\"]*)\" should appear$")
     public void messageShouldAppear(String message) {
-        assertTrue(DataBuilder.rebuiltMessage(message).equals(dashboard.getNoticeText()));
+        assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
 
     /**
@@ -70,7 +70,7 @@ public class AssertProjectSteps {
      */
     @And("^the \"([^\"]*)\" is not displayed in Dashboard$")
     public void theIsNotDisplayedInDashboard(String attribute) {
-        assertFalse(dashboard.isProjectFound(DataBuilder.getValue(attribute).toString()));
+        assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(attribute).toString()));
     }
 
     /**
@@ -90,7 +90,7 @@ public class AssertProjectSteps {
      */
     @Then("^\"([^\"]*)\" is not displayed in Dashboard$")
     public void isNotDisplayedInDashboard(String name) {
-        assertFalse(dashboard.isProjectFound(DataBuilder.getValue(name).toString()));
+        assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(name).toString()));
     }
 
     /**

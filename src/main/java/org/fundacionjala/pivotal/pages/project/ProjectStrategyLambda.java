@@ -1,10 +1,10 @@
 package org.fundacionjala.pivotal.pages.project;
 
-import org.fundacionjala.pivotal.pages.Steps;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+
+import org.fundacionjala.pivotal.pages.Steps;
 
 /**
  * Created by pivotal-test Team.
@@ -24,7 +24,7 @@ public final class ProjectStrategyLambda {
      * @param attributesMap is the Map that contains the attributes.
      * @param page          is the Create Project Form instance.
      */
-    public static void strategy(Map<ProjectAttributes, String> attributesMap, CreateProjectForm page) {
+    public static void strategy(Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyOption = setAttributes(attributesMap, page);
         Set<ProjectAttributes> attributes = attributesMap.keySet();
         attributes.forEach((attributeItem) -> strategyOption.get(attributeItem).executeStep());
@@ -38,7 +38,7 @@ public final class ProjectStrategyLambda {
      * @return the Map that contains Project Attributes with a specific Project Step.
      */
     private static Map<ProjectAttributes, Steps> setAttributes(
-            Map<ProjectAttributes, String> attributesMap, CreateProjectForm page) {
+            Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyMap = new HashMap<>();
         strategyMap.put(ProjectAttributes.NAME,
                 () -> page.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));

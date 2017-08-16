@@ -2,8 +2,8 @@ package org.fundacionjala.pivotal.hook;
 
 import cucumber.api.java.After;
 import io.restassured.path.json.JsonPath;
-import org.fundacionjala.pivotal.restapi.RequestManager;
-import org.fundacionjala.pivotal.utilities.Helper;
+import org.fundacionjala.pivotal.core.restapi.RequestManager;
+import org.fundacionjala.pivotal.util.Helper;
 
 import java.util.List;
 import java.util.Map;

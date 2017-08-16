@@ -2,9 +2,9 @@ package org.fundacionjala.pivotal.runner;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import org.fundacionjala.pivotal.browser.DriverManager;
+import org.fundacionjala.pivotal.core.browser.DriverManager;
 import org.fundacionjala.pivotal.pages.signin.SignIn;
-import org.fundacionjala.pivotal.utilities.Environment;
+import org.fundacionjala.pivotal.core.util.Environment;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
