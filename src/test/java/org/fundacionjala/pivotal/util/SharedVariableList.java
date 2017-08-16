@@ -59,4 +59,13 @@ public final class SharedVariableList {
     public static void cleanList() {
         shareVariablesList.clear();
     }
+
+    /**
+     * This method return the list.
+     *
+     * @return the share variable list.
+     */
+    public static List<SharedVariable> getList() {
+        return shareVariablesList;
+    }
 }
