@@ -1,4 +1,4 @@
-Feature: Delete Project using REST API
+Feature: Project Management using REST API
 
   Background:
     Given a POST request to "/projects" with the following data
