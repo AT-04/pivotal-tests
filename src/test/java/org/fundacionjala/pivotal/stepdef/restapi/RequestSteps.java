@@ -96,6 +96,7 @@ public class RequestSteps {
     @And("^a POST request to \"([^\"]*)\" with:$")
     public void aPOSTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
+        helper.setWorkspaceVariable(map.get("name"));
         helper.setRequestStatus(response.getStatusCode());
     }
 }
