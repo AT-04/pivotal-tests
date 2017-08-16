@@ -94,7 +94,7 @@ public final class RequestManager {
                 .spec(REQUEST)
                 .params(body)
                 .when()
-                .post(endpoint);
+                .put(endpoint);
     }
 
     /**

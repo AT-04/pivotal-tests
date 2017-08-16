@@ -1,9 +1,12 @@
 package org.fundacionjala.pivotal.stepdef.ui.story;
 
 import cucumber.api.java.en.Then;
+
 import org.fundacionjala.pivotal.pages.project.Project;
+import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -32,5 +35,15 @@ public class AssertStorySteps {
     @Then("^new story name is displayed in the project page$")
     public void newStoryNameIsDisplayedInTheProjectPage() {
         assertTrue(project.isVisibleStory(helper.getStoryVariable()));
+    }
+
+    /**
+     * Step definition that perform the assertion.
+     *
+     * @param data contains the name of variable.
+     */
+    @Then("^the \"([^\"]*)\" is not displayed in Project Page$")
+    public void theIsNotDisplayedInProjectPage(String data) {
+        assertFalse(project.isVisibleStory(DataInterpreter.getValue(data).toString()));
     }
 }

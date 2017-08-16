@@ -142,4 +142,14 @@ public class StoryBoard extends BasePage {
         CommonActions.setInputField(storyLabelInputField, storyLabel);
         CommonActions.pressEnterKey(storyLabelInputField);
     }
+
+    /**
+     *  this method press the  delete the story button.
+     *
+     * @return Story delete dialog story.
+     */
+    public StoryDeleteDialog deleteStory() {
+        CommonActions.clickButton(storyDelete);
+        return new StoryDeleteDialog();
+    }
 }
