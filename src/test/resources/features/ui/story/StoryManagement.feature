@@ -2,7 +2,7 @@ Feature: Delete Story
 
   Background:
     Given a POST request to "/projects" with the following data
-      | name | Project |
+      | name | ProjectManage |
     And the status code should be 200
     And stored as [Project]
     And a POST request to "/projects/[Project.id]/stories" with:
