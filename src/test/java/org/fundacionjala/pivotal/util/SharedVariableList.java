@@ -52,4 +52,11 @@ public final class SharedVariableList {
                 .orElse(null)
                 .getAttributeValue(attribute);
     }
+
+    /**
+     * This method clean the list.
+     */
+    public static void cleanList() {
+        shareVariablesList.clear();
+    }
 }

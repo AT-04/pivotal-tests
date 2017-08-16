@@ -83,4 +83,17 @@ public class RequestSteps {
     public void storedAsProject(String name) {
         SharedVariableList.addVariable(name, response);
     }
+
+
+    /**
+     * Step definition to perform a POST  request.
+     *
+     * @param param is the specified end point.
+     * @param map   is the map body content.
+     */
+    @And("^a POST request to \"([^\"]*)\" with:$")
+    public void aPOSTRequestToWith(String param, Map<String, String> map) {
+        response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
+        helper.setRequestStatus(response.getStatusCode());
+    }
 }
