@@ -9,14 +9,14 @@ Feature: Project Management
 
   @DeleteProject
   Scenario: The user can delete an existing project
-    When the user enters to "[ProjectToManage.name]" settings page
+    When the user go to "[ProjectToManage.name]" settings page
     And delete the Project
     Then message "[ProjectToManage.name] was successfully deleted." should appear
     And the "[ProjectToManage.name]" is not displayed in Dashboard
 
   @DeleteProject
   Scenario: The user can modify the name an existing project
-    When the user enters to "[ProjectToManage.name]" settings page
+    When the user go to "[ProjectToManage.name]" settings page
     And modify the name to "ProjectModified"
     Then message "Changes saved." should appear in settings page
     And the user go to Dashboard

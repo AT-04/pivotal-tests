@@ -58,7 +58,7 @@ public class ProjectSteps {
      *
      * @param data is the data to be entered.
      */
-    @When("^the user enters to \"([^\"]*)\" settings page$")
+    @When("^the user go to \"([^\"]*)\" settings page$")
     public void theUserEntersToSettingsPage(String data) {
         projectSettingsForm = dashboard.clickProjectConfig(DataInterpreter.getValue(data).toString());
     }

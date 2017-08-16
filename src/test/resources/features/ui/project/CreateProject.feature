@@ -1,6 +1,6 @@
 Feature: Create Project
 
-  @DeleteProject @DeleteAccount
+  @DeleteSingleProject @DeleteAccount
   Scenario: The user can create a project with default settings successfully
     Given the user go to Dashboard
     And click on the new project button
@@ -12,7 +12,7 @@ Feature: Create Project
     Then new project name is displayed in the dashboard
 
 
-  @DeleteProject @DeleteAccount
+  @DeleteSingleProject @DeleteAccount
   Scenario: The user can create a project with public privacy
     Given the user go to Dashboard
     And click on the new project button
