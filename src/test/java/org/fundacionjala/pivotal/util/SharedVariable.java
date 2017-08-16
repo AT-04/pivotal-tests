@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public class SharedVariable {
     private String variableName;
-    private Map<String, Object> attributesMap;
+    private Map<String, ?> attributesMap;
 
     /**
      * Constructor for the Shared Variable class.
@@ -15,7 +15,7 @@ public class SharedVariable {
      * @param variableName  is the name of the variable.
      * @param attributesMap is the attributes map that contains keys and values.
      */
-    public SharedVariable(String variableName, Map<String, Object> attributesMap) {
+    public SharedVariable(String variableName, Map<String, ?> attributesMap) {
         this.variableName = variableName;
         this.attributesMap = attributesMap;
     }
