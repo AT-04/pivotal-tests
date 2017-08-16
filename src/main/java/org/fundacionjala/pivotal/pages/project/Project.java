@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotal.pages.project;
 
+import java.util.List;
+
 import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.story.StoryBoard;
@@ -18,6 +20,9 @@ public class Project extends BasePage {
 
     @FindBy(css = "a[class='button add_story'] > span[class='icon']")
     private WebElement addStoryButton;
+
+    @FindBy(css = "span[data-aid='StoryPreviewItem__title']")
+    private List<WebElement> listStoryNames;
 
     /**
      * This method return the Project name label value of the Project page.
@@ -45,9 +50,8 @@ public class Project extends BasePage {
      * @return true if the name story is visible.
      */
     public boolean isVisibleStory(String nameStory) {
-        String xPath = String.format("//span[@class='story_name' and text()='%s']", nameStory);
-        WebElement webElement = webDriver.findElement(By.xpath(xPath));
-        return CommonActions.isVisible(webElement);
+        WebElement webElement = CommonActions.findWebElement(listStoryNames, nameStory);
+        return webElement != null;
     }
 
     /**
@@ -57,7 +61,8 @@ public class Project extends BasePage {
      * @return the story Board page.
      */
     public StoryBoard enterExistingStory(String nameStory) {
-        String xPath = String.format("//span[@class='story_name' and text()='%s']", nameStory);
+        String xPath = String.format("//span[contains(text(),'%s')]/ancestor::"
+                + "div[contains(@data-aid,'StoryPreviewItem')]/descendant::a[contains(@class,'expander')]", nameStory);
         WebElement webElement = webDriver.findElement(By.xpath(xPath));
         webElement.click();
         return new StoryBoard();
