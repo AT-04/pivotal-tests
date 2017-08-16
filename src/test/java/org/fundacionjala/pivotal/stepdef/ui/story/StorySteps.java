@@ -42,8 +42,7 @@ public class StorySteps {
      */
     @And("^the user enters to \"([^\"]*)\" project page$")
     public void theUserEntersToProjectPage(String data) {
-        helper.setProjectVariable(DataInterpreter.getValue(data).toString());
-        project = dashboard.enterToProject(helper.getProjectVariable());
+        project = dashboard.enterToProject(DataInterpreter.getValue(data).toString());
     }
 
     /**
@@ -66,6 +65,7 @@ public class StorySteps {
     @And("^the user enters to \"([^\"]*)\" story page$")
     public void theUserEntersToStoryPage(String data) {
         storyBoard = project.enterExistingStory(DataInterpreter.getValue(data).toString());
+
 
     }
 

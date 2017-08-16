@@ -39,7 +39,6 @@ public class RequestSteps {
     public void aPOSTRequestToWithTheFollowingData(String param, Map<String, String> map) {
         response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
         helper.setRequestStatus(response.getStatusCode());
-        helper.setProjectVariable(map.get("name"));
     }
 
     /**
@@ -96,7 +95,6 @@ public class RequestSteps {
     @And("^a POST request to \"([^\"]*)\" with:$")
     public void aPOSTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
-        helper.setWorkspaceVariable(map.get("name"));
         helper.setRequestStatus(response.getStatusCode());
     }
 }
