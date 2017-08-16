@@ -1,6 +1,9 @@
 package org.fundacionjala.pivotal.pages.project;
 
+import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.story.StoryBoard;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -9,19 +12,41 @@ import org.openqa.selenium.support.FindBy;
  */
 public class Project extends BasePage {
 
-    @FindBy(className = "raw_context_name")
-    private WebElement projectName;
+  @FindBy(className = "raw_context_name")
+  private WebElement projectName;
 
-    @FindBy(css = "a[class='button add_story'] > span[class='icon']")
-    private WebElement addStoryButton;
+  @FindBy(css = "a[class='button add_story'] > span[class='icon']")
+  private WebElement addStoryButton;
 
 
-    /**
-     * This method return the Project name label value of the Project page.
-     *
-     * @return the text value of the Project name label.
-     */
-    public String projectName() {
-        return projectName.getText();
-    }
+  /**
+   * This method return the Project name label value of the Project page.
+   *
+   * @return the text value of the Project name label.
+   */
+  public String projectName() {
+    return projectName.getText();
+  }
+
+  /**
+   * This method performs click on the Story button.
+   *
+   * @return new instance of Story Board.
+   */
+  public StoryBoard enterStoryBoard() {
+    CommonActions.clickButton(addStoryButton);
+    return new StoryBoard();
+  }
+
+  /**
+   * This method verifies if story is visible.
+   *
+   * @param nameStory is the name story.
+   * @return true if the name story is visible.
+   */
+  public boolean isVisibleStory(String nameStory) {
+    String xPath = String.format("//span[@class='story_name' and text()='%s']", nameStory);
+    WebElement webElement = webDriver.findElement(By.xpath(xPath));
+    return CommonActions.isVisible(webElement);
+  }
 }

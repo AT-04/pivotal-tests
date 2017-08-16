@@ -152,4 +152,17 @@ public class Dashboard extends BasePage {
     public String getNoticeText() {
         return CommonActions.getTextContent(noticeLabel);
     }
+
+    /**
+     * This method enters to a project main page specified by the name parameter.
+     *
+     * @param nameProject is the project name.
+     * @return a new Project instance.
+     */
+    public Project enterToProject(String nameProject) {
+        String xpath = String.format("//a[text()='%s']", nameProject);
+        WebElement webElement = webDriver.findElement(By.xpath(xpath));
+        CommonActions.clickButton(webElement);
+        return new Project();
+    }
 }

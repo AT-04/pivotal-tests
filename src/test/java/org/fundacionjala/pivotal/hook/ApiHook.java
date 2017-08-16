@@ -1,9 +1,11 @@
 package org.fundacionjala.pivotal.hook;
 
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import io.restassured.path.json.JsonPath;
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
 import org.fundacionjala.pivotal.util.Helper;
+import org.fundacionjala.pivotal.util.SharedVariableList;
 
 import java.util.List;
 import java.util.Map;
@@ -35,5 +37,13 @@ public class ApiHook {
                 RequestManager.delete(String.format("/projects/%s", map.get("id").toString()));
             }
         }
+    }
+
+    /**
+     * This method clean variables before the test.
+     */
+    @Before()
+    public void cleanVariables() {
+        SharedVariableList.cleanList();
     }
 }

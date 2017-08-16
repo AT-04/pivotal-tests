@@ -7,6 +7,7 @@ public class Helper {
 
     private String projectVariable;
     private int requestStatus;
+    private String storyVariable;
 
     /**
      * This method sets the Project Variable helper attribute.
@@ -42,5 +43,23 @@ public class Helper {
      */
     public int getRequestStatus() {
         return requestStatus;
+    }
+
+    /**
+     * This method get the Story Variable helper attribute.
+     *
+     * @return the variable value.
+     */
+    public String getStoryVariable() {
+        return storyVariable;
+    }
+
+    /**
+     * This method sets the Story Variable helper attribute.
+     *
+     * @param storyVariable the variable value.
+     */
+    public void setStoryVariable(String storyVariable) {
+        this.storyVariable = storyVariable;
     }
 }
