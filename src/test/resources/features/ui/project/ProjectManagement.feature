@@ -1,4 +1,4 @@
-Feature: Delete Project
+Feature: Project Management
 
   Background:
     Given a POST request to "/projects" with the following data
