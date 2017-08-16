@@ -1,17 +1,19 @@
 package org.fundacionjala.pivotal.pages.dashboard;
 
-import org.fundacionjala.pivotal.pages.BasePage;
-import org.fundacionjala.pivotal.pages.profile.Profile;
-import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
-import org.fundacionjala.pivotal.pages.project.Project;
-import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
-import org.fundacionjala.pivotal.pages.signin.SignIn;
-import org.fundacionjala.pivotal.core.util.CommonActions;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
+import org.fundacionjala.pivotal.core.util.CommonActions;
+import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.accounts.Account;
+import org.fundacionjala.pivotal.pages.profile.Profile;
+import org.fundacionjala.pivotal.pages.project.Project;
+import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
+import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
+import org.fundacionjala.pivotal.pages.signin.SignIn;
 
 /**
  * Created by pivotal-test Team.
@@ -28,7 +30,7 @@ public class Dashboard extends BasePage {
     private WebElement profileButton;
 
     @FindBy(id = "create-project-button")
-    private WebElement projectBtn;
+    private WebElement projectButton;
 
     @FindBy(className = "tc_header_text_logo")
     private WebElement logoLabel;
@@ -38,6 +40,9 @@ public class Dashboard extends BasePage {
 
     @FindBy(id = "notice")
     private WebElement noticeLabel;
+
+    @FindBy(css = "a[href='/accounts']")
+    private WebElement accountListItem;
 
     /**
      * This method perform a click on the User Name label.
@@ -70,7 +75,7 @@ public class Dashboard extends BasePage {
      * @return a Create Project Form instance.
      */
     public ProjectCreateForm clickProjectBtn() {
-        CommonActions.clickButton(projectBtn);
+        CommonActions.clickButton(projectButton);
         return new ProjectCreateForm();
     }
 
@@ -95,6 +100,17 @@ public class Dashboard extends BasePage {
     public DashboardMenu clickLogoLabel() {
         CommonActions.clickButton(logoLabel);
         return new DashboardMenu();
+    }
+
+    /**
+     * This method perform a click on the Account list element.
+     *
+     * @return a Account class instance.
+     */
+    public Account clickAccountListItem() {
+        clickUsernameBtn();
+        CommonActions.clickButton(accountListItem);
+        return new Account();
     }
 
     /**

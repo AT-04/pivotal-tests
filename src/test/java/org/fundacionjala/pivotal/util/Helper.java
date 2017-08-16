@@ -6,8 +6,10 @@ package org.fundacionjala.pivotal.util;
 public class Helper {
 
     private String projectVariable;
-    private int requestStatus;
 
+    private String accountVariable;
+
+    private int requestStatus;
     /**
      * This method sets the Project Variable helper attribute.
      *
@@ -42,5 +44,23 @@ public class Helper {
      */
     public int getRequestStatus() {
         return requestStatus;
+    }
+
+    /**
+     * This method sets the Account Variable helper attribute.
+     *
+     * @param accountVariable the value to be set.
+     */
+    public void setAccountVariable(String accountVariable) {
+        this.accountVariable = accountVariable;
+    }
+
+    /**
+     * This method return the Account Variable attribute.
+     *
+     * @return the variable value.
+     */
+    public String getAccountVariable() {
+        return accountVariable;
     }
 }
