@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.stepdef.restapi;
 
 import cucumber.api.java.en.Then;
-import org.fundacionjala.pivotal.utilities.Helper;
+import org.fundacionjala.pivotal.util.Helper;
 
 import static org.testng.Assert.assertEquals;
 

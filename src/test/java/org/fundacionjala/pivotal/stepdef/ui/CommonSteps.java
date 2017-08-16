@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.stepdef.ui;
 
 import cucumber.api.java.en.And;
-import org.fundacionjala.pivotal.utilities.Navigator;
+import org.fundacionjala.pivotal.core.util.Navigator;
 
 /**
  * Created by pivotal-test Team.
