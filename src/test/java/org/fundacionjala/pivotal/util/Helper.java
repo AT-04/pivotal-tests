@@ -8,6 +8,7 @@ public class Helper {
     private String projectVariable;
     private int requestStatus;
     private String storyVariable;
+    private String workspaceVariable;
 
     /**
      * This method sets the Project Variable helper attribute.
@@ -61,5 +62,23 @@ public class Helper {
      */
     public void setStoryVariable(String storyVariable) {
         this.storyVariable = storyVariable;
+    }
+
+    /**
+     * This method sets the workspace Variable helper attribute.
+     *
+     * @param workspaceVariable the variable value.
+     */
+    public void setWorkspaceVariable(String workspaceVariable) {
+        this.workspaceVariable = workspaceVariable;
+    }
+
+    /**
+     * This method get the workspace Variable helper attribute.
+     *
+     * @return the variable value.
+     */
+    public String getWorkspaceVariable() {
+        return workspaceVariable;
     }
 }
