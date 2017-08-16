@@ -1,12 +1,14 @@
 package org.fundacionjala.pivotal.core.util;
 
-import org.fundacionjala.pivotal.core.browser.DriverManager;
+import java.util.List;
+
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
+import org.fundacionjala.pivotal.core.browser.DriverManager;
 
 /**
  * Created by pivotal-test Team.
@@ -98,5 +100,14 @@ public final class CommonActions {
      */
     public static String getPageTitle() {
         return DriverManager.getInstance().getWebDriver().getTitle();
+    }
+
+    /**
+     * This method press enter key to web element.
+     *
+     * @param webElement is the WebElement.
+     */
+    public static void pressEnterKey(WebElement webElement) {
+        webElement.sendKeys(Keys.ENTER);
     }
 }

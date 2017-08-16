@@ -6,10 +6,12 @@ package org.fundacionjala.pivotal.util;
 public class Helper {
 
     private String projectVariable;
-
+    private String storyVariable;
+    private String workspaceVariable;
     private String accountVariable;
 
     private int requestStatus;
+
     /**
      * This method sets the Project Variable helper attribute.
      *
@@ -62,5 +64,41 @@ public class Helper {
      */
     public String getAccountVariable() {
         return accountVariable;
+    }
+
+    /**
+     * This method get the Story Variable helper attribute.
+     *
+     * @return the variable value.
+     */
+    public String getStoryVariable() {
+        return storyVariable;
+    }
+
+    /**
+     * This method sets the Story Variable helper attribute.
+     *
+     * @param storyVariable the variable value.
+     */
+    public void setStoryVariable(String storyVariable) {
+        this.storyVariable = storyVariable;
+    }
+
+    /**
+     * This method sets the workspace Variable helper attribute.
+     *
+     * @param workspaceVariable the variable value.
+     */
+    public void setWorkspaceVariable(String workspaceVariable) {
+        this.workspaceVariable = workspaceVariable;
+    }
+
+    /**
+     * This method get the workspace Variable helper attribute.
+     *
+     * @return the variable value.
+     */
+    public String getWorkspaceVariable() {
+        return workspaceVariable;
     }
 }

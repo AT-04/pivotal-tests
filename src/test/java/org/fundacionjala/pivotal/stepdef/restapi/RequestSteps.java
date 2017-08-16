@@ -62,6 +62,7 @@ public class RequestSteps {
     @When("^a PUT request to \"([^\"]*)\" with:$")
     public void aPUTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.put(DataInterpreter.builtEndPoint(param), map);
+        helper.setRequestStatus(response.getStatusCode());
     }
 
     /**
@@ -72,6 +73,7 @@ public class RequestSteps {
     @When("^a GET request to \"([^\"]*)\"$")
     public void aGETRequestTo(String param) {
         response = RequestManager.get(DataInterpreter.builtEndPoint(param));
+        helper.setRequestStatus(response.getStatusCode());
     }
 
     /**
@@ -82,5 +84,19 @@ public class RequestSteps {
     @And("^stored as \\[([^\"]*)]$")
     public void storedAsProject(String name) {
         SharedVariableList.addVariable(name, response);
+    }
+
+
+    /**
+     * Step definition to perform a POST  request.
+     *
+     * @param param is the specified end point.
+     * @param map   is the map body content.
+     */
+    @And("^a POST request to \"([^\"]*)\" with:$")
+    public void aPOSTRequestToWith(String param, Map<String, String> map) {
+        response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
+        helper.setWorkspaceVariable(map.get("name"));
+        helper.setRequestStatus(response.getStatusCode());
     }
 }

@@ -14,6 +14,7 @@ import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.pages.signin.SignIn;
+import org.fundacionjala.pivotal.pages.workspace.WorkspaceDashboard;
 
 /**
  * Created by pivotal-test Team.
@@ -30,7 +31,7 @@ public class Dashboard extends BasePage {
     private WebElement profileButton;
 
     @FindBy(id = "create-project-button")
-    private WebElement projectButton;
+    private WebElement projectBtn;
 
     @FindBy(className = "tc_header_text_logo")
     private WebElement logoLabel;
@@ -40,6 +41,12 @@ public class Dashboard extends BasePage {
 
     @FindBy(id = "notice")
     private WebElement noticeLabel;
+
+    @FindBy(css = "div.Dashboard__Tabs span")
+    private List<WebElement> menuLink;
+
+    @FindBy(className = "notice")
+    private WebElement message;
 
     @FindBy(css = "a[href='/accounts']")
     private WebElement accountListItem;
@@ -75,7 +82,7 @@ public class Dashboard extends BasePage {
      * @return a Create Project Form instance.
      */
     public ProjectCreateForm clickProjectBtn() {
-        CommonActions.clickButton(projectButton);
+        CommonActions.clickButton(projectBtn);
         return new ProjectCreateForm();
     }
 
@@ -167,5 +174,37 @@ public class Dashboard extends BasePage {
      */
     public String getNoticeText() {
         return CommonActions.getTextContent(noticeLabel);
+    }
+
+    /**
+     * This method enters to a project main page specified by the name parameter.
+     *
+     * @param nameProject is the project name.
+     * @return a new Project instance.
+     */
+    public Project enterToProject(String nameProject) {
+        String xpath = String.format("//a[text()='%s']", nameProject);
+        WebElement webElement = webDriver.findElement(By.xpath(xpath));
+        CommonActions.clickButton(webElement);
+        return new Project();
+    }
+
+    /**
+     * This method perform a click on the workspace tab.
+     *
+     * @return new instance od WorkspaceDashboard.
+     */
+    public WorkspaceDashboard clickWorkspaceBtn() {
+        CommonActions.findWebElement(menuLink, "Workspaces").click();
+        return new WorkspaceDashboard();
+    }
+
+    /**
+     * This method return the text content of the notice in Dashboard.
+     *
+     * @return the notice content.
+     */
+    public String deleteMessageIsDisplayed() {
+        return message.getText();
     }
 }
