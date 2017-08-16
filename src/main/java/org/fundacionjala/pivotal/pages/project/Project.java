@@ -57,7 +57,7 @@ public class Project extends BasePage {
      * @return the story Board page.
      */
     public StoryBoard enterExistingStory(String nameStory) {
-        String xPath = String.format("//span[@class='story_name' and text()='%s']", nameStory);
+        String xPath = String.format("//span[contains(text(),'%s')]/ancestor::div[contains(@data-aid,'StoryPreviewItem')]/descendant::a[contains(@class,'expander')]", nameStory);
         WebElement webElement = webDriver.findElement(By.xpath(xPath));
         webElement.click();
         return new StoryBoard();

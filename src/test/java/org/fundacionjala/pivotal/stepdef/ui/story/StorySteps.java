@@ -67,6 +67,7 @@ public class StorySteps {
     public void theUserEntersToStoryPage(String data) {
         storyBoard = project.enterExistingStory(DataInterpreter.getValue(data).toString());
 
+
     }
 
     /**
