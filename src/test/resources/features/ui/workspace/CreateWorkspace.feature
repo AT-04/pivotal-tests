@@ -16,4 +16,4 @@ Feature: Create Workspace
   Scenario: Verify if the user can't created a new workspace with the field empty name
     When sets workspace with
       | Name |  |
-    Then Verify that message error "Workspace name can't be blank."
+    Then error message "Workspace name can't be blank."
