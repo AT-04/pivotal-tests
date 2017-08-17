@@ -2,7 +2,7 @@ Feature: Update and Delete Workspace
 
   Background: create a workspace
     When a POST request to "/my/workspaces" with
-      | name | My Workspace |
+      | name | My New Workspace |
     Then the status code should be 200
     And stored as [WorkspaceToManage]
     And goes to dashboard
@@ -28,5 +28,5 @@ Feature: Update and Delete Workspace
   Scenario: The user can't create a workspace with name already exist
     When clicks on the new workspace button
     And sets workspace with
-      | Name | My Workspace |
+      | Name | My New Workspace |
     Then error message "The workspace name you entered is already taken." should be displayed

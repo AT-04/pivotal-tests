@@ -61,7 +61,7 @@ public class AssertWorkspaceSteps {
      *
      * @param errorMessage text of message.
      */
-    @Then("^Verify that message error \"([^\"]*)\"$")
+    @Then("^error message \"([^\"]*)\"$")
     public void verifyThatMessageError(String errorMessage) {
         assertTrue(workspacesCreateForm.messageErrorWhenNameIsEmpty().contains(errorMessage));
     }
