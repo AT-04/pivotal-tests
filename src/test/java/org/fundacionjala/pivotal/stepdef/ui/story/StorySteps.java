@@ -23,12 +23,14 @@ public class StorySteps {
     /**
      * This constructor using dependence injection.
      *
-     * @param helper is the helper utility class instance.
+     * @param project    is the Project page object.
+     * @param storyBoard is the StoryBoard page object.
+     * @param helper     is the helper utility class instance.
      */
     public StorySteps(Project project, StoryBoard storyBoard, Helper helper) {
         this.helper = helper;
         this.project = project;
-        this.storyBoard= storyBoard;
+        this.storyBoard = storyBoard;
     }
 
     /**
@@ -51,8 +53,11 @@ public class StorySteps {
         project = storyDeleteDialog.confirm();
     }
 
+    /**
+     * this Step definition performs click on the new story button.
+     */
     @And("^clicks on the new story button$")
-    public void clicksOnTheNewStoryButton(){
+    public void clicksOnTheNewStoryButton() {
         storyBoard = project.clickAddStoryButton();
     }
 }

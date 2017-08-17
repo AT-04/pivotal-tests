@@ -3,7 +3,6 @@ package org.fundacionjala.pivotal.stepdef.restapi;
 import java.util.Map;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
@@ -72,7 +71,6 @@ public class RequestSteps {
     public void storedAsProject(String name) {
         SharedVariableList.addVariable(name, response);
     }
-
 
     /**
      * Step definition to perform a POST  request.

@@ -6,7 +6,6 @@ import cucumber.api.java.en.When;
 import org.fundacionjala.pivotal.core.util.Navigator;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
-import org.fundacionjala.pivotal.pages.story.StoryBoard;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 
 /**
@@ -19,11 +18,12 @@ public class CommonSteps {
 
     /**
      * This constructor using dependence injection.
+     *
+     * @param dashboard is the dashboard page object.
      */
-    public CommonSteps (Dashboard dashboard){
+    public CommonSteps(Dashboard dashboard) {
         this.dashboard = dashboard;
     }
-
 
     /**
      * Step definition that perform the navigate to dashboard action.
@@ -49,7 +49,7 @@ public class CommonSteps {
      * @param name this variable contains the story name.
      */
     @And("^opens the story created as \"([^\"]*)\"$")
-    public void opensTheStoryCreatedAs(String name)  {
-         project.enterExistingStory(DataInterpreter.getValue(name).toString());
+    public void opensTheStoryCreatedAs(String name) {
+        project.enterExistingStory(DataInterpreter.getValue(name).toString());
     }
 }
