@@ -21,15 +21,3 @@ Feature: Delete and edit task
   Scenario: The user can delete an existing story
     When delete the task "[MyTask.description]"
     Then the "[MyTask.description]" should not be displayed
-
-#  @DeleteProject
-#  Scenario: the user can modify an existing story
-#    When sets story with
-#      | STORY_NAME        | MyAutomatedStoryName   |
-#      | STORY_NAME        | MyAutomatedStoryName   |
-#      | STORY_TYPE        | FEATURE                |
-#      | STORY_POINTS      | ONE                    |
-#      | STORY_BLOCKERS    | MyAutomatedBlockers    |
-#      | STORY_DESCRIPTION | MyAutomatedDescription |
-#      | STORY_LABEL       | MyAutomatedLabel       |
-#    Then story is displayed in the project page
