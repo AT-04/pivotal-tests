@@ -14,7 +14,7 @@ import org.fundacionjala.pivotal.pages.signin.SignIn;
  */
 @CucumberOptions(
         plugin = {"pretty"},
-        features = {"src/test/resources/features"},
+        features = {"src/test/resources/features/ui/task"},
         glue = {"org.fundacionjala.pivotal"})
 
 public class Runner extends AbstractTestNGCucumberTests {

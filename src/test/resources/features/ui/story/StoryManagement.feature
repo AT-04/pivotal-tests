@@ -1,4 +1,4 @@
-Feature: Delete Story
+Feature: Delete and edit story
 
   Background:
     Given a POST request to "/projects" with

@@ -9,6 +9,7 @@ public class Helper {
     private String storyVariable;
     private String workspaceVariable;
     private String accountVariable;
+    private String taskVariable;
 
     private int requestStatus;
 
@@ -100,5 +101,23 @@ public class Helper {
      */
     public String getWorkspaceVariable() {
         return workspaceVariable;
+    }
+
+    /**
+     * This method get the task Variable helper attribute.
+     *
+     * @return the variable value.
+     */
+    public String getTaskVariable() {
+        return taskVariable;
+    }
+
+    /**
+     * This method sets the task Variable helper attribute.
+     *
+     * @param taskVariable the variable value.
+     */
+    public void setTaskVariable(String taskVariable) {
+        this.taskVariable = taskVariable;
     }
 }
