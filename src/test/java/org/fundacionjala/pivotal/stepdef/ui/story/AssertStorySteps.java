@@ -32,7 +32,7 @@ public class AssertStorySteps {
     /**
      * Step definition that perform the assertion.
      */
-    @Then("^new story name is displayed in the project page$")
+    @Then("^story is displayed in the project page$")
     public void newStoryNameIsDisplayedInTheProjectPage() {
         assertTrue(project.isVisibleStory(helper.getStoryVariable()));
     }

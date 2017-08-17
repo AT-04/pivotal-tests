@@ -1,7 +1,7 @@
 Feature: Project Management using REST API
 
   Background:
-    Given a POST request to "/projects" with the following data
+    Given a POST request to "/projects" with
       | name | ProjectToManage |
     And the status code should be 200
     And stored as [ProjectManagement]
@@ -12,7 +12,7 @@ Feature: Project Management using REST API
 
   @DeleteProject
   Scenario: The name of an existing project can be edited using REST API
-    When a PUT request to "/projects/[ProjectManagement.id]" with:
+    When a PUT request to "/projects/[ProjectManagement.id]" with
       | name | Modified |
     Then the status code should be 200
 

@@ -85,4 +85,18 @@ public class ApiHook {
             }
         }
     }
+
+    /**
+     * Hook for delete a certain workspace specified for the helper content.
+     */
+    @After("@DeleteSingleWorkspace")
+    public void deleteSingleWorkSpace() {
+        JsonPath jsonPath = new JsonPath(RequestManager.get("/my/workspaces").asString());
+        List<Map<String, Object>> workspace = jsonPath.get();
+        for (Map<String, Object> map : workspace) {
+            if (map.get("name").equals(helper.getWorkspaceVariable())) {
+                RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
+            }
+        }
+    }
 }

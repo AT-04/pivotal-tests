@@ -1,11 +1,11 @@
 Feature: Delete and edit Story using REST API
 
   Background:
-    When a POST request to "/projects" with the following data
+    When a POST request to "/projects" with
       | name | MyProjectApi |
     And stored as [Project]
     Then the status code should be 200
-    And a POST request to "/projects/[Project.id]/stories" with:
+    And a POST request to "/projects/[Project.id]/stories" with
       | name | MyStoryApi |
     And stored as [Story]
     Then the status code should be 200
@@ -22,7 +22,7 @@ Feature: Delete and edit Story using REST API
 
   @DeleteProject
   Scenario: The name of an existing project can be edited using REST API
-    When a PUT request to "/projects/[Project.id]/stories/[Story.id]" with:
+    When a PUT request to "/projects/[Project.id]/stories/[Story.id]" with
       | name | MyStoryModifyApi |
     Then the status code should be 200
 

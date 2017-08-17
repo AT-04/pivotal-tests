@@ -1,19 +1,31 @@
 Feature: Delete Story
 
   Background:
-    Given a POST request to "/projects" with the following data
+    Given a POST request to "/projects" with
       | name | ProjectManage |
     And the status code should be 200
     And stored as [Project]
-    And a POST request to "/projects/[Project.id]/stories" with:
+    And a POST request to "/projects/[Project.id]/stories" with
       | name | MyStoryApi |
     And the status code should be 200
     And stored as [Story]
-    And the user go to Dashboard
+    And goes to dashboard
+    And opens the project created as "[Project.name]"
+    And opens the story created as "[Story.name]"
 
   @DeleteProject
   Scenario: The user can delete an existing story
-    When the user enters to "[Project.name]" project page
-    And the user enters to "[Story.name]" story page
-    And And delete the Story
+    When delete the Story
     Then the "[Story.name]" is not displayed in Project Page
+
+  @DeleteProject
+  Scenario: the user can modify an existing story
+    When sets story with
+      | STORY_NAME        | MyAutomatedStoryName   |
+      | STORY_NAME        | MyAutomatedStoryName   |
+      | STORY_TYPE        | FEATURE                |
+      | STORY_POINTS      | ONE                    |
+      | STORY_BLOCKERS    | MyAutomatedBlockers    |
+      | STORY_DESCRIPTION | MyAutomatedDescription |
+      | STORY_LABEL       | MyAutomatedLabel       |
+    Then story is displayed in the project page

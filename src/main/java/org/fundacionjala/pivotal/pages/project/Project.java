@@ -38,7 +38,7 @@ public class Project extends BasePage {
      *
      * @return new instance of Story Board.
      */
-    public StoryBoard enterAddStory() {
+    public StoryBoard clickAddStoryButton() {
         CommonActions.clickButton(addStoryButton);
         return new StoryBoard();
     }

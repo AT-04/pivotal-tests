@@ -3,7 +3,6 @@ package org.fundacionjala.pivotal.stepdef.restapi;
 import java.util.Map;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
@@ -30,18 +29,6 @@ public class RequestSteps {
     }
 
     /**
-     * Step definition to perform a POST  request.
-     *
-     * @param param is the specified end point.
-     * @param map   is the map body content.
-     */
-    @Given("^^a POST request to \"([^\"]*)\" with the following data$")
-    public void aPOSTRequestToWithTheFollowingData(String param, Map<String, String> map) {
-        response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
-        helper.setRequestStatus(response.getStatusCode());
-    }
-
-    /**
      * Step definition to perform a DELETE request.
      *
      * @param param is the specified end point.
@@ -58,7 +45,7 @@ public class RequestSteps {
      * @param param is the specified end point.
      * @param map   is the map body content.
      */
-    @When("^a PUT request to \"([^\"]*)\" with:$")
+    @When("^a PUT request to \"([^\"]*)\" with$")
     public void aPUTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.put(DataInterpreter.builtEndPoint(param), map);
         helper.setRequestStatus(response.getStatusCode());
@@ -85,14 +72,13 @@ public class RequestSteps {
         SharedVariableList.addVariable(name, response);
     }
 
-
     /**
      * Step definition to perform a POST  request.
      *
      * @param param is the specified end point.
      * @param map   is the map body content.
      */
-    @And("^a POST request to \"([^\"]*)\" with:$")
+    @And("^a POST request to \"([^\"]*)\" with$")
     public void aPOSTRequestToWith(String param, Map<String, String> map) {
         response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
         helper.setRequestStatus(response.getStatusCode());

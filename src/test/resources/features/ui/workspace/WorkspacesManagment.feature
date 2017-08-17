@@ -1,35 +1,32 @@
 Feature: Update and Delete Workspace
 
   Background: create a workspace
-    When a POST request to "/my/workspaces" with the following data
+    When a POST request to "/my/workspaces" with
       | name | My Workspace |
     Then the status code should be 200
     And stored as [WorkspaceToManage]
-    And the user go to Dashboard
+    And goes to dashboard
+    And goes to workspace tab
 
 
-  Scenario: Delete A RequestWorkspace
-    When the user enter to "[WorkspaceToManage.name]" workspace setting page
-    And delete link
-    And Confirm delete
+  Scenario: The user can delete an existing workspace
+    When opens the workspace settings created as "[WorkspaceToManage.name]"
+    And delete the workspace
     Then message "[WorkspaceToManage.name] was successfully deleted." should displayed
-    And Go to Dashboard workspace
-    And verify that "[WorkspaceToManage.name]" isn't displayed in the dashboard
+    And goes to workspace tab
+    Then the "[WorkspaceToManage.name]" is not displayed in the dashboard
 
   @DeleteWorkspace
-  Scenario: Update a RequestWorkspace
-    When the user enter to "[WorkspaceToManage.name]" workspace setting page
+  Scenario: The user can modify the name an existing workspace
+    When opens the workspace settings created as "[WorkspaceToManage.name]"
     And modify the name workspace to "Workspace Modified"
-    And save change
-    And the user go to Dashboard
-    And Go to Dashboard workspace
+    And goes to dashboard
+    And goes to workspace tab
     Then workspace name should be displayed "Workspace Modified"
 
   @DeleteWorkspace
   Scenario: The user can't create a workspace with name already exist
-    When The user click on the workspace
-    And the user click on the new workspace button
-    When the user create a new workspace with the following parameters
+    When clicks on the new workspace button
+    And sets workspace with
       | Name | My Workspace |
-    And click on the save button
-    Then Verify that message error workspace "The workspace name you entered is already taken."
+    Then error message "The workspace name you entered is already taken." should be displayed

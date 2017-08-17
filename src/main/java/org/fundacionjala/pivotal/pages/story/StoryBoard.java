@@ -3,6 +3,7 @@ package org.fundacionjala.pivotal.pages.story;
 import org.fundacionjala.pivotal.pages.BasePage;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.core.util.CommonActions;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -66,9 +67,13 @@ public class StoryBoard extends BasePage {
      * @param attributesMap This variable contains all attributes of story.
      * @return new project page object.
      */
-    public Project createdStory(Map<StoryAttributes, String> attributesMap) {
+    public Project setStoryAttributes(Map<StoryAttributes, String> attributesMap) {
         StoryStrategyLambda.strategy(attributesMap, this);
-        CommonActions.clickButton(storyAutoSaveutton);
+        if (CommonActions.isVisible(storyAutoSaveutton)) {
+            CommonActions.clickButton(storyAutoSaveutton);
+        } else {
+            CommonActions.jsClickElement(storyAutoSaveCloseButton);
+        }
         return new Project();
     }
 
@@ -144,7 +149,7 @@ public class StoryBoard extends BasePage {
     }
 
     /**
-     *  this method press the  delete the story button.
+     * this method press the  delete the story button.
      *
      * @return Story delete dialog story.
      */
