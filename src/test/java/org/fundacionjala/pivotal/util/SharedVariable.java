@@ -6,6 +6,7 @@ import java.util.Map;
  * Created by pivotal-test Team.
  */
 public class SharedVariable {
+    private static final String RESPONSE_TYPE = "kind";
     private String variableName;
     private Map<String, ?> attributesMap;
 
@@ -27,6 +28,15 @@ public class SharedVariable {
      */
     public String getName() {
         return variableName;
+    }
+
+    /**
+     * This method return the type of response.
+     *
+     * @return the type string value.
+     */
+    public String getType() {
+        return attributesMap.get(RESPONSE_TYPE).toString();
     }
 
     /**

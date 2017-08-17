@@ -16,7 +16,7 @@ Feature: Create Story
     Then new story name is displayed in the project page
 
   @DeleteProject
-  Scenario: The user can create a story with default settings successfully
+  Scenario: The user can create a story with custom settings successfully
     Given the user go to Dashboard
     And the user enters to "[Project.name]" project page
     When the user create a new story with the following parameters
