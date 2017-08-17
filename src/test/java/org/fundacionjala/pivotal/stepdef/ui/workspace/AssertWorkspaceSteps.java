@@ -51,7 +51,7 @@ public class AssertWorkspaceSteps {
   /**
    * Step definition that perform the assertion in the dashboard.
    */
-  @Then("^New workspace name is displayed in the dashboard workspace$")
+  @Then("^workspace is displayed in the dashboard$")
   public void newWorkspaceNameIsDisplayedInTheDashboardWorkspace() {
     assertTrue(workspaceDashboard.isWorkspaceFound(helper.getWorkspaceVariable()));
   }
@@ -81,7 +81,7 @@ public class AssertWorkspaceSteps {
    *
    * @param nameWorkspace is name workspace.
    */
-  @And("^verify that \"([^\"]*)\" isn't displayed in the dashboard$")
+  @Then("^the \"([^\"]*)\" is not displayed in the dashboard$")
   public void verifyThatIsnTDisplayedInTheDashboard(String nameWorkspace) {
     assertFalse(workspaceDashboard.isWorkspaceFound(nameWorkspace));
   }
@@ -101,7 +101,7 @@ public class AssertWorkspaceSteps {
    *
    * @param errorMessage is text message.
    */
-  @Then("^Verify that message error workspace \"([^\"]*)\"$")
+  @Then("^error message \"([^\"]*)\" should be displayed$")
   public void verifyThatMessageErrorWorkspace(String errorMessage) {
     assertTrue(workspacesCreateForm.messageErrorWhenAlreadyName().contains(errorMessage));
   }

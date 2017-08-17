@@ -48,7 +48,7 @@ public class AssertProjectSteps {
     /**
      * * Step definition that perform the assertion in the dashboard page.
      */
-    @Then("^new project name is displayed in the dashboard$")
+    @Then("^project is displayed in the dashboard$")
     public void newProjectNameIsDisplayedInTheDashboard() {
         assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
     }
@@ -58,7 +58,7 @@ public class AssertProjectSteps {
      *
      * @param message the message content.
      */
-    @Then("^message \"([^\"]*)\" should appear$")
+    @Then("^message \"([^\"]*)\" should be displayed$")
     public void messageShouldAppear(String message) {
         assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
@@ -88,7 +88,7 @@ public class AssertProjectSteps {
      *
      * @param name is the old project name.
      */
-    @Then("^\"([^\"]*)\" is not displayed in Dashboard$")
+    @Then("^\"([^\"]*)\" is not displayed in dashboard$")
     public void isNotDisplayedInDashboard(String name) {
         assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(name).toString()));
     }
@@ -96,7 +96,7 @@ public class AssertProjectSteps {
     /**
      * Step definition that perform the assertion in the dashboard page.
      */
-    @And("^the new name is displayed in Dashboard$")
+    @And("^project is displayed in dashboard$")
     public void theNewNameIsDisplayedInDashboard() {
         assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
     }

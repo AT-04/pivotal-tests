@@ -46,7 +46,7 @@ public class ProjectSteps {
      *
      * @param map is the attributes map to use.
      */
-    @When("^the user create a new project with$")
+    @When("^sets project with$")
     public void theUserCreateANewProjectWithTheFollowingParameters(Map<ProjectAttributes, String> map) {
         projectCreateForm.createProject(map);
         helper.setProjectVariable(map.get(ProjectAttributes.NAME));
@@ -58,7 +58,7 @@ public class ProjectSteps {
      *
      * @param data is the data to be entered.
      */
-    @When("^the user go to \"([^\"]*)\" settings page$")
+    @When("^opens the project settings created as \"([^\"]*)\"$")
     public void theUserEntersToSettingsPage(String data) {
         projectSettingsForm = dashboard.clickProjectConfig(DataInterpreter.getValue(data).toString());
     }

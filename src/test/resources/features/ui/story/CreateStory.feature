@@ -1,29 +1,27 @@
 Feature: Create Story
 
   Background:
-    Given a POST request to "/projects" with the following data
+    Given a POST request to "/projects" with
       | name | MyProject |
     And the status code should be 200
     And stored as [Project]
-    And the user go to Dashboard
+    And goes to dashboard
+    And opens the project created as "[Project.name]"
+    And clicks on the new story button
 
   @DeleteProject
   Scenario: The user can create a story with default settings successfully
-    Given the user go to Dashboard
-    And the user enters to "[Project.name]" project page
-    When the user create a new story with the following parameters
+    When sets story with
       | STORY_NAME | MyAutomatedStoryName |
-    Then new story name is displayed in the project page
+    Then story is displayed in the project page
 
   @DeleteProject
   Scenario: The user can create a story with custom settings successfully
-    Given the user go to Dashboard
-    And the user enters to "[Project.name]" project page
-    When the user create a new story with the following parameters
+    When sets story with
       | STORY_NAME        | MyAutomatedStoryName   |
       | STORY_TYPE        | FEATURE                |
       | STORY_POINTS      | UN_ESTIMATE            |
       | STORY_BLOCKERS    | MyAutomatedBlockers    |
       | STORY_DESCRIPTION | MyAutomatedDescription |
       | STORY_LABEL       | MyAutomatedLabel       |
-    Then new story name is displayed in the project page
+    Then story is displayed in the project page

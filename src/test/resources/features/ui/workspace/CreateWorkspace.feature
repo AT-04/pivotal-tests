@@ -1,23 +1,19 @@
 Feature: Create Workspace
+  Background:
+    Given goes to dashboard
+    And  goes to workspace tab
+    And clicks on the new workspace button
 
-  @DeleteWorkspace
+  @DeleteSingleWorkspace
   Scenario: The user can create a workspace with default setting successfully
-    Given the user go to Dashboard
-    And The user click on the workspace
-    And the user click on the new workspace button
-    When the user create a new workspace with the following parameters
+    When sets workspace with
       | Name | My New Workspace |
-    And click on the save button
     Then New workspace name is displayed in the workspace main page
-    And Go to Dashboard workspace
-    Then New workspace name is displayed in the dashboard workspace
-
+    And goes to dashboard
+    And goes to workspace tab
+    Then workspace is displayed in the dashboard
 
   Scenario: Verify if the user can't created a new workspace with the field empty name
-    Given the user go to Dashboard
-    When The user click on the workspace
-    And the user click on the new workspace button
-    When the user create a new workspace with the following parameters
+    When sets workspace with
       | Name |  |
-    And click on the save button
     Then Verify that message error "Workspace name can't be blank."

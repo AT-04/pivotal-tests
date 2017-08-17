@@ -44,7 +44,7 @@ public class WorkspaceSteps {
   /**
    * Step definition that perform the navigation to create workspace button.
    */
-  @And("^the user click on the new workspace button$")
+  @And("^clicks on the new workspace button$")
   public void theUserClickOnTheNewWorkspaceButton() {
     workspacesCreateForm = workspaceDashboard.clickCreateWorkspaceBtn();
   }
@@ -54,26 +54,18 @@ public class WorkspaceSteps {
    *
    * @param body is the attributes map to use.
    */
-  @When("^the user create a new workspace with the following parameters$")
+  @When("^sets workspace with$")
   public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
     workspacesCreateForm.setNameInputField(body.get("Name"));
+    workspacesCreateForm.clickSaveBtn();
     helper.setWorkspaceVariable(body.get("Name"));
-  }
-
-  /**
-   * Step definition that perform the save button.
-   */
-  @And("^click on the save button$")
-  public void clickOnTheSaveButton() {
-   workspacesCreateForm.clickSaveBtn();
   }
 
   /**
    * Step definition that perform navigate to workspace tab.
    */
-  @And("^Go to Dashboard workspace$")
+  @And("^goes to workspace tab$")
   public void goToDashboardWorkspace() {
-    Navigator.loadDashboardPage();
     workspaceDashboard = dashboard.clickWorkspaceBtn();
   }
 
@@ -82,7 +74,7 @@ public class WorkspaceSteps {
    *
    * @param nameWorkspace is the name workspace.
    */
-  @When("^the user enter to \"([^\"]*)\" workspace setting page$")
+  @When("^opens the workspace settings created as \"([^\"]*)\"$")
   public void theUserEnterToWorkspaceSettingPage(String nameWorkspace) {
     workspaceDashboard = dashboard.clickWorkspaceBtn();
     workspaceSettings = workspaceDashboard.selectWorkspace(DataInterpreter.getValue(nameWorkspace).toString());
@@ -97,29 +89,16 @@ public class WorkspaceSteps {
   public void modifyTheNameWorkspaceTo(String newName) {
     helper.setWorkspaceVariable(newName);
     workspaceSettings.updateName(newName);
+    workspaceSettings.clickSaveBtn();
   }
 
   /**
    * Step definition perform delete link.
    */
-  @And("^delete link$")
+  @And("^delete the workspace$")
   public void delete() {
     workspaceSettings.deleteWorkspace();
-  }
-
-  /**
-   * Step definition perform confirm delete button.
-   */
-  @And("^Confirm delete$")
-  public void confirmDelete() {
     workspaceSettings.confirmDelete();
   }
 
-  /**
-   * Step definition perform save button.
-   */
-  @And("^save change$")
-  public void saveChange() {
-    workspaceSettings.clickSaveBtn();
-  }
 }
