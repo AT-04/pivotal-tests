@@ -27,6 +27,8 @@ public class Account extends BasePage {
      * @param name the name of the account to be deleted.
      */
     public void deleteAccount(String name) {
-        clickManageAccount(name).clickSettingsButton().deleteAccount();
+        clickManageAccount(name)
+                .clickSettingsButton()
+                .deleteAccount();
     }
 }

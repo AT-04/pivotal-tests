@@ -46,7 +46,7 @@ public class ProjectSteps {
      *
      * @param map is the attributes map to use.
      */
-    @When("^the user create a new project with the following parameters$")
+    @When("^the user create a new project with$")
     public void theUserCreateANewProjectWithTheFollowingParameters(Map<ProjectAttributes, String> map) {
         projectCreateForm.createProject(map);
         helper.setProjectVariable(map.get(ProjectAttributes.NAME));

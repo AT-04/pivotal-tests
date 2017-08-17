@@ -7,6 +7,7 @@ Feature: Delete Story
     And stored as [Project]
     And a POST request to "/projects/[Project.id]/stories" with:
       | name | MyStoryApi |
+    And the status code should be 200
     And stored as [Story]
     And the user go to Dashboard
 
