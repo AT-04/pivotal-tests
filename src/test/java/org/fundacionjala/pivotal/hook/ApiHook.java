@@ -17,6 +17,10 @@ import org.fundacionjala.pivotal.util.SharedVariableList;
  */
 public class ApiHook {
 
+    private static final String PROJECT_ENDPOINT = "/projects/[%s.id]";
+    private static final String WORKSPACE_ENDPOINT = "/my/workspaces/[%s.id]";
+    private static final String WORKSPACE_TYPE = "workspace";
+    private static final String PROJECT_TYPE = "project";
     private Helper helper;
 
     /**
@@ -41,12 +45,7 @@ public class ApiHook {
      */
     @After("@DeleteProject")
     public void deleteProject() {
-        SharedVariableList.getList().stream()
-                .filter(element -> element.getName().contains("Project"))
-                .forEach(project -> {
-                    String format = String.format("/projects/[%s.id]", project.getName());
-                    RequestManager.delete(DataInterpreter.builtEndPoint(format));
-                });
+        deleteRequests(PROJECT_TYPE, PROJECT_ENDPOINT);
     }
 
     /**
@@ -54,10 +53,21 @@ public class ApiHook {
      */
     @After("@DeleteWorkspace")
     public void deleteWorkspace() {
+        deleteRequests(WORKSPACE_TYPE, WORKSPACE_ENDPOINT);
+    }
+
+    /**
+     * This method perform the delete request of all elements of certain type stored in the
+     * Shared variable list.
+     *
+     * @param type     is the type of element.
+     * @param endpoint is the endpoint format.
+     */
+    private void deleteRequests(String type, String endpoint) {
         SharedVariableList.getList().stream()
-                .filter(element -> element.getName().contains("Workspace"))
-                .forEach(workspace -> {
-                    String format = String.format("/my/workspaces/[%s.id]", workspace.getName());
+                .filter(variable -> variable.getType().equals(type))
+                .forEach(element -> {
+                    String format = String.format(endpoint, element.getName());
                     RequestManager.delete(DataInterpreter.builtEndPoint(format));
                 });
     }

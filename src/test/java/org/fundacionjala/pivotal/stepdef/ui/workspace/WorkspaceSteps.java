@@ -57,6 +57,7 @@ public class WorkspaceSteps {
   @When("^the user create a new workspace with the following parameters$")
   public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
     workspacesCreateForm.setNameInputField(body.get("Name"));
+    helper.setWorkspaceVariable(body.get("Name"));
   }
 
   /**
