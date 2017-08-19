@@ -1,19 +1,18 @@
 package org.fundacionjala.pivotal.pages.project;
 
-import org.fundacionjala.pivotal.pages.BasePage;
-import org.fundacionjala.pivotal.core.util.CommonActions;
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-import java.util.Map;
+import org.fundacionjala.pivotal.core.util.CommonActions;
+import org.fundacionjala.pivotal.pages.BasePage;
 
 /**
  * Created by pivotal-test Team.
  */
 public class ProjectCreateForm extends BasePage {
-
-    private static final int TIME_WAIT_DURATION = 3;
 
     @FindBy(className = "tc-form__input")
     private WebElement projectNameInputField;

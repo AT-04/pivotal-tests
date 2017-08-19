@@ -8,15 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
  */
 public class ChromeBrowser implements Browser {
 
-    private static final String CHROME_DRIVER = "webdriver.chrome.driver";
-    private static final String CHROME_DRIVER_PATH = "drivers/chromedriver.exe";
-
     /**
      * {@inheritDoc}
      */
     @Override
     public WebDriver getBrowser() {
-        System.setProperty(CHROME_DRIVER, CHROME_DRIVER_PATH);
         return new ChromeDriver();
     }
 }

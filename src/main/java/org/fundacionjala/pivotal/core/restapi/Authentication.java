@@ -1,25 +1,31 @@
 package org.fundacionjala.pivotal.core.restapi;
 
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import org.fundacionjala.pivotal.core.util.Environment;
 
-import static io.restassured.RestAssured.given;
+import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
  * Created by pivotal-test Team.
  */
 public final class Authentication {
+
     private static final String BASE_URL_API = "https://www.pivotaltracker.com/services/v5";
-    private static final String HEADER_NAME = "X-TrackerToken";
+
+    private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
+
     private static Authentication singleton;
+
     private RequestSpecification requestSpecification;
 
     /**
      * This is the constructor for que Authentication singleton class.
      */
     private Authentication() {
-        String headerValue = Environment.getInstance().getToken();
-        requestSpecification = given().baseUri(BASE_URL_API).header(HEADER_NAME, headerValue);
+        requestSpecification = new RequestSpecBuilder()
+                .setBaseUri(BASE_URL_API)
+                .addHeader(X_TRACKER_TOKEN_HEADER,  Environment.getInstance().getToken())
+                .build();
     }
 
     /**

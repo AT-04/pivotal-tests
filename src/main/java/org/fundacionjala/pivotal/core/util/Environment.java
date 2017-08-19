@@ -21,7 +21,7 @@ public final class Environment {
      * This is the constructor for the Environment class.
      */
     private Environment() {
-        try (FileInputStream fileInputStream = new FileInputStream("environment.properties")) {
+        try (FileInputStream fileInputStream = new FileInputStream("gradle.properties")) {
             envProperties = new Properties();
             envProperties.load(fileInputStream);
         } catch (IOException e) {
@@ -49,7 +49,11 @@ public final class Environment {
      * @return the specified property.
      */
     private String getEnv(final String env) {
-        return envProperties.getProperty(env);
+        String property = System.getProperty(env);
+        if (property == null) {
+            return envProperties.getProperty(env);
+        }
+        return property;
     }
 
     /**

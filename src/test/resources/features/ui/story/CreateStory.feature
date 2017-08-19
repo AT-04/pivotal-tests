@@ -9,13 +9,13 @@ Feature: Create Story
     And opens the project created as "[Project.name]"
     And clicks on the new story button
 
-  @DeleteProject
+  @DeleteProject @Acceptance
   Scenario: The user can create a story with default settings successfully
     When sets story with
       | STORY_NAME | MyAutomatedStoryName |
     Then story is displayed in the project page
 
-  @DeleteProject
+  @DeleteProject @Acceptance
   Scenario: The user can create a story with custom settings successfully
     When sets story with
       | STORY_NAME        | MyAutomatedStoryName   |

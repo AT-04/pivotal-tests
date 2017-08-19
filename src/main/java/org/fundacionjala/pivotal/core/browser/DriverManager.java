@@ -1,10 +1,11 @@
 package org.fundacionjala.pivotal.core.browser;
 
-import org.fundacionjala.pivotal.core.util.Environment;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
+import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
  * Created by pivotal-test Team.
@@ -23,6 +24,7 @@ public final class DriverManager {
     private DriverManager() {
         DriverType driverType = DriverType.valueOf(Environment.getInstance().getBrowser());
         webDriver = DriverFactory.getDriverManager(driverType);
+        webDriver.manage().window().maximize();
         restorePreviousTimeWait();
     }
 
