@@ -18,6 +18,6 @@ Feature: Delete and edit task
     And opens the story created as "[Story.name]"
 
   @DeleteProject
-  Scenario: The user can delete an existing story
+  Scenario: The user can delete an existing task
     When delete the task "[MyTask.description]"
     Then the "[MyTask.description]" should not be displayed
