@@ -8,7 +8,6 @@ Feature: Update and Delete Workspace
     And goes to dashboard
     And goes to workspace tab
 
-
   Scenario: The user can delete an existing workspace
     When opens the workspace settings created as "[WorkspaceToManage.name]"
     And delete the workspace
