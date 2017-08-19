@@ -65,7 +65,6 @@ task executeFeatures(type: Test) {
     useTestNG()
     options {
         useDefaultListeners = false
-//        listeners << ''
         jvmArgs = ['-Dcucumber.options= ' +
                            '--glue org.fundacionjala.pivotal ' +
                            '--plugin pretty ' +
@@ -102,7 +101,6 @@ task reExecuteFeatures(type: Test) {
         useTestNG()
         options {
             useDefaultListeners = false
-//        listeners << ''
             jvmArgs = ['-Dcucumber.options=@build/cucumber/rerun.txt ' +
                                '--glue org.fundacionjala.pivotal ' +
                                '--plugin pretty ' +
