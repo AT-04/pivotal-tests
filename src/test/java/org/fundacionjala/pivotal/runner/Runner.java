@@ -13,10 +13,13 @@ import org.fundacionjala.pivotal.pages.signin.SignIn;
  * Created by pivotal-test Team.
  */
 @CucumberOptions(
-        plugin = {"pretty"},
+        monochrome = true,
+        format = {"pretty",
+                "html:target/test-report",
+                "json:target/test-report.json",
+                "junit:target/test-report.xml"},
         features = {"src/test/resources/features"},
         glue = {"org.fundacionjala.pivotal"})
-
 public class Runner extends AbstractTestNGCucumberTests {
 
     /**
