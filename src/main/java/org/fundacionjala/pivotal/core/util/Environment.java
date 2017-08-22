@@ -13,6 +13,7 @@ public final class Environment {
     private static final String TOKEN = "token";
     private static final String BASE_URL = "baseurl";
     private static final String BROWSER = "browser";
+    private static final String DOCKER_URL = "dockerurl";
 
     private static Environment instance;
     private Properties envProperties;
@@ -99,5 +100,14 @@ public final class Environment {
      */
     public String getBrowser() {
         return getEnv(BROWSER);
+    }
+
+    /**
+     * This method return the docker url from the environment properties.
+     *
+     * @return the user in a string object.
+     */
+    public String getDockerUrl() {
+        return getEnv(DOCKER_URL);
     }
 }
