@@ -27,6 +27,8 @@ public final class DriverFactory {
         Map<DriverType, Browser> map = new HashMap<>();
         map.put(DriverType.CHROME, new ChromeBrowser());
         map.put(DriverType.FIREFOX, new FirefoxBrowser());
+        map.put(DriverType.BROWSERSTACK, new BrowserStack());
+        map.put(DriverType.SAUCELABS, new SauceLabs());
         return map.get(driverType).getBrowser();
     }
 }

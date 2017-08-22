@@ -18,7 +18,7 @@ import org.fundacionjala.pivotal.pages.signin.SignIn;
                 "html:target/test-report",
                 "json:target/test-report.json",
                 "junit:target/test-report.xml"},
-        features = {"src/test/resources/features"},
+        features = {"src/test/resources/features/ui/workspace"},
         glue = {"org.fundacionjala.pivotal"})
 public class Runner extends AbstractTestNGCucumberTests {
 

@@ -5,5 +5,7 @@ package org.fundacionjala.pivotal.core.browser;
  */
 public enum DriverType {
     CHROME,
-    FIREFOX
+    FIREFOX,
+    BROWSERSTACK,
+    SAUCELABS
 }
