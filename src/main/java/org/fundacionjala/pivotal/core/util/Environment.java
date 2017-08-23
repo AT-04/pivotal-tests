@@ -25,10 +25,10 @@ public final class Environment {
     private static final String REMOTE_PLATFORM_VERSION = "remotePlatformVersion";
     private static final String REMOTE_RESOLUTION = "remoteResolution";
     private static final Logger LOGGER = LogManager.getLogger();
-    
+
     private static Environment instance;
     private Properties envProperties;
-    
+
     /**
      * This is the constructor for the Environment class.
      */
@@ -41,7 +41,7 @@ public final class Environment {
             throw new RuntimeException(e);
         }
     }
-    
+
     /**
      * This method return the singleton instance of the Environment class.
      *
@@ -53,7 +53,7 @@ public final class Environment {
         }
         return instance;
     }
-    
+
     /**
      * This method return the string for a specific environment property.
      *
@@ -67,7 +67,7 @@ public final class Environment {
         }
         return property;
     }
-    
+
     /**
      * This method return the password from the environment properties.
      *
@@ -76,7 +76,7 @@ public final class Environment {
     public String getPassword() {
         return getEnv(PASS);
     }
-    
+
     /**
      * This method return the user from the environment properties.
      *
@@ -85,7 +85,7 @@ public final class Environment {
     public String getUser() {
         return getEnv(USERNAME);
     }
-    
+
     /**
      * This method return the restapi token from the environment properties.
      *
@@ -94,7 +94,7 @@ public final class Environment {
     public String getToken() {
         return getEnv(TOKEN);
     }
-    
+
     /**
      * This method return the base url from the environment properties.
      *
@@ -103,7 +103,7 @@ public final class Environment {
     public String getBaseUrl() {
         return getEnv(BASE_URL);
     }
-    
+
     /**
      * This method return the user from the environment properties.
      *
@@ -112,7 +112,7 @@ public final class Environment {
     public String getBrowser() {
         return getEnv(BROWSER);
     }
-    
+
     /**
      * <<<<<<< HEAD
      * This method return the user from the environment properties.
@@ -122,7 +122,7 @@ public final class Environment {
     public String getRemoteUserName() {
         return getEnv(REMOTE_USER_NAME);
     }
-    
+
     /**
      * This method return the remoteKey from the environment properties.
      *
@@ -131,7 +131,7 @@ public final class Environment {
     public String getRemoteKey() {
         return getEnv(REMOTE_KEY);
     }
-    
+
     /**
      * This method return the RemoteBrowser from the environment properties.
      *
@@ -140,7 +140,7 @@ public final class Environment {
     public String getRemoteBrowser() {
         return getEnv(REMOTE_BROWSER);
     }
-    
+
     /**
      * This method return the RemoteBrowserVersion from the environment properties.
      *
@@ -149,7 +149,7 @@ public final class Environment {
     public String getRemoteBrowserVersion() {
         return getEnv(REMOTE_BROWSER_VERSION);
     }
-    
+
     /**
      * This method return the RemotePlatform from the environment properties.
      *
@@ -158,7 +158,7 @@ public final class Environment {
     public String getRemotePlatform() {
         return getEnv(REMOTE_PLATFORM);
     }
-    
+
     /**
      * This method return the RemotePlatformVersion from the environment properties.
      *
@@ -167,7 +167,7 @@ public final class Environment {
     public String getRemotePlatformVersion() {
         return getEnv(REMOTE_PLATFORM_VERSION);
     }
-    
+
     /**
      * This method return the RemoteResolution from the environment properties.
      *
@@ -175,7 +175,7 @@ public final class Environment {
      */
     public String getRemoteResolution() {
         return getEnv(REMOTE_RESOLUTION);
-    
+
     }
     /**
      * This method return the docker url from the environment properties.

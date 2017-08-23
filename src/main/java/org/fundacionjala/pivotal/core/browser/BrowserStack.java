@@ -19,7 +19,8 @@ public class BrowserStack implements Browser {
 
   private static final String USER_NAME = ENV.getRemoteUserName();
   private static final String ACCESS_KEY = ENV.getRemoteKey();
-  private static final String URL = String.format("https://%s:%s@hub-cloud.browserstack.com/wd/hub",USER_NAME, ACCESS_KEY);
+  private static final String URL = String
+          .format("https://%s:%s@hub-cloud.browserstack.com/wd/hub", USER_NAME, ACCESS_KEY);
   private static final String BROWSER = "browser";
   private static final String VERSION = "browser_version";
   private static final String OS = "os";

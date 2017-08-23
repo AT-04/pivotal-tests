@@ -17,15 +17,15 @@ import org.apache.logging.log4j.Logger;
  * DockerChromeBrowser class that implements IBrowsers.
  */
 public class DockerFirefoxBrowser implements Browser {
-    
+
     private static final Logger LOGGER = LogManager.getLogger();
-    
+
     /**
      * Default Constructor.
      */
     public DockerFirefoxBrowser() {
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -35,7 +35,7 @@ public class DockerFirefoxBrowser implements Browser {
         WebDriver driver = null;
         try {
             driver = new RemoteWebDriver(new URL(Environment.getInstance().getDockerUrl()), firefoxCapabilities);
-            
+
         } catch (MalformedURLException e) {
             LOGGER.error("Not instance driver");
         }

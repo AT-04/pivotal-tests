@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
  * DockerChromeBrowser class that implements IBrowsers.
  */
 public class DockerChromeBrowser implements Browser {
-    
+
     private static final Logger LOGGER = LogManager.getLogger();
     /**
      * Default Constructor.
