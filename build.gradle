@@ -79,6 +79,7 @@ task executeFeatures(type: Test) {
         jvmArgs = ['-Dpassword=' + password]
         jvmArgs = ['-token=' + token]
         jvmArgs = ['-Dbrowser=' + browser]
+        jvmArgs = ['-Ddockerurl=' + dockerurl]
     }
 
     // show standard out and standard error of the test JVM(s) on the console

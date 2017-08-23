@@ -8,6 +8,9 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * SauceLabs class that implements IBrowsers.
  */
@@ -19,6 +22,7 @@ public class SauceLabs implements Browser {
   private static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
   private static final String PLATFORM = "platform";
   private static final String RESOLUTION = "resolution";
+  private static final Logger LOGGER = LogManager.getLogger();
 
   /**
    * This method save all capabilities.
@@ -45,6 +49,7 @@ public class SauceLabs implements Browser {
     try {
       driver = new RemoteWebDriver(new URL(URL), setCapabilities());
     } catch (MalformedURLException e) {
+      LOGGER.error("Not instance driver");
       throw new RuntimeException();
     }
     return driver;

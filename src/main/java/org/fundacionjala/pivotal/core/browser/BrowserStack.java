@@ -8,6 +8,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * BrowserStack class that implements IBrowsers.
  */
@@ -17,12 +19,13 @@ public class BrowserStack implements Browser {
 
   private static final String USER_NAME = ENV.getRemoteUserName();
   private static final String ACCESS_KEY = ENV.getRemoteKey();
-  private static final String URL = "https://" + USER_NAME + ":" + ACCESS_KEY + "@hub-cloud.browserstack.com/wd/hub";
+  private static final String URL = String.format("https://%s:%s@hub-cloud.browserstack.com/wd/hub",USER_NAME, ACCESS_KEY);
   private static final String BROWSER = "browser";
   private static final String VERSION = "browser_version";
   private static final String OS = "os";
   private static final String OS_VERSION = "os_version";
   private static final String RESOLUTION = "resolution";
+  private static final Logger LOGGER = LogManager.getLogger();
 
   /**
    * This method save all capabilities.
@@ -50,6 +53,7 @@ public class BrowserStack implements Browser {
     try {
       driver = new RemoteWebDriver(new URL(URL), setCapabilities());
     } catch (MalformedURLException e) {
+      LOGGER.error("Not instance driver");
       throw new RuntimeException();
     }
     return driver;

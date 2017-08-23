@@ -6,6 +6,8 @@ package org.fundacionjala.pivotal.core.browser;
 public enum DriverType {
     CHROME,
     FIREFOX,
+    DOCKER_CHROME,
+    DOCKER_FIREFOX,
     BROWSERSTACK,
     SAUCELABS
 }
