@@ -1,3 +1,4 @@
+@bvt
 Feature: Create workspace with api
 
   @DeleteWorkspace

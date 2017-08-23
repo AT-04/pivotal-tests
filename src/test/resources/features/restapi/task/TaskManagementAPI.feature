@@ -1,3 +1,4 @@
+@bvt
 Feature: Delete and Edit Task using REST API
 
   Background:
