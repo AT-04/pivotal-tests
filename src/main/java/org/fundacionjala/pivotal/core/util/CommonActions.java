@@ -10,10 +10,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.pivotal.core.browser.DriverManager;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by pivotal-test Team.
  */
 public final class CommonActions {
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * This is the constructor for the utility class.
@@ -64,6 +68,7 @@ public final class CommonActions {
         try {
             return webElement.isDisplayed();
         } catch (NoSuchElementException e) {
+            LOGGER.error("Not instance driver");
             return false;
         }
     }

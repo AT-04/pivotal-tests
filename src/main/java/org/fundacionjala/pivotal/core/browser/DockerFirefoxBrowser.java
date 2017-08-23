@@ -10,10 +10,15 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import org.fundacionjala.pivotal.core.util.Environment;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * DockerChromeBrowser class that implements IBrowsers.
  */
 public class DockerFirefoxBrowser implements Browser {
+
+    private static final Logger LOGGER = LogManager.getLogger();
 
     /**
      * Default Constructor.
@@ -32,7 +37,7 @@ public class DockerFirefoxBrowser implements Browser {
             driver = new RemoteWebDriver(new URL(Environment.getInstance().getDockerUrl()), firefoxCapabilities);
 
         } catch (MalformedURLException e) {
-            //TODO logger.
+            LOGGER.error("Not instance driver");
         }
         return driver;
     }

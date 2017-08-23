@@ -7,5 +7,7 @@ public enum DriverType {
     CHROME,
     FIREFOX,
     DOCKER_CHROME,
-    DOCKER_FIREFOX
+    DOCKER_FIREFOX,
+    BROWSERSTACK,
+    SAUCELABS
 }

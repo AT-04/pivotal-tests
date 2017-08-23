@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Created by pivotal-test Team.
  */
@@ -14,6 +17,14 @@ public final class Environment {
     private static final String BASE_URL = "baseurl";
     private static final String BROWSER = "browser";
     private static final String DOCKER_URL = "dockerurl";
+    private static final String REMOTE_USER_NAME = "remoteUserName";
+    private static final String REMOTE_KEY = "remoteKey";
+    private static final String REMOTE_BROWSER = "remoteBrowser";
+    private static final String REMOTE_BROWSER_VERSION = "remoteBrowserVersion";
+    private static final String REMOTE_PLATFORM = "remotePlatform";
+    private static final String REMOTE_PLATFORM_VERSION = "remotePlatformVersion";
+    private static final String REMOTE_RESOLUTION = "remoteResolution";
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private static Environment instance;
     private Properties envProperties;
@@ -26,7 +37,7 @@ public final class Environment {
             envProperties = new Properties();
             envProperties.load(fileInputStream);
         } catch (IOException e) {
-            //Logger
+            LOGGER.error("Not instance driver");
             throw new RuntimeException(e);
         }
     }
@@ -96,16 +107,80 @@ public final class Environment {
     /**
      * This method return the user from the environment properties.
      *
-     * @return the user in a string object.
+     * @return the getBrowser in a string object.
      */
     public String getBrowser() {
         return getEnv(BROWSER);
     }
 
     /**
+     * <<<<<<< HEAD
+     * This method return the user from the environment properties.
+     *
+     * @return the getRemoteUserName in a string object.
+     */
+    public String getRemoteUserName() {
+        return getEnv(REMOTE_USER_NAME);
+    }
+
+    /**
+     * This method return the remoteKey from the environment properties.
+     *
+     * @return the getRemoteKey in a string object.
+     */
+    public String getRemoteKey() {
+        return getEnv(REMOTE_KEY);
+    }
+
+    /**
+     * This method return the RemoteBrowser from the environment properties.
+     *
+     * @return the getRemoteBrowser in a string object.
+     */
+    public String getRemoteBrowser() {
+        return getEnv(REMOTE_BROWSER);
+    }
+
+    /**
+     * This method return the RemoteBrowserVersion from the environment properties.
+     *
+     * @return the getRemoteBrowserVersion in a string object.
+     */
+    public String getRemoteBrowserVersion() {
+        return getEnv(REMOTE_BROWSER_VERSION);
+    }
+
+    /**
+     * This method return the RemotePlatform from the environment properties.
+     *
+     * @return the getRemotePlatform in a string object.
+     */
+    public String getRemotePlatform() {
+        return getEnv(REMOTE_PLATFORM);
+    }
+
+    /**
+     * This method return the RemotePlatformVersion from the environment properties.
+     *
+     * @return the getRemotePlatformVersion in a string object.
+     */
+    public String getRemotePlatformVersion() {
+        return getEnv(REMOTE_PLATFORM_VERSION);
+    }
+
+    /**
+     * This method return the RemoteResolution from the environment properties.
+     *
+     * @return the getRemoteResolution in a string object.
+     */
+    public String getRemoteResolution() {
+        return getEnv(REMOTE_RESOLUTION);
+
+    }
+    /**
      * This method return the docker url from the environment properties.
      *
-     * @return the user in a string object.
+     *@return the user in a string object.
      */
     public String getDockerUrl() {
         return getEnv(DOCKER_URL);

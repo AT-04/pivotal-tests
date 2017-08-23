@@ -1,3 +1,4 @@
+@bvt
 Feature: Delete and edit Story using REST API
 
   Background:
