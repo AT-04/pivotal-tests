@@ -16,7 +16,7 @@ public final class Environment {
     private static final String TOKEN = "token";
     private static final String BASE_URL = "baseurl";
     private static final String BROWSER = "browser";
-    private static final String DOCKER_URL = "dockerurl";
+    private static final String DOCKER_URL = "dockerUrl";
     private static final String REMOTE_USER_NAME = "remoteUserName";
     private static final String REMOTE_KEY = "remoteKey";
     private static final String REMOTE_BROWSER = "remoteBrowser";
