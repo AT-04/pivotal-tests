@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by pivotal-test Team.
  */
+@FunctionalInterface
 public interface Browser {
 
     /**

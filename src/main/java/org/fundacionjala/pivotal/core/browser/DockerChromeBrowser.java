@@ -20,12 +20,6 @@ public class DockerChromeBrowser implements Browser {
     private static final Logger LOGGER = LogManager.getLogger();
 
     /**
-     * Default Constructor.
-     */
-    public DockerChromeBrowser() {
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override

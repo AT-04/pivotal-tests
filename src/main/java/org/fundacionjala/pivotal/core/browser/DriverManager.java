@@ -13,7 +13,8 @@ import org.fundacionjala.pivotal.core.util.Environment;
 public final class DriverManager {
 
     private static final String BASE_URL = "https://www.pivotaltracker.com";
-
+    private static final int IMPLICIT_TIME_WAIT = 15;
+    private static final int EXPLICIT_TIME_WAIT = 30;
     private static DriverManager instance;
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;
@@ -99,9 +100,7 @@ public final class DriverManager {
      * This method back previous wait.
      */
     public void restorePreviousTimeWait() {
-        final int implicitTimeWait = 15;
-        final int explicitTimeWait = 30;
-        setImplicitTimeWait(implicitTimeWait);
-        setExplicitTimeWait(explicitTimeWait);
+        setImplicitTimeWait(IMPLICIT_TIME_WAIT);
+        setExplicitTimeWait(EXPLICIT_TIME_WAIT);
     }
 }

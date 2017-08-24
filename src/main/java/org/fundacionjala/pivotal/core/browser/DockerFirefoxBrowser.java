@@ -21,12 +21,6 @@ public class DockerFirefoxBrowser implements Browser {
     private static final Logger LOGGER = LogManager.getLogger();
 
     /**
-     * Default Constructor.
-     */
-    public DockerFirefoxBrowser() {
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override
