@@ -1,11 +1,11 @@
 Feature: Delete and edit story
 
   Background:
-    Given a POST request to "/projects" with
+    Given a "POST" request to "/projects" with
       | name | ProjectManage |
     And the status code should be 200
     And stored as [Project]
-    And a POST request to "/projects/[Project.id]/stories" with
+    And a "POST" request to "/projects/[Project.id]/stories" with
       | name | MyStoryApi |
     And the status code should be 200
     And stored as [Story]

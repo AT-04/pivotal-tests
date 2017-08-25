@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import io.restassured.response.Response;
 
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
+import org.fundacionjala.pivotal.core.restapi.RequestType;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 import org.fundacionjala.pivotal.util.SharedVariableList;
@@ -29,40 +30,6 @@ public class RequestSteps {
     }
 
     /**
-     * Step definition to perform a DELETE request.
-     *
-     * @param param is the specified end point.
-     */
-    @When("^a DELETE request to \"([^\"]*)\"$")
-    public void aDELETERequestTo(String param) {
-        response = RequestManager.delete(DataInterpreter.builtEndPoint(param));
-        helper.setRequestStatus(response.getStatusCode());
-    }
-
-    /**
-     * Step definition to perform a PUT request.
-     *
-     * @param param is the specified end point.
-     * @param map   is the map body content.
-     */
-    @When("^a PUT request to \"([^\"]*)\" with$")
-    public void aPUTRequestToWith(String param, Map<String, String> map) {
-        response = RequestManager.put(DataInterpreter.builtEndPoint(param), map);
-        helper.setRequestStatus(response.getStatusCode());
-    }
-
-    /**
-     * Step definition to perform a GET request.
-     *
-     * @param param is the specified end point.
-     */
-    @When("^a GET request to \"([^\"]*)\"$")
-    public void aGETRequestTo(String param) {
-        response = RequestManager.get(DataInterpreter.builtEndPoint(param));
-        helper.setRequestStatus(response.getStatusCode());
-    }
-
-    /**
      * Step definition to store the response data to a shared variable.
      *
      * @param name the name of the shared variable.
@@ -73,14 +40,30 @@ public class RequestSteps {
     }
 
     /**
-     * Step definition to perform a POST  request.
+     * Step definition to perform a POST or PUT request.
      *
-     * @param param is the specified end point.
-     * @param map   is the map body content.
+     * @param method is the request type.
+     * @param param  is the specified end point.
+     * @param map    is the map body content.
      */
-    @And("^a POST request to \"([^\"]*)\" with$")
-    public void aPOSTRequestToWith(String param, Map<String, String> map) {
-        response = RequestManager.post(DataInterpreter.builtEndPoint(param), map);
+    @When("^a \"(POST|PUT)\" request to \"([^\"]*)\" with$")
+    public void aRequestToWith(RequestType method, String param, Map<String, String> map) {
+        String endpoint = DataInterpreter.builtEndPoint(param);
+        response = RequestType.POST.equals(method) ? RequestManager.post(endpoint, map)
+                : RequestManager.put(endpoint, map);
+        helper.setRequestStatus(response.getStatusCode());
+    }
+
+    /**
+     * Step definition to perform a GET or DELETE request.
+     *
+     * @param method is the request type.
+     * @param param  is the specified end point.
+     */
+    @When("^a \"(GET|DELETE)\" request to \"([^\"]*)\"$")
+    public void aRequestTo(RequestType method, String param) {
+        String endpoint = DataInterpreter.builtEndPoint(param);
+        response = RequestType.GET.equals(method) ? RequestManager.get(endpoint) : RequestManager.delete(endpoint);
         helper.setRequestStatus(response.getStatusCode());
     }
 }

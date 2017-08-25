@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.pages.story;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.fundacionjala.pivotal.pages.project.Project;
 
 import org.openqa.selenium.WebElement;

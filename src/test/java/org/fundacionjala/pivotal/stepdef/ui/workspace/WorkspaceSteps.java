@@ -13,7 +13,7 @@ import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 
 /**
- * Created by Administrator on 8/16/2017.
+ * Created by pivotal-test Team.
  */
 public class WorkspaceSteps {
     private Dashboard dashboard;
@@ -26,7 +26,7 @@ public class WorkspaceSteps {
      * Step definition constructor using dependence injection.
      *
      * @param dashboard is the dashboard instance.
-     * @param helper    is the helperis instance.
+     * @param helper    is the helper is instance.
      */
     public WorkspaceSteps(Dashboard dashboard, Helper helper) {
         this.dashboard = dashboard;
@@ -57,7 +57,7 @@ public class WorkspaceSteps {
     @When("^sets workspace with$")
     public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
         workspacesCreateForm.setNameInputField(body.get("Name"));
-        workspacesCreateForm.clickSaveBtn();
+        workspacesCreateForm.clickCreateButton();
         helper.setWorkspaceVariable(body.get("Name"));
     }
 
@@ -89,7 +89,7 @@ public class WorkspaceSteps {
     public void modifyTheNameWorkspaceTo(String newName) {
         helper.setWorkspaceVariable(newName);
         workspaceSettings.updateName(newName);
-        workspaceSettings.clickSaveBtn();
+        workspaceSettings.clickSaveButton();
     }
 
     /**
@@ -97,7 +97,7 @@ public class WorkspaceSteps {
      */
     @And("^delete the workspace$")
     public void delete() {
-        workspaceSettings.deleteWorkspace();
-        workspaceSettings.confirmDelete();
+        workspaceSettings.clickDeleteLink();
+        workspaceSettings.clickConfirmDeleteButton();
     }
 }

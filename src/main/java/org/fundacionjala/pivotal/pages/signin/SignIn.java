@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.pages.signin;
 
 import org.fundacionjala.pivotal.core.browser.DriverManager;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.core.util.Navigator;
