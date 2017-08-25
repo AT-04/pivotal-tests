@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Class contains Workspaces Settings Page.
  */
 public class WorkspaceSettings extends BaseSettingsForm {
     @FindBy(id = "workspace_name")
@@ -20,6 +20,4 @@ public class WorkspaceSettings extends BaseSettingsForm {
     public void updateName(String newName) {
         CommonActions.setInputField(workspaceNameTextField, newName);
     }
-
-
 }

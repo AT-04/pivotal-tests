@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Abstract class that gets common info in Form Page.
  */
 public class BaseForm extends BasePage {
     @FindBy(className = "tc-form__input")

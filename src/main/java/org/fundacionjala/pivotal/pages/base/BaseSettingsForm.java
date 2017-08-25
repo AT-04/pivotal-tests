@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Abstract class that gets common info in Settings Page.
  */
 public class BaseSettingsForm extends BasePage {
     @FindBy(className = "save_bar__submit")

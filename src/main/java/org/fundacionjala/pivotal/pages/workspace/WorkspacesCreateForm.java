@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Class contains Workspaces Create Form Page.
  */
 public class WorkspacesCreateForm extends BaseForm {
 

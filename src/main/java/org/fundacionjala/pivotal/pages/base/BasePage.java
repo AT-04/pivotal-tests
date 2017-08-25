@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by pivotal-test Team.
+ * Abstract Class BasePage implementing Page Object pattern.
  */
 public abstract class BasePage {
 
