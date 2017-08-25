@@ -48,7 +48,9 @@ public class RequestSteps {
      */
     @When("^a \"(POST|PUT)\" request to \"([^\"]*)\" with$")
     public void aRequestToWith(RequestType method, String param, Map<String, String> map) {
-        response = RequestManager.requestPostOrPut(method, DataInterpreter.builtEndPoint(param), map);
+        String endpoint = DataInterpreter.builtEndPoint(param);
+        response = RequestType.POST.equals(method) ? RequestManager.post(endpoint, map)
+                : RequestManager.put(endpoint, map);
         helper.setRequestStatus(response.getStatusCode());
     }
 
@@ -60,7 +62,8 @@ public class RequestSteps {
      */
     @When("^a \"(GET|DELETE)\" request to \"([^\"]*)\"$")
     public void aRequestTo(RequestType method, String param) {
-        response = RequestManager.requestGetOrDelete(method, DataInterpreter.builtEndPoint(param));
+        String endpoint = DataInterpreter.builtEndPoint(param);
+        response = RequestType.GET.equals(method) ? RequestManager.get(endpoint) : RequestManager.delete(endpoint);
         helper.setRequestStatus(response.getStatusCode());
     }
 }
