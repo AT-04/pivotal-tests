@@ -1,7 +1,7 @@
 Feature: Create Story
 
   Background:
-    Given a POST request to "/projects" with
+    Given a "POST" request to "/projects" with
       | name | MyProject |
     And the status code should be 200
     And stored as [Project]
