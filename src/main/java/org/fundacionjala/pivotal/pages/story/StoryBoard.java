@@ -13,15 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by pivotal-test Team.
+ *
  */
 public class StoryBoard extends BasePage {
 
     @FindBy(css = "textarea[name='story[name]']")
-    private WebElement storyNameTextField;
+    private WebElement storyTitleTextField;
 
     @FindBy(css = "button[class='autosaves button std save']")
-    private WebElement storyAutoSaveutton;
+    private WebElement storyAutoSaveButton;
 
     @FindBy(css = "button[class='autosaves button std close']")
     private WebElement storyAutoSaveCloseButton;
@@ -51,7 +51,7 @@ public class StoryBoard extends BasePage {
     @FindBy(css = "div[data-aid='renderedDescription']")
     private WebElement storyDescriptionShow;
 
-    @FindBy(css = "textarea[aria-label='Description']")
+    @FindBy(css = "textarea[class='AutosizeTextarea__textarea___1LL2IPEy editor___1qKjhI5c tracker_markup']")
     private WebElement storyDescriptionTextField;
 
     @FindBy(css = "button[data-aid='save']")
@@ -69,8 +69,8 @@ public class StoryBoard extends BasePage {
      */
     public Project setStoryAttributes(Map<StoryAttributes, String> attributesMap) {
         StoryStrategyLambda.strategy(attributesMap, this);
-        if (CommonActions.isVisible(storyAutoSaveutton)) {
-            CommonActions.clickButton(storyAutoSaveutton);
+        if (CommonActions.isVisible(storyAutoSaveButton)) {
+            CommonActions.clickButton(storyAutoSaveButton);
         } else {
             CommonActions.jsClickElement(storyAutoSaveCloseButton);
         }
@@ -80,10 +80,10 @@ public class StoryBoard extends BasePage {
     /**
      * This method sets the name story.
      *
-     * @param nameStory This variable contains the name of story.
+     * @param titleStory This variable contains the name of story.
      */
-    public void setNameInputField(String nameStory) {
-        CommonActions.setInputField(storyNameTextField, nameStory);
+    public void setStoryTitleInputField(String titleStory) {
+        CommonActions.setInputField(storyTitleTextField, titleStory);
     }
 
     /**
@@ -103,7 +103,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyPoints This variable enum contains the points.
      */
-    public void setStoryPoints(StoryPoints storyPoints) {
+    public void setPoints(StoryPoints storyPoints) {
         CommonActions.clickButton(storyDropdowneEstimatePoints);
         Map<StoryPoints, String> mapPoints = new HashMap<StoryPoints, String>();
         mapPoints.put(StoryPoints.UN_ESTIMATE, "-1");
@@ -121,7 +121,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyBlockers This variable contains the blockers.
      */
-    public void setStoryBlockers(String storyBlockers) {
+    public void setBlockers(String storyBlockers) {
         CommonActions.clickButton(storyBlockerShow);
         CommonActions.setInputField(storyBlokerReasonTextField, storyBlockers);
         CommonActions.clickButton(storyBlockerAddButton);
@@ -132,7 +132,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyDescription This variable contains the description.
      */
-    public void setStoryDescription(String storyDescription) {
+    public void setDescription(String storyDescription) {
         CommonActions.clickButton(storyDescriptionShow);
         CommonActions.setInputField(storyDescriptionTextField, storyDescription);
         CommonActions.clickButton(storyDescriptionSaveButton);
@@ -143,7 +143,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyLabel This variable contains the label.
      */
-    public void setStoryLabel(String storyLabel) {
+    public void setLabel(String storyLabel) {
         CommonActions.setInputField(storyLabelInputField, storyLabel);
         CommonActions.pressEnterKey(storyLabelInputField);
     }

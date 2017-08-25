@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Story delete dialog Page.
  */
 public class StoryDeleteDialog extends BasePage {
 

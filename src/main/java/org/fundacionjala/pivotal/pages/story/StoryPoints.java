@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.pages.story;
 
 /**
- * Created by pivotal-test Team.
+ * Enum containing Story points Page.
  */
 public enum StoryPoints {
     UN_ESTIMATE,

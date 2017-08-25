@@ -7,7 +7,7 @@ import java.util.Set;
 import org.fundacionjala.pivotal.pages.Steps;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Story strategy lambda Page.
  */
 public final class StoryStrategyLambda {
 
@@ -43,17 +43,17 @@ public final class StoryStrategyLambda {
         Map<StoryAttributes, Steps> strategyMap = new HashMap<>();
 
         strategyMap.put(StoryAttributes.STORY_NAME,
-                () -> storyBoard.setNameInputField(attributesMap.get(StoryAttributes.STORY_NAME)));
+                () -> storyBoard.setStoryTitleInputField(attributesMap.get(StoryAttributes.STORY_NAME)));
         strategyMap.put(StoryAttributes.STORY_TYPE,
                 () -> storyBoard.setStoryType(StoryTypes.valueOf(attributesMap.get(StoryAttributes.STORY_TYPE))));
         strategyMap.put(StoryAttributes.STORY_POINTS,
-                () -> storyBoard.setStoryPoints(StoryPoints.valueOf(attributesMap.get(StoryAttributes.STORY_POINTS))));
+                () -> storyBoard.setPoints(StoryPoints.valueOf(attributesMap.get(StoryAttributes.STORY_POINTS))));
         strategyMap.put(StoryAttributes.STORY_BLOCKERS,
-                () -> storyBoard.setStoryBlockers(attributesMap.get(StoryAttributes.STORY_BLOCKERS)));
+                () -> storyBoard.setBlockers(attributesMap.get(StoryAttributes.STORY_BLOCKERS)));
         strategyMap.put(StoryAttributes.STORY_DESCRIPTION,
-                () -> storyBoard.setStoryDescription(attributesMap.get(StoryAttributes.STORY_DESCRIPTION)));
+                () -> storyBoard.setDescription(attributesMap.get(StoryAttributes.STORY_DESCRIPTION)));
         strategyMap.put(StoryAttributes.STORY_LABEL,
-                () -> storyBoard.setStoryLabel(attributesMap.get(StoryAttributes.STORY_LABEL)));
+                () -> storyBoard.setLabel(attributesMap.get(StoryAttributes.STORY_LABEL)));
         return strategyMap;
     }
 }
