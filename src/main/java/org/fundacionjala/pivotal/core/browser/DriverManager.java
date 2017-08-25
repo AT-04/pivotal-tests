@@ -13,8 +13,8 @@ import org.fundacionjala.pivotal.core.util.Environment;
 public final class DriverManager {
 
     private static final String BASE_URL = "https://www.pivotaltracker.com";
-    private static final int IMPLICIT_TIME_WAIT = 15;
-    private static final int EXPLICIT_TIME_WAIT = 30;
+    private static final int IMPLICIT_TIME_WAIT = Environment.getInstance().getImplicitTimeWait();
+    private static final int EXPLICIT_TIME_WAIT = Environment.getInstance().getExplicitTimeWait();
     private static DriverManager instance;
     private WebDriver webDriver;
     private WebDriverWait webDriverWait;

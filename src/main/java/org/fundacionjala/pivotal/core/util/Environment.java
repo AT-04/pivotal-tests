@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Created by pivotal-test Team.
+ * The Environment class to read data from gradle.properties.
  */
 public final class Environment {
     private static final String USERNAME = "username";
@@ -114,7 +114,6 @@ public final class Environment {
     }
 
     /**
-     * <<<<<<< HEAD
      * This method return the user from the environment properties.
      *
      * @return the getRemoteUserName in a string object.
@@ -177,12 +176,31 @@ public final class Environment {
         return getEnv(REMOTE_RESOLUTION);
 
     }
+
     /**
      * This method return the docker url from the environment properties.
      *
-     *@return the user in a string object.
+     * @return the docker url in a string object.
      */
     public String getDockerUrl() {
         return getEnv(DOCKER_URL);
+    }
+
+    /**
+     * This method return the implicit time wait from the environment properties.
+     *
+     * @return the implicit time wait in an int value.
+     */
+    public int getImplicitTimeWait() {
+        return Integer.parseInt(getEnv("implicitTimeWait"));
+    }
+
+    /**
+     * This method return the explicit time wait from the environment properties.
+     *
+     * @return the explicit time wait in an int value.
+     */
+    public int getExplicitTimeWait() {
+        return Integer.parseInt(getEnv("explicitTimeWait"));
     }
 }
