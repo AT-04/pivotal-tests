@@ -1,3 +1,4 @@
+@workSpace
 Feature: Create Workspace
   Background:
     Given goes to dashboard

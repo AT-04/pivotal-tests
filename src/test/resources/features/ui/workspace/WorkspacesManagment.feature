@@ -1,3 +1,4 @@
+@workSpace
 Feature: Update and Delete Workspace
 
   Background: create a workspace
