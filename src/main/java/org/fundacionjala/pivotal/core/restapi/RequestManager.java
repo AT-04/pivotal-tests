@@ -111,25 +111,25 @@ public final class RequestManager {
     }
 
     /**
-     * This method perform a POST or PUT request based in Request Type, end point and body map parameters.
+     * This method perform a POST or PUT request based in Request Type, endpoint and body map parameters.
      *
      * @param requestType The request type.
-     * @param endPoint    is the specified end point.
+     * @param endpoint    is the specified end point.
      * @param body        is the map body content.
      * @return a response object.
      */
-    public static Response requestPostOrPut(RequestType requestType, String endPoint, Map<String, String> body) {
-        return (RequestType.POST == requestType) ? post(endPoint, body) : put(endPoint, body);
+    public static Response requestPostOrPut(RequestType requestType, String endpoint, Map<String, String> body) {
+        return RequestType.POST.equals(requestType) ? post(endpoint, body) : put(endpoint, body);
     }
 
     /**
-     * This method perform a DELETE request based in a end point parameter.
+     * This method perform a GET or DELETE request based in an endpoint parameter.
      *
      * @param requestType The request type.
-     * @param endPoint    is the specified end point.
+     * @param endpoint    is the specified end point.
      * @return is the body content.
      */
-    public static Response requestGetOrDelete(RequestType requestType, String endPoint) {
-        return (RequestType.GET == requestType) ? get(endPoint) : delete(endPoint);
+    public static Response requestGetOrDelete(RequestType requestType, String endpoint) {
+        return RequestType.GET.equals(requestType) ? get(endpoint) : delete(endpoint);
     }
 }
