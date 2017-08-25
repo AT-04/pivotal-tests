@@ -3,6 +3,7 @@ package org.fundacionjala.pivotal.pages;
 /**
  * Created by pivotal-test Team.
  */
+@FunctionalInterface
 public interface Steps {
 
     /**

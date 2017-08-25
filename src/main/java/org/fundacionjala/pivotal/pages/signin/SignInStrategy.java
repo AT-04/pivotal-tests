@@ -5,6 +5,7 @@ import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 /**
  * Created by pivotal-test Team.
  */
+@FunctionalInterface
 public interface SignInStrategy {
 
     /**
