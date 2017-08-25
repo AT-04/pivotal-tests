@@ -1,7 +1,7 @@
 Feature: Project Management
 
   Background:
-    Given a POST request to "/projects" with
+    Given a "POST" request to "/projects" with
       | name | ProjectToManage |
     And the status code should be 200
     And stored as [ProjectToManage]

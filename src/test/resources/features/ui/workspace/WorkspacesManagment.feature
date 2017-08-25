@@ -1,7 +1,7 @@
 Feature: Update and Delete Workspace
 
   Background: create a workspace
-    When a POST request to "/my/workspaces" with
+    When a "POST" request to "/my/workspaces" with
       | name | My New Workspace |
     Then the status code should be 200
     And stored as [WorkspaceToManage]
