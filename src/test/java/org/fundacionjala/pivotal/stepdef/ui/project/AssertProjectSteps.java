@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
+import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
@@ -12,7 +13,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Created by pivotal-test Team.
+ * Assert Steps for Projects.
  */
 public class AssertProjectSteps {
 
@@ -99,5 +100,30 @@ public class AssertProjectSteps {
     @And("^project is displayed in dashboard$")
     public void theNewNameIsDisplayedInDashboard() {
         assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
+    }
+
+    /**
+     * Step definition that perform the assertion for empty error messages on Create Project Form.
+     */
+    @Then("^error messages for empty values should be displayed$")
+    public void errorMessagesForEmptyValuesShouldBeDisplayed() {
+        assertTrue(new ProjectCreateForm().isProjectNameEmptyErrorMessageVisible());
+        assertTrue(new ProjectCreateForm().isAccountSelectedErrorMessageVisible());
+    }
+
+    /**
+     * Step definition that perform the assertion for already taken error messages on Create Project Form.
+     */
+    @Then("^error messages with name already taken should be displayed$")
+    public void errorMessagesWithNameAlreadyTakenShouldBeDisplayed() {
+        assertTrue(new ProjectCreateForm().isProjectNameAlreadyTakenErrorMessageVisible());
+    }
+
+    /**
+     * Step definition that perform the assertion for error messages on Project Settings.
+     */
+    @Then("^error messages should display$")
+    public void errorMessagesShouldDisplay() {
+        assertTrue(new ProjectSettingsForm().isErrorMessageDisplayed());
     }
 }

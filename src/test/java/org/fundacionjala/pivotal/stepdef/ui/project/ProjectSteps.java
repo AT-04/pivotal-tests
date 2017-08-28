@@ -4,16 +4,16 @@ import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
-
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
-import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
+import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.project.ProjectAttributes;
+import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 
 /**
- * Created by pivotal-test Team.
+ * Steps for Project.
  */
 public class ProjectSteps {
 
@@ -72,7 +72,7 @@ public class ProjectSteps {
     }
 
     /**
-     * Step definition that perform the the project name modification.
+     * Step definition that perform the project name modification.
      *
      * @param newName is the new name for the project.
      */
@@ -80,5 +80,13 @@ public class ProjectSteps {
     public void modifyTheNameTo(String newName) {
         helper.setProjectVariable(newName);
         projectSettingsForm.modifyProjectName(newName);
+    }
+
+    /**
+     * Step definition that perform the navigation to Project Setting Page.
+     */
+    @And("^goes to Project Settings Page$")
+    public void goesToProjectSettingsPage() {
+        projectSettingsForm = new Project().clickSettingsTabButton();
     }
 }

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Project Settings Page.
  */
 public class ProjectSettingsForm extends BasePage {
 
@@ -25,6 +25,9 @@ public class ProjectSettingsForm extends BasePage {
 
     @FindBy(className = "save_bar__submit")
     private WebElement saveButton;
+
+    @FindBy(className = "error_above_or_below")
+    private WebElement errorMessage;
 
     /**
      * This method perform a click on the Delete label WebElement.
@@ -84,5 +87,14 @@ public class ProjectSettingsForm extends BasePage {
     public void modifyProjectName(String name) {
         setProjectNameInputField(name);
         clickSaveButton();
+    }
+
+    /**
+     * Check if exists an error message for the Project Name.
+     *
+     * @return if the error is visible.
+     */
+    public boolean isErrorMessageDisplayed() {
+        return CommonActions.isVisible(errorMessage);
     }
 }
