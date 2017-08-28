@@ -27,6 +27,9 @@ public class Project extends BasePage {
     @FindBy(css = "a[data-aid='navTab-settings']")
     private WebElement settingsTabButton;
 
+    @FindBy(css = "a[data-aid='expandButton']")
+    private WebElement expandButton;
+
     /**
      * This method return the Project name label value of the Project page.
      *
@@ -77,6 +80,9 @@ public class Project extends BasePage {
      * @return the Project Settings page.
      */
     public ProjectSettingsForm clickSettingsTabButton() {
+        if (CommonActions.isVisible(expandButton)){
+            CommonActions.clickButton(expandButton);
+        }
         CommonActions.clickButton(settingsTabButton);
         return new ProjectSettingsForm();
     }
