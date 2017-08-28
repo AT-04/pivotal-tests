@@ -80,7 +80,7 @@ public class Project extends BasePage {
      * @return the Project Settings page.
      */
     public ProjectSettingsForm clickSettingsTabButton() {
-        if (CommonActions.isVisible(expandButton)){
+        if (CommonActions.isVisible(expandButton)) {
             CommonActions.clickButton(expandButton);
         }
         CommonActions.clickButton(settingsTabButton);
