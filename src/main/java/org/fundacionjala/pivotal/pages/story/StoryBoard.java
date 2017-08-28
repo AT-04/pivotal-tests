@@ -1,19 +1,18 @@
 package org.fundacionjala.pivotal.pages.story;
 
+import java.util.EnumMap;
+import java.util.Map;
+
+import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.fundacionjala.pivotal.pages.project.Project;
-import org.fundacionjala.pivotal.core.util.CommonActions;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- *
+ * Class containing Story board Page.
  */
 public class StoryBoard extends BasePage {
 
@@ -51,7 +50,7 @@ public class StoryBoard extends BasePage {
     @FindBy(css = "div[data-aid='renderedDescription']")
     private WebElement storyDescriptionShow;
 
-    @FindBy(css = "textarea[class='AutosizeTextarea__textarea___1LL2IPEy editor___1qKjhI5c tracker_markup']")
+    @FindBy(xpath = "//div[(@data-aid='Description')]/descendant::textarea")
     private WebElement storyDescriptionTextField;
 
     @FindBy(css = "button[data-aid='save']")
@@ -60,6 +59,9 @@ public class StoryBoard extends BasePage {
     //LABELS
     @FindBy(css = "input[placeholder='Add a label']")
     private WebElement storyLabelInputField;
+
+    @FindBy(css = "div[data-aid='AlertDialog']")
+    private static WebElement errorMessage;
 
     /**
      * This method creates a new story.
@@ -105,7 +107,7 @@ public class StoryBoard extends BasePage {
      */
     public void setPoints(StoryPoints storyPoints) {
         CommonActions.clickButton(storyDropdowneEstimatePoints);
-        Map<StoryPoints, String> mapPoints = new HashMap<StoryPoints, String>();
+        EnumMap<StoryPoints, String> mapPoints = new EnumMap<>(StoryPoints.class);
         mapPoints.put(StoryPoints.UN_ESTIMATE, "-1");
         mapPoints.put(StoryPoints.ZERO, "0");
         mapPoints.put(StoryPoints.ONE, "1");
@@ -156,5 +158,14 @@ public class StoryBoard extends BasePage {
     public StoryDeleteDialog deleteStory() {
         CommonActions.clickButton(storyDelete);
         return new StoryDeleteDialog();
+    }
+
+    /**
+     * this method do the validation for verify error message.
+     *
+     * @return a boolean answer.
+     */
+    public static boolean validationError() {
+        return CommonActions.isVisible(errorMessage);
     }
 }

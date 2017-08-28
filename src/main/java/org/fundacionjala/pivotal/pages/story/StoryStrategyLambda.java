@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.pages.story;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -27,7 +27,7 @@ public final class StoryStrategyLambda {
                                 StoryBoard storyBoard) {
         Map<StoryAttributes, Steps> strategyOption = strategySetAttributes(attributesMap, storyBoard);
         Set<StoryAttributes> attributes = attributesMap.keySet();
-        attributes.forEach((attributeItem) -> strategyOption.get(attributeItem).executeStep());
+        attributes.forEach(attributeItem -> strategyOption.get(attributeItem).executeStep());
     }
 
     /**
@@ -40,7 +40,7 @@ public final class StoryStrategyLambda {
     private static Map<StoryAttributes, Steps> strategySetAttributes(
             Map<StoryAttributes, String> attributesMap, StoryBoard storyBoard) {
 
-        Map<StoryAttributes, Steps> strategyMap = new HashMap<>();
+        EnumMap<StoryAttributes, Steps> strategyMap = new EnumMap<>(StoryAttributes.class);
 
         strategyMap.put(StoryAttributes.STORY_NAME,
                 () -> storyBoard.setStoryTitleInputField(attributesMap.get(StoryAttributes.STORY_NAME)));

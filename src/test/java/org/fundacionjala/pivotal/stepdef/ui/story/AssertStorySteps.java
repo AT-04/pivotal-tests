@@ -1,16 +1,16 @@
 package org.fundacionjala.pivotal.stepdef.ui.story;
 
-import cucumber.api.java.en.Then;
-
-import org.fundacionjala.pivotal.pages.project.Project;
-import org.fundacionjala.pivotal.util.DataInterpreter;
-import org.fundacionjala.pivotal.util.Helper;
-
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
+import cucumber.api.java.en.Then;
+import org.fundacionjala.pivotal.pages.project.Project;
+import org.fundacionjala.pivotal.pages.story.StoryBoard;
+import org.fundacionjala.pivotal.util.DataInterpreter;
+import org.fundacionjala.pivotal.util.Helper;
+
 /**
- * Created by pivotal-test Team.
+ * Class containing Asserts Story steps Page.
  */
 public class AssertStorySteps {
 
@@ -45,5 +45,13 @@ public class AssertStorySteps {
     @Then("^the \"([^\"]*)\" is not displayed in Project Page$")
     public void theIsNotDisplayedInProjectPage(String data) {
         assertFalse(project.isVisibleStory(DataInterpreter.getValue(data).toString()));
+    }
+
+    /**
+     * Step definition validation error message.
+     */
+    @Then("^validation error message should be displayed$")
+    public void verifyThatValidationErrorMessageIsDiplayed() {
+        assertTrue(StoryBoard.validationError());
     }
 }
