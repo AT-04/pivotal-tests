@@ -10,7 +10,7 @@ import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.pages.BasePage;
 
 /**
- * Created by pivotal-test Team.
+ * Create Form Modal page for Project.
  */
 public class ProjectCreateForm extends BasePage {
 
@@ -37,6 +37,15 @@ public class ProjectCreateForm extends BasePage {
 
     @FindBy(className = "tc-account-selector__option-account-name")
     private List<WebElement> accountsList;
+
+    @FindBy(css = ".tc-project-name div.tc-form__input--error-message span")
+    private WebElement projectNameEmptyErrorMessage;
+
+    @FindBy(css = ".tc-account-chooser div.tc-form__input--error-message span")
+    private WebElement accountNotSelectedErrorMessage;
+
+    @FindBy(xpath = "//span[text()='The project name you entered is already taken.']")
+    private WebElement projectNameAlreadyTakenErrorMessage;
 
     /**
      * This method sets the Project name parameter in the Project name input field.
@@ -140,5 +149,32 @@ public class ProjectCreateForm extends BasePage {
             return;
         }
         clickPrivateRadioButton();
+    }
+
+    /**
+     * Check if there is an Error Message for empty Name.
+     *
+     * @return If its visible.
+     */
+    public boolean isProjectNameEmptyErrorMessageVisible() {
+        return CommonActions.isVisible(projectNameEmptyErrorMessage);
+    }
+
+    /**
+     * Check if there is an Error Message for Acount not selected.
+     *
+     * @return If its selected.
+     */
+    public boolean isAccountSelectedErrorMessageVisible() {
+        return CommonActions.isVisible(accountNotSelectedErrorMessage);
+    }
+
+    /**
+     * Check if there is an Error Message for Project Name already taken.
+     *
+     * @return If its visible.
+     */
+    public boolean isProjectNameAlreadyTakenErrorMessageVisible() {
+        return CommonActions.isVisible(projectNameAlreadyTakenErrorMessage);
     }
 }

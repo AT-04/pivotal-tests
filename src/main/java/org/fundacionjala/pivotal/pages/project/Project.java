@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Main Page for Projects.
  */
 public class Project extends BasePage {
 
@@ -23,6 +23,9 @@ public class Project extends BasePage {
 
     @FindBy(css = "span[data-aid='StoryPreviewItem__title']")
     private List<WebElement> listStoryNames;
+
+    @FindBy(css = "a[data-aid='navTab-settings']")
+    private WebElement settingsTabButton;
 
     /**
      * This method return the Project name label value of the Project page.
@@ -66,5 +69,15 @@ public class Project extends BasePage {
         WebElement webElement = webDriver.findElement(By.xpath(xPath));
         webElement.click();
         return new StoryBoard();
+    }
+
+    /**
+     * This method clicks on the Settings Tab Button.
+     *
+     * @return the Project Settings page.
+     */
+    public ProjectSettingsForm clickSettingsTabButton() {
+        CommonActions.clickButton(settingsTabButton);
+        return new ProjectSettingsForm();
     }
 }
