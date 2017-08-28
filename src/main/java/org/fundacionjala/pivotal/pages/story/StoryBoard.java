@@ -60,7 +60,6 @@ public class StoryBoard extends BasePage {
     @FindBy(css = "input[placeholder='Add a label']")
     private WebElement storyLabelInputField;
 
-    //ERROR
     @FindBy(css = "div[data-aid='AlertDialog']")
     private static WebElement errorMessage;
 

@@ -1,4 +1,3 @@
-
 Feature: Create Story Without Title API
 
   @DeleteProject

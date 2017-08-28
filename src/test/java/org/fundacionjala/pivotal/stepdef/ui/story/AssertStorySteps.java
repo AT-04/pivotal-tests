@@ -10,7 +10,7 @@ import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Asserts Story steps Page.
  */
 public class AssertStorySteps {
 

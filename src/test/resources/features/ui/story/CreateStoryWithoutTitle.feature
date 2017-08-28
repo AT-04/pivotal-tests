@@ -1,4 +1,3 @@
-@nega
 Feature: Create Story Without Title
 
   Background:
