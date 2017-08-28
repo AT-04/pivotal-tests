@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 
 /**
  * Create Form Modal page for Project.

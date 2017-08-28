@@ -3,7 +3,7 @@ package org.fundacionjala.pivotal.pages.project;
 import java.util.List;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.fundacionjala.pivotal.pages.story.StoryBoard;
 
 import org.openqa.selenium.By;

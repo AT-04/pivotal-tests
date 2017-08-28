@@ -1,4 +1,4 @@
-package org.fundacionjala.pivotal.pages;
+package org.fundacionjala.pivotal.pages.base;
 
 import org.fundacionjala.pivotal.core.browser.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Created by pivotal-test Team.
+ * Abstract Class BasePage implementing Page Object pattern.
  */
 public abstract class BasePage {
 

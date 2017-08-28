@@ -1,14 +1,14 @@
 package org.fundacionjala.pivotal.pages.story;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.fundacionjala.pivotal.pages.project.Project;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Story delete dialog Page.
  */
 public class StoryDeleteDialog extends BasePage {
 

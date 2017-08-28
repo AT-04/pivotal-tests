@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.pages.profile;
 
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

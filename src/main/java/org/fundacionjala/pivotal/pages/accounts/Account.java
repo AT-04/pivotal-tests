@@ -2,7 +2,7 @@ package org.fundacionjala.pivotal.pages.accounts;
 
 import org.openqa.selenium.By;
 
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 
 /**
  * Created by pivotal-test Team.

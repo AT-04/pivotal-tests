@@ -13,7 +13,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Created by Administrator on 8/16/2017.
+ * Created by pivotal-test Team.
  */
 public class AssertWorkspaceSteps {
     private Dashboard dashboard;
@@ -63,7 +63,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^error message \"([^\"]*)\"$")
     public void verifyThatMessageError(String errorMessage) {
-        assertTrue(workspacesCreateForm.messageErrorWhenNameIsEmpty().contains(errorMessage));
+        assertTrue(workspacesCreateForm.errorMessageWhenNameIsEmpty().contains(errorMessage));
     }
 
     /**
@@ -103,6 +103,6 @@ public class AssertWorkspaceSteps {
      */
     @Then("^error message \"([^\"]*)\" should be displayed$")
     public void verifyThatMessageErrorWorkspace(String errorMessage) {
-        assertTrue(workspacesCreateForm.messageErrorWhenAlreadyName().contains(errorMessage));
+        assertTrue(workspacesCreateForm.errorMessageWhenNameAlreadyExist().contains(errorMessage));
     }
 }

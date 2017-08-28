@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
-import org.fundacionjala.pivotal.pages.BasePage;
+import org.fundacionjala.pivotal.pages.base.BasePage;
 
 
 /**
@@ -69,18 +69,16 @@ public class Task extends BasePage {
      * @param taskDescription is name field for task.
      */
     public void clickDeleteTask(String taskDescription) {
-        //WebElement webElement = CommonActions.findWebElement(descriptionList, taskDescription);
         String xPathSelector = String.format(
-                "//div[@data-aid='TaskDescription']/p[text()='%s'] "
-                        + "/parent::div/preceding-sibling::nav/descendant::span[@data-aid='delete'] ",
-                taskDescription);
+                "//div[@data-aid='TaskDescription']/p[text()='%s']"
+                        + "/parent::div/following-sibling::nav/descendant::span[@data-aid='delete']", taskDescription);
         WebElement element = webDriver.findElement(By.xpath(xPathSelector));
-        //new Actions(webDriver).moveToElement(webElement).click(element).build().perform();
         CommonActions.jsClickElement(element);
     }
 
     /**
      * This method is used for know if a task is shown in the story board.
+     *
      * @param taskVariable is the task description.
      * @return webElement.
      */

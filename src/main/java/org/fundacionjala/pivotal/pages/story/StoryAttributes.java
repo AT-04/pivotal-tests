@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.pages.story;
 
 /**
- * Created by pivotal-test Team.
+ * Enum containing StoryAttributes Page.
  */
 public enum StoryAttributes {
     STORY_NAME,
