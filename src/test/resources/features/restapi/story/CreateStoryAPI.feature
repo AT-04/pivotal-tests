@@ -11,6 +11,7 @@ Feature: Create Story using REST API
     And a "POST" request to "/projects/[Project.id]/stories" with
       | name | MyStoryApi |
     Then the status code should be 200
+    And the status code message "MyStoryApi" should be displayed
     And a "POST" request to "/projects/[Project.id]/stories" with
       | name |    |
     Then the status code should be 400
