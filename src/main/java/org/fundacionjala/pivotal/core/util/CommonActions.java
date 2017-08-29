@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.fundacionjala.pivotal.core.browser.DriverManager;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Common Actions.
  */
 public final class CommonActions {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -114,5 +115,16 @@ public final class CommonActions {
      */
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * This method return the text of message de error.
+     *
+     * @return the text of message error.
+     */
+    public static String getErrorMessage() {
+        WebElement webElement = DriverManager.getInstance().getWebDriverWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-aid='AlertDialog']")));
+        return webElement.getText();
     }
 }

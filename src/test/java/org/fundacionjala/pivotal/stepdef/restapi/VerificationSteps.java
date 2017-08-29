@@ -1,12 +1,12 @@
 package org.fundacionjala.pivotal.stepdef.restapi;
 
+import static org.testng.Assert.assertEquals;
+
 import cucumber.api.java.en.Then;
 import org.fundacionjala.pivotal.util.Helper;
 
-import static org.testng.Assert.assertEquals;
-
 /**
- * Created by pivotal-test Team.
+ * Class containing Verification Steps.
  */
 public class VerificationSteps {
 
@@ -28,6 +28,6 @@ public class VerificationSteps {
      */
     @Then("^the status code should be (\\d+)$")
     public void theStatusCodeShouldBe(int status) {
-        assertEquals(status, helper.getRequestStatus());
+        assertEquals(helper.getRequestStatus(), status);
     }
 }

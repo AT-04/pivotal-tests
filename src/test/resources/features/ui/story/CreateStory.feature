@@ -15,6 +15,12 @@ Feature: Create Story
       | STORY_NAME | MyAutomatedStoryName |
     Then story is displayed in the project page
 
+  @DeleteProject
+  Scenario: The user can't create a story without title
+    When sets story with
+      | STORY_NAME        |    |
+    Then validation error message "Please enter a story title." should be displayed
+
   @DeleteProject @Acceptance
   Scenario: The user can create a story with custom settings successfully
     When sets story with
