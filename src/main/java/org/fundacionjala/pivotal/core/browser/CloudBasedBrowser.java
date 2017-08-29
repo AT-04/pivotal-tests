@@ -5,7 +5,6 @@ import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -14,21 +13,41 @@ import org.fundacionjala.pivotal.core.CustomRuntimeException;
 import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
- * DockerChromeBrowser class that implements IBrowsers.
+ * Abstract class for Cloud Based Browsers.
  */
-public class DockerChromeBrowser implements Browser {
+public abstract class CloudBasedBrowser implements Browser {
 
+    protected static final Environment ENV = Environment.getInstance();
+    protected static final String USERNAME = ENV.getRemoteUserName();
+    protected static final String ACCESS_KEY = ENV.getRemoteKey();
     private static final Logger LOGGER = LogManager.getLogger();
+
+    private String url;
+
+    /**
+     * This is the constructor.
+     *
+     * @param url This variable contains the url authentication.
+     */
+    public CloudBasedBrowser(String url) {
+        this.url = url;
+    }
+
+    /**
+     * This method save all capabilities.
+     *
+     * @return setting capabilities SauceLabs.
+     */
+    abstract DesiredCapabilities setCapabilities();
 
     /**
      * {@inheritDoc}
      */
     @Override
     public WebDriver getBrowser() {
-        Capabilities chromeCapabilities = DesiredCapabilities.chrome();
         WebDriver driver;
         try {
-            driver = new RemoteWebDriver(new URL(Environment.getInstance().getDockerUrl()), chromeCapabilities);
+            driver = new RemoteWebDriver(new URL(url), setCapabilities());
         } catch (MalformedURLException e) {
             String message = "URL malformed";
             LOGGER.error(message);

@@ -49,7 +49,7 @@ public final class SharedVariableList {
         return shareVariablesList.stream()
                 .filter(shareVariableItem -> variableName.equalsIgnoreCase(shareVariableItem.getName()))
                 .findFirst()
-                .orElse(null)
+                .orElseThrow(() -> new NullPointerException("Null value."))
                 .getAttributeValue(attribute);
     }
 

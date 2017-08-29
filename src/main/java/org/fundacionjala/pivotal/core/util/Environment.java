@@ -7,6 +7,8 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import org.fundacionjala.pivotal.core.CustomRuntimeException;
+
 /**
  * The Environment class to read data from gradle.properties.
  */
@@ -37,8 +39,10 @@ public final class Environment {
             envProperties = new Properties();
             envProperties.load(fileInputStream);
         } catch (IOException e) {
-            LOGGER.error("Not instance driver");
-            throw new RuntimeException(e);
+            String message = "Not instance driver";
+            LOGGER.error(message);
+            LOGGER.info(e);
+            throw new CustomRuntimeException(message, e);
         }
     }
 

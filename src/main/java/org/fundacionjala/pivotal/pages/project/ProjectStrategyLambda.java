@@ -1,13 +1,13 @@
 package org.fundacionjala.pivotal.pages.project;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 
 import org.fundacionjala.pivotal.pages.Steps;
 
 /**
- * Created by pivotal-test Team.
+ * Class applying Strategy with Projects.
  */
 public final class ProjectStrategyLambda {
 
@@ -27,7 +27,7 @@ public final class ProjectStrategyLambda {
     public static void strategy(Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyOption = setAttributes(attributesMap, page);
         Set<ProjectAttributes> attributes = attributesMap.keySet();
-        attributes.forEach((attributeItem) -> strategyOption.get(attributeItem).executeStep());
+        attributes.forEach(attributeItem -> strategyOption.get(attributeItem).executeStep());
     }
 
     /**
@@ -39,7 +39,7 @@ public final class ProjectStrategyLambda {
      */
     private static Map<ProjectAttributes, Steps> setAttributes(
             Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
-        Map<ProjectAttributes, Steps> strategyMap = new HashMap<>();
+        Map<ProjectAttributes, Steps> strategyMap = new EnumMap<>(ProjectAttributes.class);
         strategyMap.put(ProjectAttributes.NAME,
                 () -> page.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));
         strategyMap.put(ProjectAttributes.ACCOUNT,
