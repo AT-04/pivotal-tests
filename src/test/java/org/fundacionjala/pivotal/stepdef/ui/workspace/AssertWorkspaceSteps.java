@@ -105,4 +105,22 @@ public class AssertWorkspaceSteps {
     public void verifyThatMessageErrorWorkspace(String errorMessage) {
         assertTrue(workspacesCreateForm.errorMessageWhenNameAlreadyExist().contains(errorMessage));
     }
+
+    /**
+     * Step definition that perform the assertion in the workspace main page.
+     */
+    @Then("^the workspace with a project is displayed in the workspace main page$")
+    public void theWorkspaceWithAProjectIsDisplayedInTheWorkspaceMainPage() {
+        assertTrue(workSpaces.isProjectVisible(helper.getProjectVariable()));
+    }
+
+    /**
+     * Step definition that perform the assertion in dashboard.
+     */
+    @Then("^workspace with a project is displayed in the dashboard$")
+    public void workspaceWithAProjectIsDisplayedInTheDashboard() {
+        String nameWorkSpace = helper.getWorkspaceVariable();
+        String nameProject = helper.getProjectVariable();
+        assertTrue(workspaceDashboard.isWorkspaceHasTheProject(nameWorkSpace, nameProject));
+    }
 }
