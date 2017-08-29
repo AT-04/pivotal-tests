@@ -27,8 +27,6 @@ public class Task extends BasePage {
     @FindBy(css = "div[data-aid='TaskDescription']")
     private List<WebElement> descriptionList;
 
-    @FindBy(xpath = "//div[@data-aid='TaskShow']/child::input")
-    private WebElement taskDoneCheckBox;
 
     @FindBy(xpath = "//span[@data-aid='taskCounts']")
     private WebElement taskCountLabel;
@@ -52,17 +50,14 @@ public class Task extends BasePage {
     }
 
     /**
-     * This method peroform a click on the add task button WebElement.
+     * This method Check done the checkbox.
+     * @param name String the name.
      */
-    private void clickSaveTask() {
-        CommonActions.clickButton(addTaskButton);
-    }
-
-    /**
-     * This method perform a click on the task done check box WebElement.
-     */
-    public void clickTaskDoneCheckBox() {
-        CommonActions.clickButton(taskDoneCheckBox);
+    public void clickTaskDoneCheckBox(String name) {
+        String xPathSelector = String.format(
+                "//div[p='%s']/parent::div/child::input", name);
+        WebElement element = webDriver.findElement(By.xpath(xPathSelector));
+        CommonActions.jsClickElement(element);
     }
 
     /**

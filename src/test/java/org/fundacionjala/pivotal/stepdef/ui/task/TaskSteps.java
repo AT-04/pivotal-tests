@@ -49,10 +49,11 @@ public class TaskSteps {
     }
 
     /**
-     * This definition is to check the done checkbox.
+     * This definition step check the task done.
+     * @param name Task name.
      */
-    @And("^check done the task$")
-    public void checkDoneTheTask() {
-       task.clickTaskDoneCheckBox();
+    @And("^check done the task \"([^\"]*)\"$")
+    public void checkDoneTheTask(String name) {
+        task.clickTaskDoneCheckBox(name);
     }
 }

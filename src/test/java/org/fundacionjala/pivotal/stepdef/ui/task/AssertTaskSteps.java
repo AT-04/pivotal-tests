@@ -48,10 +48,11 @@ public class AssertTaskSteps {
     }
 
     /**
-     * This definition verify that the task is done with the checkbox.
+     * This Definition step verify that a task is done.
+     * @param number task name.
      */
-    @And("^the task is displayed has checked$")
-    public void theTaskIsDisplayedHasChecked() {
-        assertTrue(task.getTaskCounts().contains("TASKS (1/"));
+    @And("^the task is displayed has checked \"([^\"]*)\"$")
+    public void theTaskIsDisplayedHasChecked(String number)   {
+        assertTrue(task.getTaskCounts().contains(String.format("TASKS (%s/", number)));
     }
 }
