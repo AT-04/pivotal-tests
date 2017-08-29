@@ -18,3 +18,11 @@ Feature: Create task
     When sets task with
       | DESCRIPTION | MyTaskDescription |
     Then task is displayed in the story page
+
+  @DeleteProject
+  Scenario: The user can check done the task
+    When sets task with
+      | DESCRIPTION | MyTaskDescription |
+    Then task is displayed in the story page
+    And check done the task "MyTaskDescription"
+    And the task is displayed has checked "1"

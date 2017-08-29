@@ -2,6 +2,7 @@ package org.fundacionjala.pivotal.stepdef.ui.task;
 
 import java.util.Map;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 
 import org.fundacionjala.pivotal.pages.task.Task;
@@ -45,5 +46,14 @@ public class TaskSteps {
     @When("^delete the task \"([^\"]*)\"$")
     public void deleteTheTask(String data) {
         task.clickDeleteTask(DataInterpreter.getValue(data).toString());
+    }
+
+    /**
+     * This definition step check the task done.
+     * @param name Task name.
+     */
+    @And("^check done the task \"([^\"]*)\"$")
+    public void checkDoneTheTask(String name) {
+        task.clickTaskDoneCheckBox(name);
     }
 }

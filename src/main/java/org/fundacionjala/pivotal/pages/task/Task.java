@@ -27,9 +27,9 @@ public class Task extends BasePage {
     @FindBy(css = "div[data-aid='TaskDescription']")
     private List<WebElement> descriptionList;
 
-    @FindBy(xpath = "//div[@data-aid='TaskDescription']/p[text()='Visit the Members section of the project and ']"
-            + "/parent::div/preceding-sibling::label/descendant::input[@type='checkbox']")
-    private WebElement taskDoneCheckBox;
+
+    @FindBy(xpath = "//span[@data-aid='taskCounts']")
+    private WebElement taskCountLabel;
 
     /**
      * This method perform a click on the add new task icon WebElement.
@@ -50,17 +50,14 @@ public class Task extends BasePage {
     }
 
     /**
-     * This method peroform a click on the add task button WebElement.
+     * This method Check done the checkbox.
+     * @param name String the name.
      */
-    private void clickSaveTask() {
-        CommonActions.clickButton(addTaskButton);
-    }
-
-    /**
-     * This method perform a click on the task done check box WebElement.
-     */
-    private void clickTaskDoneCheckBox() {
-        CommonActions.clickButton(taskDoneCheckBox);
+    public void clickTaskDoneCheckBox(String name) {
+        String xPathSelector = String.format(
+                "//div[p='%s']/parent::div/child::input", name);
+        WebElement element = webDriver.findElement(By.xpath(xPathSelector));
+        CommonActions.jsClickElement(element);
     }
 
     /**
@@ -87,4 +84,11 @@ public class Task extends BasePage {
         return webElement != null;
     }
 
+    /**
+     * This method is used to have control of task with done check.
+     * @return Text Content.
+     */
+    public String getTaskCounts() {
+        return CommonActions.getTextContent(taskCountLabel);
+    }
 }

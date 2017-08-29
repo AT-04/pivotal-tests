@@ -1,5 +1,6 @@
 package org.fundacionjala.pivotal.stepdef.ui.task;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 
 import org.fundacionjala.pivotal.pages.task.Task;
@@ -44,5 +45,14 @@ public class AssertTaskSteps {
     @Then("^the \"([^\"]*)\" should not be displayed$")
     public void theShouldNotBeDisplayed(String data) {
         assertFalse(task.isDisplayed(DataInterpreter.getValue(data).toString()));
+    }
+
+    /**
+     * This Definition step verify that a task is done.
+     * @param number task name.
+     */
+    @And("^the task is displayed has checked \"([^\"]*)\"$")
+    public void theTaskIsDisplayedHasChecked(String number)   {
+        assertTrue(task.getTaskCounts().contains(String.format("TASKS (%s/", number)));
     }
 }
