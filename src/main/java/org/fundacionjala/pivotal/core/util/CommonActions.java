@@ -121,8 +121,8 @@ public final class CommonActions {
      * @return the text of message error.
      */
     public static String getErrorMessage() {
-        WebElement webElement = DriverManager.getInstance().getWebDriver()
-                .findElement(By.cssSelector("div[data-aid='AlertDialog']"));
-        return getTextContent(webElement);
+        WebElement webElement = DriverManager.getInstance().getWebDriverWait()
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div[data-aid='AlertDialog']")));
+        return webElement.getText();
     }
 }
