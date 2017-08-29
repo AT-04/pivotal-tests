@@ -13,7 +13,7 @@ import org.fundacionjala.pivotal.core.CustomRuntimeException;
 import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
- * Created by AbelBarrientos on 8/29/2017.
+ * Abstract class for Cloud Based Browsers.
  */
 public abstract class CloudBasedBrowser implements Browser {
 
