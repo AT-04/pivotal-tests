@@ -1,15 +1,18 @@
 package org.fundacionjala.pivotal.stepdef.ui;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.When;
+import static org.testng.Assert.assertTrue;
 
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.fundacionjala.pivotal.core.util.CommonActions;
 import org.fundacionjala.pivotal.core.util.Navigator;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Common Steps.
  */
 public class CommonSteps {
 
@@ -51,5 +54,15 @@ public class CommonSteps {
     @And("^opens the story created as \"([^\"]*)\"$")
     public void opensTheStoryCreatedAs(String name) {
         project.enterExistingStory(DataInterpreter.getValue(name).toString());
+    }
+
+    /**
+     * Step definition that perform the assertion message error.
+     *
+     * @param errorMessage that should be displayed.
+     */
+    @Then("^validation error message \"([^\"]*)\" should be displayed$")
+    public void verifyThatValidationErrorMessageIsDiplayed(String errorMessage) {
+        assertTrue(CommonActions.getErrorMessage().contains(errorMessage));
     }
 }
