@@ -1,7 +1,7 @@
 package org.fundacionjala.pivotal.util;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Helper Steps.
  */
 public class Helper {
 
@@ -10,6 +10,7 @@ public class Helper {
     private String workspaceVariable;
     private String accountVariable;
     private String taskVariable;
+    private String body;
 
     private int requestStatus;
 
@@ -47,6 +48,25 @@ public class Helper {
      */
     public int getRequestStatus() {
         return requestStatus;
+    }
+
+    /**
+     * This method set the Request body attribute.
+     *
+     * @param body the actual body
+     */
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    /**
+     * This method return the Request body attribute.
+     *
+     * @return the actual body.
+     */
+    public String getRequestBody() {
+        System.out.print(body);
+        return body;
     }
 
     /**

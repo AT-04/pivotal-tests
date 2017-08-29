@@ -5,7 +5,6 @@ import java.util.Map;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
 import org.fundacionjala.pivotal.core.restapi.RequestType;
 import org.fundacionjala.pivotal.util.DataInterpreter;
@@ -52,6 +51,7 @@ public class RequestSteps {
         response = RequestType.POST.equals(method) ? RequestManager.post(endpoint, map)
                 : RequestManager.put(endpoint, map);
         helper.setRequestStatus(response.getStatusCode());
+        helper.setBody(response.body().asString());
     }
 
     /**
@@ -65,5 +65,6 @@ public class RequestSteps {
         String endpoint = DataInterpreter.builtEndPoint(param);
         response = RequestType.GET.equals(method) ? RequestManager.get(endpoint) : RequestManager.delete(endpoint);
         helper.setRequestStatus(response.getStatusCode());
+        helper.setBody(response.body().asString());
     }
 }
