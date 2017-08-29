@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 /**
- * Created by pivotal-test Team.
+ * Class page for Sign In options.
  */
 public class SignIn extends BasePage {
 
@@ -110,10 +110,9 @@ public class SignIn extends BasePage {
      * @return dashboard object.
      */
     private Dashboard createStrategy() {
-        Dashboard dashboard = isUserLogged()
+        return isUserLogged()
                 ? strategyProcess(new OtherUserSignInStrategy())
                 : strategyProcess(new NormalSignInStrategy());
-        return dashboard;
     }
 
     /**

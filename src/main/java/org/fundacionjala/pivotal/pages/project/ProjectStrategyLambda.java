@@ -7,7 +7,7 @@ import java.util.Set;
 import org.fundacionjala.pivotal.pages.Steps;
 
 /**
- * Created by pivotal-test Team.
+ * Class applying Strategy with Projects.
  */
 public final class ProjectStrategyLambda {
 
@@ -27,7 +27,7 @@ public final class ProjectStrategyLambda {
     public static void strategy(Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyOption = setAttributes(attributesMap, page);
         Set<ProjectAttributes> attributes = attributesMap.keySet();
-        attributes.forEach((attributeItem) -> strategyOption.get(attributeItem).executeStep());
+        attributes.forEach(attributeItem -> strategyOption.get(attributeItem).executeStep());
     }
 
     /**
