@@ -14,7 +14,6 @@ Feature: Workspace with a Project
     When sets workspace with
       | Name | My New Workspace |
     And clicks on the add projects button
-    And clicks on the projects dropdown button
     And select the project with the name "ProjectForWorkspace"
     And clicks on the Save Workspace Changes button
     Then the workspace with a project is displayed in the workspace main page

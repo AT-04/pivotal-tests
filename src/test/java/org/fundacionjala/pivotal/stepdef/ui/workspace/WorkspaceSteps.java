@@ -127,6 +127,7 @@ public class WorkspaceSteps {
      */
     @And("^select the project with the name \"([^\"]*)\"$")
     public void selectTheProjectWithTheName(String name) {
+        workspace.clickProjectsDropdown();
         workspace.clickSelectedProjectFromTheDropDown(name);
         helper.setProjectVariable(name);
     }
