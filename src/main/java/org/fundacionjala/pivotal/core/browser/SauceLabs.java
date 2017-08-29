@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import org.fundacionjala.pivotal.core.CustomRuntimeException;
 import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
@@ -49,8 +50,10 @@ public class SauceLabs implements Browser {
     try {
       driver = new RemoteWebDriver(new URL(URL), setCapabilities());
     } catch (MalformedURLException e) {
-      LOGGER.error("Not instance driver");
-      throw new RuntimeException();
+      String message = "URL malformed";
+      LOGGER.error(message);
+      LOGGER.info(e);
+      throw new CustomRuntimeException(message, e);
     }
     return driver;
   }

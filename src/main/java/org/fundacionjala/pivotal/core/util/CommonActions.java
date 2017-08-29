@@ -2,6 +2,8 @@ package org.fundacionjala.pivotal.core.util;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,9 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import org.fundacionjala.pivotal.core.browser.DriverManager;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * Created by pivotal-test Team.
@@ -68,7 +67,8 @@ public final class CommonActions {
         try {
             return webElement.isDisplayed();
         } catch (NoSuchElementException e) {
-            LOGGER.error("Not instance driver");
+            LOGGER.error("Element doesn't exists");
+            LOGGER.info(e);
             return false;
         }
     }

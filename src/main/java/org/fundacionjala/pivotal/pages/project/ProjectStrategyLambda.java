@@ -1,6 +1,6 @@
 package org.fundacionjala.pivotal.pages.project;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -39,7 +39,7 @@ public final class ProjectStrategyLambda {
      */
     private static Map<ProjectAttributes, Steps> setAttributes(
             Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
-        Map<ProjectAttributes, Steps> strategyMap = new HashMap<>();
+        Map<ProjectAttributes, Steps> strategyMap = new EnumMap<>(ProjectAttributes.class);
         strategyMap.put(ProjectAttributes.NAME,
                 () -> page.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));
         strategyMap.put(ProjectAttributes.ACCOUNT,

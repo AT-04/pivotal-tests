@@ -1,9 +1,9 @@
 package org.fundacionjala.pivotal.core.browser;
 
-import org.openqa.selenium.WebDriver;
-
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
 
 /**
  * Created by pivotal-test Team.
@@ -24,7 +24,7 @@ public final class DriverFactory {
      * @return a WebDriver instance.
      */
     public static WebDriver getDriverManager(DriverType driverType) {
-        Map<DriverType, Browser> map = new HashMap<>();
+        Map<DriverType, Browser> map = new EnumMap<>(DriverType.class);
         map.put(DriverType.CHROME, new ChromeBrowser());
         map.put(DriverType.FIREFOX, new FirefoxBrowser());
         map.put(DriverType.DOCKER_CHROME, new DockerChromeBrowser());

@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import org.fundacionjala.pivotal.core.CustomRuntimeException;
 import org.fundacionjala.pivotal.core.util.Environment;
 
 /**
@@ -25,12 +26,14 @@ public class DockerChromeBrowser implements Browser {
     @Override
     public WebDriver getBrowser() {
         Capabilities chromeCapabilities = DesiredCapabilities.chrome();
-        WebDriver driver = null;
+        WebDriver driver;
         try {
             driver = new RemoteWebDriver(new URL(Environment.getInstance().getDockerUrl()), chromeCapabilities);
         } catch (MalformedURLException e) {
-            LOGGER.error("Not a URL");
-            throw new RuntimeException();
+            String message = "URL malformed";
+            LOGGER.error(message);
+            LOGGER.info(e);
+            throw new CustomRuntimeException(message, e);
         }
         return driver;
     }

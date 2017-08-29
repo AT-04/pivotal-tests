@@ -144,7 +144,7 @@ public class ProjectCreateForm extends BasePage {
      * @param privacy is the privacy type value.
      */
     public void setPrivacy(String privacy) {
-        if (privacy.equalsIgnoreCase("public")) {
+        if ("public".equalsIgnoreCase(privacy)) {
             clickPublicRadioButton();
             return;
         }
