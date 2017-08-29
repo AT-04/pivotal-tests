@@ -66,4 +66,19 @@ public class WorkspaceDashboard extends BasePage {
         WebElement webElement = CommonActions.findWebElement(workSpacesList, workspaceName);
         return webElement != null;
     }
+
+    /**
+     * This method verify that exist a workspace has the project.
+     *
+     * @param workspaceName is the workspace name.
+     * @param projectName   is the project name.
+     * @return if the element is found.
+     */
+    public boolean isWorkspaceHasTheProject(String workspaceName, String projectName) {
+        StringBuilder selector = new StringBuilder();
+        selector.append(String.format("//a[@class='WorkspaceTile__name' and text()='%s']/parent::div/"
+                + "following-sibling::div/child::div/child::a[text()='%s']", workspaceName, projectName));
+        WebElement webElement = webDriver.findElement(By.xpath(selector.toString()));
+        return webElement != null;
+    }
 }

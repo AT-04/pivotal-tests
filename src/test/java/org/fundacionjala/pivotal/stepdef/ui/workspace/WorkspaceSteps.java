@@ -6,6 +6,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
+import org.fundacionjala.pivotal.pages.workspace.WorkSpaces;
 import org.fundacionjala.pivotal.pages.workspace.WorkspaceDashboard;
 import org.fundacionjala.pivotal.pages.workspace.WorkspaceSettings;
 import org.fundacionjala.pivotal.pages.workspace.WorkspacesCreateForm;
@@ -18,6 +19,7 @@ import org.fundacionjala.pivotal.util.Helper;
 public class WorkspaceSteps {
     private Dashboard dashboard;
     private Helper helper;
+    private WorkSpaces workspace;
     private WorkspaceDashboard workspaceDashboard;
     private WorkspacesCreateForm workspacesCreateForm;
     private WorkspaceSettings workspaceSettings;
@@ -58,7 +60,10 @@ public class WorkspaceSteps {
     public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
         workspacesCreateForm.setNameInputField(body.get("Name"));
         workspacesCreateForm.clickCreateButton();
+        workspace = new WorkSpaces();
         helper.setWorkspaceVariable(body.get("Name"));
+
+
     }
 
     /**
@@ -100,4 +105,40 @@ public class WorkspaceSteps {
         workspaceSettings.clickDeleteLink();
         workspaceSettings.clickConfirmDeleteButton();
     }
+    /**
+     * Step definition that clicks on the add Projects button.
+     */
+    @And("^clicks on the add projects button$")
+    public void clicksOnTheAddProjectsButton() {
+        workspace.clickAddProjectsButton();
+    }
+
+    /**
+     * Step definition that clicks on the projects DropdownButton.
+     */
+    @And("^clicks on the projects dropdown button$")
+    public void clicksOnTheProjectsDropdownButton() {
+        workspace.clickProjectsDropdown();
+    }
+
+    /**
+     * Step definition that selects the project with the name.
+     * @param name name of the project.
+     */
+    @And("^select the project with the name \"([^\"]*)\"$")
+    public void selectTheProjectWithTheName(String name) {
+        workspace.clickProjectsDropdown();
+        workspace.clickSelectedProjectFromTheDropDown(name);
+        helper.setProjectVariable(name);
+    }
+
+    /**
+     *Step definition that clicks on the save workspace changes button.
+     */
+    @And("^clicks on the Save Workspace Changes button$")
+    public void clicksOnTheSaveWorkspaceChangesButton() {
+        workspace.clickSaveWorkspaceChangesButton();
+    }
+
+
 }
