@@ -3,7 +3,7 @@ package org.fundacionjala.pivotal.util;
 import java.util.Map;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Shared Variable.
  */
 public class SharedVariable {
     private static final String RESPONSE_TYPE = "kind";

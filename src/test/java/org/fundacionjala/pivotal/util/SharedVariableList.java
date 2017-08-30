@@ -6,7 +6,7 @@ import java.util.List;
 import io.restassured.response.Response;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Shared VariableList.
  */
 public final class SharedVariableList {
 

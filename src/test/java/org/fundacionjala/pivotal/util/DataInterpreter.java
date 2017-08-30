@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by pivotal-test Team.
+ * Class containing Data Interpreter.
  */
 public final class DataInterpreter {
 
