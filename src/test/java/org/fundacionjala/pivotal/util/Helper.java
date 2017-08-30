@@ -65,7 +65,6 @@ public class Helper {
      * @return the actual body.
      */
     public String getRequestBody() {
-        System.out.print(body);
         return body;
     }
 
