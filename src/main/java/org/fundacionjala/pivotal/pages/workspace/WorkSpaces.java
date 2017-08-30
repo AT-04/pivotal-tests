@@ -47,11 +47,12 @@ public class WorkSpaces extends BasePage {
     }
 
     /**
-     *  This method perform a click on selected the project from Dropdown.
+     * This method perform a click on selected the project from Dropdown.
+     *
      * @param nameProject is the project name.
      */
     public void clickSelectedProjectFromTheDropDown(String nameProject) {
-        String selector = (String.format("//ul[@data-aid='MenuList']/descendant::span[text()='%s']", nameProject));
+        String selector = String.format("//ul[@data-aid='MenuList']/descendant::span[text()='%s']", nameProject);
         WebElement webElement = webDriver.findElement(By.xpath(selector));
         webElement.click();
     }
