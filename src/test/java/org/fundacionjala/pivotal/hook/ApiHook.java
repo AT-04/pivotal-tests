@@ -3,10 +3,14 @@ package org.fundacionjala.pivotal.hook;
 import java.util.List;
 import java.util.Map;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.restassured.path.json.JsonPath;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
+import org.fundacionjala.pivotal.core.browser.DriverManager;
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
@@ -97,6 +101,20 @@ public class ApiHook {
             if (map.get("name").equals(helper.getWorkspaceVariable())) {
                 RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
             }
+        }
+    }
+
+    /**
+     * Takes a snapshot when a scenario fails.
+     *
+     * @param scenario variable for Cucumber features.
+     */
+    @After
+    public void takeScreenShot(Scenario scenario) {
+        if (scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) DriverManager.getInstance().getWebDriver())
+                    .getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png"); //stick it in the report
         }
     }
 }
