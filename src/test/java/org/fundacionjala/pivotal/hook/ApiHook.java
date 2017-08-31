@@ -3,14 +3,10 @@ package org.fundacionjala.pivotal.hook;
 import java.util.List;
 import java.util.Map;
 
-import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.restassured.path.json.JsonPath;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
-import org.fundacionjala.pivotal.core.browser.DriverManager;
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
