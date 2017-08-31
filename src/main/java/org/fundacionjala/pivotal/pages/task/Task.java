@@ -68,7 +68,7 @@ public class Task extends BasePage {
     public void clickDeleteTask(String taskDescription) {
         String xPathSelector = String.format(
                 "//div[@data-aid='TaskDescription']/p[text()='%s']"
-                        + "/parent::div/following-sibling::nav/descendant::span[@data-aid='delete']", taskDescription);
+                       + "/parent::div/following-sibling::nav/descendant::button[@data-aid='delete']", taskDescription);
         WebElement element = webDriver.findElement(By.xpath(xPathSelector));
         CommonActions.jsClickElement(element);
     }

@@ -103,18 +103,4 @@ public class ApiHook {
             }
         }
     }
-
-    /**
-     * Takes a snapshot when a scenario fails.
-     *
-     * @param scenario variable for Cucumber features.
-     */
-    @After
-    public void takeScreenShot(Scenario scenario) {
-        if (scenario.isFailed()) {
-            final byte[] screenshot = ((TakesScreenshot) DriverManager.getInstance().getWebDriver())
-                    .getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png"); //stick it in the report
-        }
-    }
 }
