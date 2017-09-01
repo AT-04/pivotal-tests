@@ -1,16 +1,13 @@
 package org.fundacionjala.pivotal.stepdef.ui.workspace;
 
 import cucumber.api.java.en.Then;
-
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.workspace.WorkSpaces;
 import org.fundacionjala.pivotal.pages.workspace.WorkspaceDashboard;
 import org.fundacionjala.pivotal.pages.workspace.WorkspacesCreateForm;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
-
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import org.testng.asserts.Assertion;
 
 /**
  * Created by pivotal-test Team.
@@ -21,6 +18,7 @@ public class AssertWorkspaceSteps {
     private Helper helper;
     private WorkspaceDashboard workspaceDashboard;
     private WorkspacesCreateForm workspacesCreateForm;
+    private Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.
@@ -38,6 +36,7 @@ public class AssertWorkspaceSteps {
         this.workspaceDashboard = workspaceDashboard;
         this.workspacesCreateForm = workspacesCreateForm;
         this.dashboard = dashboard;
+        this.assertion = helper.getAssertion();
     }
 
     /**
@@ -45,7 +44,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^New workspace name is displayed in the workspace main page$")
     public void newWorkspaceNameIsDisplayedInTheWorkspaceMainPage() {
-        assertTrue(workSpaces.workSpacesName().equals(helper.getWorkspaceVariable()));
+        assertion.assertTrue(workSpaces.workSpacesName().equals(helper.getWorkspaceVariable()));
     }
 
     /**
@@ -53,7 +52,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^workspace is displayed in the dashboard$")
     public void newWorkspaceNameIsDisplayedInTheDashboardWorkspace() {
-        assertTrue(workspaceDashboard.isWorkspaceFound(helper.getWorkspaceVariable()));
+        assertion.assertTrue(workspaceDashboard.isWorkspaceFound(helper.getWorkspaceVariable()));
     }
 
     /**
@@ -63,7 +62,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^error message \"([^\"]*)\"$")
     public void verifyThatMessageError(String errorMessage) {
-        assertTrue(workspacesCreateForm.errorMessageWhenNameIsEmpty().contains(errorMessage));
+        assertion.assertTrue(workspacesCreateForm.errorMessageWhenNameIsEmpty().contains(errorMessage));
     }
 
     /**
@@ -73,7 +72,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^message \"([^\"]*)\" should displayed$")
     public void messageShouldDisplayed(String message) {
-        assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
+        assertion.assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
 
     /**
@@ -83,7 +82,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^the \"([^\"]*)\" is not displayed in the dashboard$")
     public void verifyThatIsnTDisplayedInTheDashboard(String nameWorkspace) {
-        assertFalse(workspaceDashboard.isWorkspaceFound(nameWorkspace));
+        assertion.assertFalse(workspaceDashboard.isWorkspaceFound(nameWorkspace));
     }
 
     /**
@@ -93,7 +92,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^workspace name should be displayed \"([^\"]*)\"$")
     public void workspaceNameShouldBeDisplayed(String newName) {
-        assertTrue(workspaceDashboard.workspaceIsDisplayed(newName));
+        assertion.assertTrue(workspaceDashboard.workspaceIsDisplayed(newName));
     }
 
     /**
@@ -103,7 +102,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^error message \"([^\"]*)\" should be displayed$")
     public void verifyThatMessageErrorWorkspace(String errorMessage) {
-        assertTrue(workspacesCreateForm.errorMessageWhenNameAlreadyExist().contains(errorMessage));
+        assertion.assertTrue(workspacesCreateForm.errorMessageWhenNameAlreadyExist().contains(errorMessage));
     }
 
     /**
@@ -111,7 +110,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^the workspace with a project is displayed in the workspace main page$")
     public void theWorkspaceWithAProjectIsDisplayedInTheWorkspaceMainPage() {
-        assertTrue(workSpaces.isProjectVisible(helper.getProjectVariable()));
+        assertion.assertTrue(workSpaces.isProjectVisible(helper.getProjectVariable()));
     }
 
     /**
@@ -121,6 +120,6 @@ public class AssertWorkspaceSteps {
     public void workspaceWithAProjectIsDisplayedInTheDashboard() {
         String nameWorkSpace = helper.getWorkspaceVariable();
         String nameProject = helper.getProjectVariable();
-        assertTrue(workspaceDashboard.isWorkspaceHasTheProject(nameWorkSpace, nameProject));
+        assertion.assertTrue(workspaceDashboard.isWorkspaceHasTheProject(nameWorkSpace, nameProject));
     }
 }
