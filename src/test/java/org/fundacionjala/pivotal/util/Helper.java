@@ -1,5 +1,7 @@
 package org.fundacionjala.pivotal.util;
 
+import org.testng.asserts.Assertion;
+
 /**
  * Class containing Helper Steps.
  */
@@ -11,8 +13,15 @@ public class Helper {
     private String accountVariable;
     private String taskVariable;
     private String body;
-
     private int requestStatus;
+    private Assertion assertion;
+
+    /**
+     * This method is a constructor.
+     */
+    public Helper() {
+        assertion = new Assertion();
+    }
 
     /**
      * This method sets the Project Variable helper attribute.
@@ -138,5 +147,23 @@ public class Helper {
      */
     public void setTaskVariable(String taskVariable) {
         this.taskVariable = taskVariable;
+    }
+
+    /**
+     * Get Assertion.
+     *
+     * @return a instance of Assertion.
+     */
+    public Assertion getAssertion() {
+        return assertion;
+    }
+
+    /**
+     * Set assertion instance.
+     *
+     * @param assertion a instance of Soft Assertion.
+     */
+    public void setAssertion(Assertion assertion) {
+        this.assertion = assertion;
     }
 }

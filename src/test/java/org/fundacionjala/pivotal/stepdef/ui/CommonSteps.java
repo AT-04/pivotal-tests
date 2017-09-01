@@ -1,7 +1,5 @@
 package org.fundacionjala.pivotal.stepdef.ui;
 
-import static org.testng.Assert.assertTrue;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -10,6 +8,9 @@ import org.fundacionjala.pivotal.core.util.Navigator;
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.util.DataInterpreter;
+import org.fundacionjala.pivotal.util.Helper;
+import org.testng.asserts.Assertion;
+import org.testng.asserts.SoftAssert;
 
 /**
  * Class containing Common Steps.
@@ -18,14 +19,17 @@ public class CommonSteps {
 
     private Dashboard dashboard;
     private Project project;
+    private Assertion assertion;
 
     /**
      * This constructor using dependence injection.
      *
      * @param dashboard is the dashboard page object.
+     * @param helper is Helper.
      */
-    public CommonSteps(Dashboard dashboard) {
+    public CommonSteps(Dashboard dashboard, Helper helper) {
         this.dashboard = dashboard;
+        this.assertion = helper.getAssertion();
     }
 
     /**
@@ -63,6 +67,16 @@ public class CommonSteps {
      */
     @Then("^validation error message \"([^\"]*)\" should be displayed$")
     public void verifyThatValidationErrorMessageIsDiplayed(String errorMessage) {
-        assertTrue(CommonActions.getErrorMessage().contains(errorMessage));
+        assertion.assertTrue(CommonActions.getErrorMessage().contains(errorMessage));
+    }
+
+    /**
+     * This method executes all soft asserts.
+     */
+    @And("^Assert all$")
+    public void assertAll() {
+        if (assertion instanceof SoftAssert) {
+            ((SoftAssert) assertion).assertAll();
+        }
     }
 }

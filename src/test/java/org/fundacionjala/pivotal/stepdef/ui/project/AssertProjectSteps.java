@@ -8,9 +8,7 @@ import org.fundacionjala.pivotal.pages.project.ProjectCreateForm;
 import org.fundacionjala.pivotal.pages.project.ProjectSettingsForm;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
-
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import org.testng.asserts.Assertion;
 
 /**
  * Assert Steps for Projects.
@@ -21,6 +19,7 @@ public class AssertProjectSteps {
     private Project project;
     private ProjectSettingsForm projectSettingsForm;
     private Helper helper;
+    private Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.
@@ -36,6 +35,7 @@ public class AssertProjectSteps {
         this.project = project;
         this.projectSettingsForm = projectSettingsForm;
         this.helper = helper;
+        this.assertion = helper.getAssertion();
     }
 
     /**
@@ -43,7 +43,7 @@ public class AssertProjectSteps {
      */
     @Then("^new project name is displayed in the project main page$")
     public void newProjectNameIsDisplayedInTheProjectMainPage() {
-        assertTrue(project.projectName().contains(helper.getProjectVariable()));
+        assertion.assertTrue(project.projectName().contains(helper.getProjectVariable()));
     }
 
     /**
@@ -51,7 +51,7 @@ public class AssertProjectSteps {
      */
     @Then("^project is displayed in the dashboard$")
     public void newProjectNameIsDisplayedInTheDashboard() {
-        assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
+        assertion.assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
     }
 
     /**
@@ -61,7 +61,7 @@ public class AssertProjectSteps {
      */
     @Then("^message \"([^\"]*)\" should be displayed$")
     public void messageShouldAppear(String message) {
-        assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
+        assertion.assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
 
     /**
@@ -71,7 +71,7 @@ public class AssertProjectSteps {
      */
     @And("^the \"([^\"]*)\" is not displayed in Dashboard$")
     public void theIsNotDisplayedInDashboard(String attribute) {
-        assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(attribute).toString()));
+        assertion.assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(attribute).toString()));
     }
 
     /**
@@ -81,7 +81,7 @@ public class AssertProjectSteps {
      */
     @Then("^message \"([^\"]*)\" should appear in settings page$")
     public void messageShouldAppearInSettingsPage(String message) {
-        assertTrue(projectSettingsForm.getChangesSuccessText().equals(message));
+        assertion.assertTrue(projectSettingsForm.getChangesSuccessText().equals(message));
     }
 
     /**
@@ -91,7 +91,7 @@ public class AssertProjectSteps {
      */
     @Then("^\"([^\"]*)\" is not displayed in dashboard$")
     public void isNotDisplayedInDashboard(String name) {
-        assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(name).toString()));
+        assertion.assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(name).toString()));
     }
 
     /**
@@ -99,7 +99,7 @@ public class AssertProjectSteps {
      */
     @And("^project is displayed in dashboard$")
     public void theNewNameIsDisplayedInDashboard() {
-        assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
+        assertion.assertTrue(dashboard.isProjectFound(helper.getProjectVariable()));
     }
 
     /**
@@ -107,8 +107,8 @@ public class AssertProjectSteps {
      */
     @Then("^error messages for empty values should be displayed$")
     public void errorMessagesForEmptyValuesShouldBeDisplayed() {
-        assertTrue(new ProjectCreateForm().isProjectNameEmptyErrorMessageVisible());
-        assertTrue(new ProjectCreateForm().isAccountSelectedErrorMessageVisible());
+        assertion.assertTrue(new ProjectCreateForm().isProjectNameEmptyErrorMessageVisible());
+        assertion.assertTrue(new ProjectCreateForm().isAccountSelectedErrorMessageVisible());
     }
 
     /**
@@ -116,7 +116,7 @@ public class AssertProjectSteps {
      */
     @Then("^error messages with name already taken should be displayed$")
     public void errorMessagesWithNameAlreadyTakenShouldBeDisplayed() {
-        assertTrue(new ProjectCreateForm().isProjectNameAlreadyTakenErrorMessageVisible());
+        assertion.assertTrue(new ProjectCreateForm().isProjectNameAlreadyTakenErrorMessageVisible());
     }
 
     /**
@@ -124,6 +124,6 @@ public class AssertProjectSteps {
      */
     @Then("^error messages should display$")
     public void errorMessagesShouldDisplay() {
-        assertTrue(new ProjectSettingsForm().isErrorMessageDisplayed());
+        assertion.assertTrue(new ProjectSettingsForm().isErrorMessageDisplayed());
     }
 }

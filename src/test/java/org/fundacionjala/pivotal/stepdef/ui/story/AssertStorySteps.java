@@ -1,13 +1,11 @@
 package org.fundacionjala.pivotal.stepdef.ui.story;
 
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
-
 import cucumber.api.java.en.Then;
 import org.fundacionjala.pivotal.pages.project.Project;
 import org.fundacionjala.pivotal.pages.story.StoryBoard;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
+import org.testng.asserts.Assertion;
 
 /**
  * Class containing Asserts Story steps Page.
@@ -16,6 +14,7 @@ public class AssertStorySteps {
 
     private Project project;
     private Helper helper;
+    private Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.
@@ -26,7 +25,7 @@ public class AssertStorySteps {
     public AssertStorySteps(Project project, Helper helper) {
         this.project = project;
         this.helper = helper;
-
+        this.assertion = helper.getAssertion();
     }
 
     /**
@@ -34,7 +33,7 @@ public class AssertStorySteps {
      */
     @Then("^story is displayed in the project page$")
     public void newStoryNameIsDisplayedInTheProjectPage() {
-        assertTrue(project.isVisibleStory(helper.getStoryVariable()));
+        assertion.assertTrue(project.isVisibleStory(helper.getStoryVariable()));
     }
 
     /**
@@ -44,7 +43,7 @@ public class AssertStorySteps {
      */
     @Then("^the \"([^\"]*)\" is not displayed in Project Page$")
     public void theIsNotDisplayedInProjectPage(String data) {
-        assertFalse(project.isVisibleStory(DataInterpreter.getValue(data).toString()));
+        assertion.assertFalse(project.isVisibleStory(DataInterpreter.getValue(data).toString()));
     }
 
     /**
@@ -52,6 +51,6 @@ public class AssertStorySteps {
      */
     @Then("^validation error message should be displayed$")
     public void verifyThatValidationErrorMessageIsDiplayed() {
-        assertTrue(StoryBoard.validationError());
+        assertion.assertTrue(StoryBoard.validationError());
     }
 }

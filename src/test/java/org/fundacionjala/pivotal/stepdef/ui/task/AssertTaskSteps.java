@@ -2,13 +2,10 @@ package org.fundacionjala.pivotal.stepdef.ui.task;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-
 import org.fundacionjala.pivotal.pages.task.Task;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
-
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import org.testng.asserts.Assertion;
 
 /**
  * Created by Pivotal Team.
@@ -17,6 +14,7 @@ public class AssertTaskSteps {
 
     private Task task;
     private Helper helper;
+    private Assertion assertion;
 
     /**
      * Constructor with dependency injection.
@@ -27,6 +25,7 @@ public class AssertTaskSteps {
     public AssertTaskSteps(Task task, Helper helper) {
         this.task = task;
         this.helper = helper;
+        this.assertion = helper.getAssertion();
     }
 
     /**
@@ -34,7 +33,7 @@ public class AssertTaskSteps {
      */
     @Then("^task is displayed in the story page$")
     public void taskIsDisplayedInTheStoryPage() {
-        assertTrue(task.isDisplayed(helper.getTaskVariable()));
+        assertion.assertTrue(task.isDisplayed(helper.getTaskVariable()));
     }
 
     /**
@@ -44,15 +43,16 @@ public class AssertTaskSteps {
      */
     @Then("^the \"([^\"]*)\" should not be displayed$")
     public void theShouldNotBeDisplayed(String data) {
-        assertFalse(task.isDisplayed(DataInterpreter.getValue(data).toString()));
+        assertion.assertFalse(task.isDisplayed(DataInterpreter.getValue(data).toString()));
     }
 
     /**
      * This Definition step verify that a task is done.
+     *
      * @param number task name.
      */
     @And("^the task is displayed has checked \"([^\"]*)\"$")
-    public void theTaskIsDisplayedHasChecked(String number)   {
-        assertTrue(task.getTaskCounts().contains(String.format("TASKS (%s/", number)));
+    public void theTaskIsDisplayedHasChecked(String number) {
+        assertion.assertTrue(task.getTaskCounts().contains(String.format("TASKS (%s/", number)));
     }
 }
