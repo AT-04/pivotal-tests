@@ -1,6 +1,8 @@
 package org.fundacionjala.pivotal.stepdef.restapi;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
@@ -18,6 +20,9 @@ public class RequestSteps {
 
     private Response response;
     private Helper helper;
+    private static final int LOW = 10;
+    private static final int HIGH = 99;
+    private static final String AT = "AT-04";
 
     /**
      * Step definition constructor using dependence injection.
@@ -47,9 +52,12 @@ public class RequestSteps {
      */
     @When("^a \"(POST|PUT)\" request to \"([^\"]*)\" with$")
     public void aRequestToWith(RequestType method, String param, Map<String, String> map) {
+        Map<String, String> myMap = new HashMap<>(map);
+        appendRandomNumbers(myMap);
         String endpoint = DataInterpreter.builtEndPoint(param);
-        response = RequestType.POST.equals(method) ? RequestManager.post(endpoint, map)
-                : RequestManager.put(endpoint, map);
+        response = RequestType.POST.equals(method)
+                ? RequestManager.post(endpoint, myMap)
+                : RequestManager.put(endpoint, myMap);
         helper.setRequestStatus(response.getStatusCode());
         helper.setBody(response.body().asString());
     }
@@ -63,8 +71,23 @@ public class RequestSteps {
     @When("^a \"(GET|DELETE)\" request to \"([^\"]*)\"$")
     public void aRequestTo(RequestType method, String param) {
         String endpoint = DataInterpreter.builtEndPoint(param);
-        response = RequestType.GET.equals(method) ? RequestManager.get(endpoint) : RequestManager.delete(endpoint);
+        response = RequestType.GET.equals(method)
+                ? RequestManager.get(endpoint)
+                : RequestManager.delete(endpoint);
         helper.setRequestStatus(response.getStatusCode());
         helper.setBody(response.body().asString());
+    }
+
+    /**
+     * This method adds a random number to the first map element received as a parameter.
+     *
+     * @param myMap this map contains the setting.
+     */
+    private void appendRandomNumbers(Map<String, String> myMap) {
+        Map.Entry<String, String> entry = myMap.entrySet().iterator().next();
+        if (entry.getValue().length() != 0) {
+            myMap.put(entry.getKey(), String.format("%s%s%d", entry.getValue(), AT, new Random()
+                    .nextInt(HIGH - LOW) + LOW));
+        }
     }
 }
