@@ -17,13 +17,6 @@ public class Helper {
     private Assertion assertion;
 
     /**
-     * This method is a constructor.
-     */
-    public Helper() {
-        assertion = new Assertion();
-    }
-
-    /**
      * This method sets the Project Variable helper attribute.
      *
      * @param projectVariable the value to be set.

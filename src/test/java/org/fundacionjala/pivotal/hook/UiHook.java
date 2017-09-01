@@ -53,7 +53,7 @@ public class UiHook {
      * Set a instance of Soft Assert to helper.
      */
     @Before("@SoftAssert")
-    public void assertSelection() {
+    public void setSoftAssert() {
         helper.setAssertion(new SoftAssert());
     }
 
@@ -63,7 +63,7 @@ public class UiHook {
      * This method cleans the helper.
      */
     @Before(order = 1000)
-    public void returnHardAssert() {
+    public void setHardAssert() {
         helper.setAssertion(new Assertion());
     }
 }
