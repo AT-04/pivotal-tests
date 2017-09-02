@@ -1,4 +1,5 @@
 Feature: Create Workspace
+
   Background:
     Given goes to dashboard
     And  goes to workspace tab
@@ -7,7 +8,7 @@ Feature: Create Workspace
   @DeleteSingleWorkspace
   Scenario: The user can create a workspace with default setting successfully
     When sets workspace with
-      | Name | My New Workspace |
+      | name | MyWorkspace |
     Then New workspace name is displayed in the workspace main page
     And goes to dashboard
     And goes to workspace tab
@@ -15,5 +16,5 @@ Feature: Create Workspace
 
   Scenario: Verify if the user can't created a new workspace with the field empty name
     When sets workspace with
-      | Name |  |
+      | name |  |
     Then error message "Workspace name can't be blank."

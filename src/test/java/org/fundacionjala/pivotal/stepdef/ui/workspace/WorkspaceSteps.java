@@ -4,7 +4,6 @@ import java.util.Map;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
-
 import org.fundacionjala.pivotal.pages.dashboard.Dashboard;
 import org.fundacionjala.pivotal.pages.workspace.WorkSpaces;
 import org.fundacionjala.pivotal.pages.workspace.WorkspaceDashboard;
@@ -27,12 +26,14 @@ public class WorkspaceSteps {
     /**
      * Step definition constructor using dependence injection.
      *
-     * @param dashboard is the dashboard instance.
-     * @param helper    is the helper is instance.
+     * @param dashboard            is the dashboard instance.
+     * @param workspacesCreateForm is the workspaces creation form instance.
+     * @param helper               is the helper is instance.
      */
-    public WorkspaceSteps(Dashboard dashboard, Helper helper) {
+    public WorkspaceSteps(Dashboard dashboard, WorkspacesCreateForm workspacesCreateForm, Helper helper) {
         this.dashboard = dashboard;
         this.helper = helper;
+        this.workspacesCreateForm = workspacesCreateForm;
     }
 
     /**
@@ -58,10 +59,10 @@ public class WorkspaceSteps {
      */
     @When("^sets workspace with$")
     public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
-        workspacesCreateForm.setNameInputField(body.get("Name"));
+        workspacesCreateForm.setNameInputField(DataInterpreter.getValue(body.get("name")).toString());
         workspacesCreateForm.clickCreateButton();
         workspace = new WorkSpaces();
-        helper.setWorkspaceVariable(body.get("Name"));
+        helper.setWorkspaceVariable(body.get("name"));
 
 
     }
@@ -105,6 +106,7 @@ public class WorkspaceSteps {
         workspaceSettings.clickDeleteLink();
         workspaceSettings.clickConfirmDeleteButton();
     }
+
     /**
      * Step definition that clicks on the add Projects button.
      */
@@ -123,22 +125,21 @@ public class WorkspaceSteps {
 
     /**
      * Step definition that selects the project with the name.
+     *
      * @param name name of the project.
      */
     @And("^select the project with the name \"([^\"]*)\"$")
     public void selectTheProjectWithTheName(String name) {
         workspace.clickProjectsDropdown();
-        workspace.clickSelectedProjectFromTheDropDown(name);
-        helper.setProjectVariable(name);
+        workspace.clickSelectedProjectFromTheDropDown(DataInterpreter.getValue(name).toString());
+        helper.setProjectVariable(DataInterpreter.getValue(name).toString());
     }
 
     /**
-     *Step definition that clicks on the save workspace changes button.
+     * Step definition that clicks on the save workspace changes button.
      */
     @And("^clicks on the Save Workspace Changes button$")
     public void clicksOnTheSaveWorkspaceChangesButton() {
         workspace.clickSaveWorkspaceChangesButton();
     }
-
-
 }

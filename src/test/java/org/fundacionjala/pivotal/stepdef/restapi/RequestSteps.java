@@ -84,10 +84,11 @@ public class RequestSteps {
      * @param myMap this map contains the setting.
      */
     private void appendRandomNumbers(Map<String, String> myMap) {
-        Map.Entry<String, String> entry = myMap.entrySet().iterator().next();
-        if (entry.getValue().length() != 0) {
-            myMap.put(entry.getKey(), String.format("%s%s%d", entry.getValue(), AT, new Random()
-                    .nextInt(HIGH - LOW) + LOW));
+        for (Map.Entry<String, String> entry : myMap.entrySet()) {
+            if (entry.getValue().length() > 0 && entry.getKey().equalsIgnoreCase("name")) {
+                myMap.put(entry.getKey(), String.format("%s%s%d", AT, entry.getValue(), new Random()
+                        .nextInt(HIGH - LOW) + LOW));
+            }
         }
     }
 }
