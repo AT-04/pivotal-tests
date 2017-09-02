@@ -82,7 +82,7 @@ public class AssertWorkspaceSteps {
      */
     @Then("^the \"([^\"]*)\" is not displayed in the dashboard$")
     public void verifyThatIsnTDisplayedInTheDashboard(String nameWorkspace) {
-        assertion.assertFalse(workspaceDashboard.isWorkspaceFound(nameWorkspace));
+        assertion.assertFalse(workspaceDashboard.isWorkspaceFound(DataInterpreter.getValue(nameWorkspace).toString()));
     }
 
     /**
@@ -115,11 +115,13 @@ public class AssertWorkspaceSteps {
 
     /**
      * Step definition that perform the assertion in dashboard.
+     *
+     * @param projectName this variable contains the name of project.
      */
-    @Then("^workspace with a project is displayed in the dashboard$")
-    public void workspaceWithAProjectIsDisplayedInTheDashboard() {
+    @Then("^workspace with a \"([^\"]*)\" is displayed in the dashboard$")
+    public void workspaceWithAProjectIsDisplayedInTheDashboard(String projectName) {
         String nameWorkSpace = helper.getWorkspaceVariable();
-        String nameProject = helper.getProjectVariable();
+        String nameProject = DataInterpreter.getValue(projectName).toString();
         assertion.assertTrue(workspaceDashboard.isWorkspaceHasTheProject(nameWorkSpace, nameProject));
     }
 }

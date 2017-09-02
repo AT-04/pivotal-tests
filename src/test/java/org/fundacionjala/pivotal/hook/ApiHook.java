@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import io.restassured.path.json.JsonPath;
-
 import org.fundacionjala.pivotal.core.restapi.RequestManager;
 import org.fundacionjala.pivotal.util.DataInterpreter;
 import org.fundacionjala.pivotal.util.Helper;
@@ -34,8 +32,9 @@ public class ApiHook {
 
     /**
      * This method clean all the values of the Shared Variables List.
+     * This hook will be executed at the last.
      */
-    @Before
+    @After(order = 1000)
     public void cleanSharedVariables() {
         SharedVariableList.cleanList();
     }
