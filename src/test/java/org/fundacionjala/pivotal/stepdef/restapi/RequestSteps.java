@@ -18,6 +18,7 @@ import org.fundacionjala.pivotal.util.SharedVariableList;
  */
 public class RequestSteps {
 
+    private static final String NAME = "name";
     private Response response;
     private Helper helper;
     private static final int LOW = 10;
@@ -85,7 +86,7 @@ public class RequestSteps {
      */
     private void appendRandomNumbers(Map<String, String> myMap) {
         for (Map.Entry<String, String> entry : myMap.entrySet()) {
-            if (entry.getValue().length() > 0 && entry.getKey().equalsIgnoreCase("name")) {
+            if (entry.getValue().length() > 0 && entry.getKey().equalsIgnoreCase(NAME)) {
                 myMap.put(entry.getKey(), String.format("%s%s%d", AT, entry.getValue(), new Random()
                         .nextInt(HIGH - LOW) + LOW));
             }

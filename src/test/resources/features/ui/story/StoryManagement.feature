@@ -2,7 +2,7 @@ Feature: Delete and edit story
 
   Background:
     Given a "POST" request to "/projects" with
-      | name | ProjectManage |
+      | name | ProjectManageStory |
     And the status code should be 200
     And stored as [Project]
     And a "POST" request to "/projects/[Project.id]/stories" with
@@ -13,12 +13,12 @@ Feature: Delete and edit story
     And opens the project created as "[Project.name]"
     And opens the story created as "[Story.name]"
 
-  @DeleteProject
+  @DeleteProjectsByPrefix
   Scenario: The user can delete an existing story
     When delete the Story
     Then the "[Story.name]" is not displayed in Project Page
 
-  @DeleteProject
+  @DeleteProjectsByPrefix
   Scenario: the user can modify an existing story
     When sets story with
       | STORY_NAME        | MyAutomatedStoryName   |

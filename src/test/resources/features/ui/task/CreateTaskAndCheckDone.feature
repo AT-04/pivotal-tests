@@ -2,7 +2,7 @@ Feature: Create task
 
   Background:
     Given a "POST" request to "/projects" with
-      | name | ProjectManage |
+      | name | ProjectManageTask |
     And the status code should be 200
     And stored as [Project]
     When a "POST" request to "/projects/[Project.id]/stories" with
@@ -13,13 +13,13 @@ Feature: Create task
     And opens the project created as "[Project.name]"
     And opens the story created as "[Story.name]"
 
-  @DeleteProject
+  @DeleteProjectsByPrefix
   Scenario: The user can create a task successfully
     When sets task with
       | DESCRIPTION | MyTaskDescription |
     Then task is displayed in the story page
 
-  @DeleteProject
+  @DeleteProjectsByPrefix
   Scenario: The user can check done the task
     When sets task with
       | DESCRIPTION | MyTaskDescription |

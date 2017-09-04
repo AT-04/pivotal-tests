@@ -15,15 +15,15 @@ Feature: Update and Delete Workspace
     And goes to workspace tab
     Then the "[WorkspaceToManage.name]" is not displayed in the dashboard
 
-  @DeleteWorkspace
+  @DeleteWorkspaceByPrefix
   Scenario: The user can modify the name an existing workspace
     When opens the workspace settings created as "[WorkspaceToManage.name]"
-    And modify the name workspace to "Workspace Modified"
+    And modify the name workspace to "AT-04Workspace Modified"
     And goes to dashboard
     And goes to workspace tab
-    Then workspace name should be displayed "Workspace Modified"
+    Then workspace name should be displayed "AT-04Workspace Modified"
 
-  @DeleteWorkspace
+  @DeleteWorkspaceByPrefix
   Scenario: The user can't create a workspace with name already exist
     When clicks on the new workspace button
     And sets workspace with

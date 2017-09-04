@@ -2,17 +2,17 @@ Feature: Workspace with a Project
 
   Background:
     Given a "POST" request to "/projects" with
-      | name | MyProject |
+      | name | MyProjectwork |
     And the status code should be 200
     And stored as [MyProject]
     And goes to dashboard
     And goes to workspace tab
     And clicks on the new workspace button
 
-  @DeleteSingleWorkspace @DeleteProject
+  @DeleteProjectsByPrefix @DeleteWorkspaceByPrefix
   Scenario: The user can create a workspace
     When sets workspace with
-      | name | MyWorkspace |
+      | name | AT-04MyWorkspace |
     And clicks on the add projects button
     And select the project with the name "[MyProject.name]"
     And clicks on the Save Workspace Changes button

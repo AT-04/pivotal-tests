@@ -8,7 +8,7 @@ Feature: Create Workspace
   @DeleteSingleWorkspace
   Scenario: The user can create a workspace with default setting successfully
     When sets workspace with
-      | name | MyWorkspace |
+      | name | AT-04MyWorkspace |
     Then New workspace name is displayed in the workspace main page
     And goes to dashboard
     And goes to workspace tab
