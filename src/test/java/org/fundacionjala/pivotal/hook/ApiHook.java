@@ -19,6 +19,8 @@ public class ApiHook {
     private static final String WORKSPACE_ENDPOINT = "/my/workspaces/[%s.id]";
     private static final String WORKSPACE_TYPE = "workspace";
     private static final String PROJECT_TYPE = "project";
+    private static final String AT04 = "AT-04";
+    public static final String NAME = "name";
     private Helper helper;
 
     /**
@@ -93,7 +95,35 @@ public class ApiHook {
         JsonPath jsonPath = new JsonPath(RequestManager.get("/my/workspaces").asString());
         List<Map<String, Object>> workspace = jsonPath.get();
         for (Map<String, Object> map : workspace) {
-            if (map.get("name").equals(helper.getWorkspaceVariable())) {
+            if (map.get(NAME).equals(helper.getWorkspaceVariable())) {
+                RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
+            }
+        }
+    }
+
+    /**
+     * Hook for delete all projects with prefix AT-04.
+     */
+    @After("@DeleteProjectsByPrefix")
+    public void deleteProjectsByPrefix() {
+        JsonPath jsonPath = new JsonPath(RequestManager.get("/projects").asString());
+        List<Map<String, Object>> project = jsonPath.get();
+        for (Map<String, Object> map : project) {
+            if (map.get(NAME).toString().contains(AT04)) {
+                RequestManager.delete(String.format("/projects/%s", map.get("id").toString()));
+            }
+        }
+    }
+
+    /**
+     * Hook for delete all workspace with prefix AT-04.
+     */
+    @After("@DeleteWorkspaceByPrefix")
+    public void deleteWorkspaceByPrefix() {
+        JsonPath jsonPath = new JsonPath(RequestManager.get("/my/workspaces").asString());
+        List<Map<String, Object>> workspace = jsonPath.get();
+        for (Map<String, Object> map : workspace) {
+            if (map.get("name").toString().contains(AT04)) {
                 RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
             }
         }

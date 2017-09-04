@@ -2,7 +2,7 @@ Feature: Delete and edit task
 
   Background:
     Given a "POST" request to "/projects" with
-      | name | ProjectManage |
+      | name | ProjectManageTask |
     And the status code should be 200
     And stored as [Project]
     When a "POST" request to "/projects/[Project.id]/stories" with
@@ -17,7 +17,7 @@ Feature: Delete and edit task
     And opens the project created as "[Project.name]"
     And opens the story created as "[Story.name]"
 
-  @DeleteProject
+  @DeleteProjectsByPrefix
   Scenario: The user can delete an existing task
     When delete the task "[MyTask.description]"
     Then the "[MyTask.description]" should not be displayed

@@ -9,7 +9,7 @@ Feature: Negative Name Already Taken Create Project
     And goes to dashboard
     And click on the new project button
 
-  @DeleteAccount
+  @DeleteAccount @DeleteProjectsByPrefix
   Scenario: The user can't rename a project if it's already taken
     When sets project with
       | NAME    | ProjectToManageAnother |
@@ -21,7 +21,7 @@ Feature: Negative Name Already Taken Create Project
     And modify the name to ""
     And error messages should display
 
-  @DeleteAccount
+  @DeleteAccount @DeleteProjectsByPrefix
   Scenario: The user can't create a project with the name already taken
     When sets project with
       | NAME    | ProjectToManage      |
