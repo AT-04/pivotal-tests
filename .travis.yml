@@ -11,9 +11,11 @@ before_script:
 - export PATH=$GRADLE_HOME/bin:$PATH
 addons:
   sonarcloud:
-    organization: "carledriss-github" # the key of the org you chose at step #3
+    organization: "carledriss-github"
     token:
       secure: rkgobgUYGtG2peRXvDQp4obdjvSORxXuQm0bY9x8D+vVKByGSmdkosqftw1/AtjU+FXlWCMFhryvLcbZH1EA+zeGCywxmHSVSDRKXbxRUJz2mgqIvW5+mPpHdYMq3EsUujbcjywSVbDDCGc/70B9AphS23HAQjo6DOmaLSfbBwzxYHVKNndcL1kK4PnxstYLfLHnqnHCr5CPrgev/EwP4eDybNspPRuOpHd3c+ESr0+rc+d7h2nWAeKYtR20h/AJR+4bu8g1CSeE6K6jUTe4W0VmDU1TzKRNvke0ttTeaVqXwNIT5jZ7Aiagz6FB7dbxGPuqNEMchWCE+TLrNhDTkHRSuN2smSJpid/bIWYKlkyuRDp1n5NXp06io5aRFs7X1A9aS6Di3HJX262kdvqjX4kGsdorDI7mnNoWqU5m0hwMaXwR0PzMnbMgW2xBxjPfgsdOxQH5iIEm+01lKj40IauIjbhjymh7AaKieUbq/NGUI/x/uWJS+EMB3WfF4Y258CGl/UozzKhuHG+n+rBJPA5qP0v+5wOVJpPYrLhmQS62/S7crTv0gpPvqCqyvewkd2KihS2qKIqKgx9qMJWsaKDcXaG6KycNXHXO6YYy6OfQoXnczxDGLOXoLbHm7xnYOXn6AU95KcOBfHDYYS534twFAkknRsErGZ7XkgzXx64=
+    branches:
+    - develop
 script:
 - gradle check
 - sonar-scanner
