@@ -17,7 +17,6 @@ public final class SharedVariableList {
      * Private constructor for the shared variable utility class.
      */
     private SharedVariableList() {
-
     }
 
     /**
@@ -51,8 +50,8 @@ public final class SharedVariableList {
                 .filter(shareVariableItem -> variableName.equalsIgnoreCase(shareVariableItem.getName()))
                 .findFirst();
         if (!firstName.isPresent()) {
-            throw new IllegalArgumentException(String.format("Not attribute for %s variable with %s attribute.",
-                    variableName, attribute));
+            throw new IllegalArgumentException(String.format("Not exist %s attribute for %s variable.",
+                    attribute, variableName));
         }
         return firstName.get().getAttributeValue(attribute);
     }
