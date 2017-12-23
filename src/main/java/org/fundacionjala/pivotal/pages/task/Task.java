@@ -21,9 +21,6 @@ public class Task extends BasePage {
     @FindBy(css = "textarea[data-aid='new']")
     private WebElement descriptionTaskInputField;
 
-    @FindBy(css = "button[data-aid='addTaskButton']")
-    private WebElement addTaskButton;
-
     @FindBy(css = "div[data-aid='TaskDescription']")
     private List<WebElement> descriptionList;
 

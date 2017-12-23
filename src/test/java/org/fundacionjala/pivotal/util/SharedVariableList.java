@@ -2,6 +2,7 @@ package org.fundacionjala.pivotal.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import io.restassured.response.Response;
 
@@ -46,11 +47,14 @@ public final class SharedVariableList {
      * @return the string representation of the attribute.
      */
     public static String findAttribute(String variableName, String attribute) {
-        return shareVariablesList.stream()
+        Optional<SharedVariable> firstName =  shareVariablesList.stream()
                 .filter(shareVariableItem -> variableName.equalsIgnoreCase(shareVariableItem.getName()))
-                .findFirst()
-                .orElseThrow(() -> new NullPointerException("Null value."))
-                .getAttributeValue(attribute);
+                .findFirst();
+        if (!firstName.isPresent()) {
+            throw new IllegalArgumentException(String.format("Not attribute for %s variable with %s attribute.",
+                    variableName, attribute));
+        }
+        return firstName.get().getAttributeValue(attribute);
     }
 
     /**

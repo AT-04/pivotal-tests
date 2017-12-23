@@ -12,9 +12,9 @@ import org.testng.asserts.Assertion;
  */
 public class AssertTaskSteps {
 
-    private Task task;
-    private Helper helper;
-    private Assertion assertion;
+    private final Helper helper;
+    private final Assertion assertion;
+    private final Task task;
 
     /**
      * Constructor with dependency injection.

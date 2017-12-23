@@ -16,9 +16,9 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class StorySteps {
 
+    private final Helper helper;
     private Project project;
     private StoryBoard storyBoard;
-    private Helper helper;
 
     /**
      * This constructor using dependence injection.

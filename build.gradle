@@ -40,7 +40,7 @@ dependencies {
 }
 
 checkstyle {
-    toolVersion = '7.8'
+    toolVersion = '8.5'
 }
 
 findbugs {
@@ -54,7 +54,8 @@ tasks.withType(FindBugs) {
 }
 
 pmd {
-    toolVersion = '5.8.1'
+    ruleSets = ["java-basic", "java-braces", "java-strings", "java-unnecessary", "java-unusedcode", "java-strictexception"]
+    toolVersion = '6.0.0'
 }
 tasks.withType(Pmd) {
     reports {

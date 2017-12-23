@@ -14,8 +14,8 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class TaskSteps {
 
-    private Task task;
-    private Helper helper;
+    private final Helper helper;
+    private final Task task;
 
     /**
      * Default Constructor.
@@ -39,7 +39,7 @@ public class TaskSteps {
     }
 
     /**
-     * This definiton step delete a task.
+     * This definition step delete a task.
      *
      * @param data String.
      */

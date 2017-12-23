@@ -6,9 +6,10 @@ import java.util.Map;
  * Class containing Shared Variable.
  */
 public class SharedVariable {
+
     private static final String RESPONSE_TYPE = "kind";
-    private String variableName;
-    private Map<String, ?> attributesMap;
+    private final String variableName;
+    private final Map<String, ?> attributesMap;
 
     /**
      * Constructor for the Shared Variable class.

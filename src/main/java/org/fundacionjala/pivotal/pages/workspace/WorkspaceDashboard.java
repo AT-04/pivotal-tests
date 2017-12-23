@@ -16,9 +16,6 @@ public class WorkspaceDashboard extends BasePage {
     @FindBy(className = "WorkspaceTile__name")
     private List<WebElement> workSpacesList;
 
-    @FindBy(className = "WorkspaceTile__header")
-    private List<WebElement> workSpacesSettingList;
-
     @FindBy(xpath = "//*[@id='create-workspace-button']")
     private WebElement createWorkspaceButton;
 

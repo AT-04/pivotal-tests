@@ -11,7 +11,7 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class VerificationSteps {
 
-    private Helper helper;
+    private final Helper helper;
 
     /**
      * Step definition constructor using dependence injection.

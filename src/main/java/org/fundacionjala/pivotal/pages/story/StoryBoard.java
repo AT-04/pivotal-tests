@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.pages.story;
 
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
@@ -95,7 +96,7 @@ public class StoryBoard extends BasePage {
      */
     public void setStoryType(StoryTypes storyType) {
         CommonActions.clickButton(storyDropdownType);
-        String cssSelector = String.format("li[data-value='%s']", storyType.toString().toLowerCase());
+        String cssSelector = String.format("li[data-value='%s']", storyType.toString().toLowerCase(Locale.US));
         WebElement element = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssSelector)));
         element.click();
     }

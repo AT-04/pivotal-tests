@@ -12,11 +12,10 @@ import org.fundacionjala.pivotal.core.util.Environment;
  */
 public final class DriverManager {
 
-    private static final String BASE_URL = "https://www.pivotaltracker.com";
     private static final int IMPLICIT_TIME_WAIT = Environment.getInstance().getImplicitTimeWait();
     private static final int EXPLICIT_TIME_WAIT = Environment.getInstance().getExplicitTimeWait();
-    private static DriverManager instance;
-    private WebDriver webDriver;
+    private static DriverManager instance = new DriverManager();
+    private final WebDriver webDriver;
     private WebDriverWait webDriverWait;
 
     /**
@@ -35,19 +34,7 @@ public final class DriverManager {
      * @return singleton instance.
      */
     public static DriverManager getInstance() {
-        if (instance == null) {
-            instance = new DriverManager();
-        }
         return instance;
-    }
-
-    /**
-     * This method return the base url.
-     *
-     * @return base url.
-     */
-    public String getBaseUrl() {
-        return BASE_URL;
     }
 
     /**

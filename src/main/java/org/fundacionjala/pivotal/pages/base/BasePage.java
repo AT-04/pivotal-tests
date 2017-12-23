@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 /**
  * Abstract Class BasePage implementing Page Object pattern.
  */
-public abstract class BasePage {
+public class BasePage {
 
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
@@ -16,7 +16,7 @@ public abstract class BasePage {
     /**
      * This method is the constructor class.
      */
-    public BasePage() {
+    protected BasePage() {
         webDriver = DriverManager.getInstance().getWebDriver();
         webDriverWait = DriverManager.getInstance().getWebDriverWait();
         PageFactory.initElements(webDriver, this);

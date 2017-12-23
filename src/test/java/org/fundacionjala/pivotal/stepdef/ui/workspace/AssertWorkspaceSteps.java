@@ -13,12 +13,13 @@ import org.testng.asserts.Assertion;
  * Created by pivotal-test Team.
  */
 public class AssertWorkspaceSteps {
-    private Dashboard dashboard;
-    private WorkSpaces workSpaces;
-    private Helper helper;
-    private WorkspaceDashboard workspaceDashboard;
-    private WorkspacesCreateForm workspacesCreateForm;
-    private Assertion assertion;
+
+    private final Helper helper;
+    private final Assertion assertion;
+    private final Dashboard dashboard;
+    private final WorkSpaces workSpaces;
+    private final WorkspaceDashboard workspaceDashboard;
+    private final WorkspacesCreateForm workspacesCreateForm;
 
     /**
      * Step definition constructor using dependence injection.

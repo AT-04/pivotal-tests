@@ -16,8 +16,9 @@ import org.fundacionjala.pivotal.util.Helper;
  * Created by pivotal-test Team.
  */
 public class WorkspaceSteps {
-    private Dashboard dashboard;
-    private Helper helper;
+
+    private final Helper helper;
+    private final Dashboard dashboard;
     private WorkSpaces workspace;
     private WorkspaceDashboard workspaceDashboard;
     private WorkspacesCreateForm workspacesCreateForm;
@@ -63,8 +64,6 @@ public class WorkspaceSteps {
         workspacesCreateForm.clickCreateButton();
         workspace = new WorkSpaces();
         helper.setWorkspaceVariable(body.get("name"));
-
-
     }
 
     /**

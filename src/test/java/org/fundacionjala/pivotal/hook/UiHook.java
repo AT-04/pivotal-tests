@@ -16,7 +16,7 @@ import org.testng.asserts.SoftAssert;
  */
 public class UiHook {
 
-    private Helper helper;
+    private final Helper helper;
 
     /**
      * Api Hook constructor using Dependency Injection.

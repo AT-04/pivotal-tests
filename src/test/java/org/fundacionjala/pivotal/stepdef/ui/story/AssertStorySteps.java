@@ -12,9 +12,9 @@ import org.testng.asserts.Assertion;
  */
 public class AssertStorySteps {
 
-    private Project project;
-    private Helper helper;
-    private Assertion assertion;
+    private final Project project;
+    private final Helper helper;
+    private final Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.

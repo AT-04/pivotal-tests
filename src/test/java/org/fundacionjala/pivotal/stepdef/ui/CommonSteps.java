@@ -17,9 +17,9 @@ import org.testng.asserts.SoftAssert;
  */
 public class CommonSteps {
 
-    private Dashboard dashboard;
+    private final Assertion assertion;
+    private final Dashboard dashboard;
     private Project project;
-    private Assertion assertion;
 
     /**
      * This constructor using dependence injection.

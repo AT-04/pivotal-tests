@@ -15,11 +15,11 @@ import org.testng.asserts.Assertion;
  */
 public class AssertProjectSteps {
 
-    private Dashboard dashboard;
-    private Project project;
-    private ProjectSettingsForm projectSettingsForm;
-    private Helper helper;
-    private Assertion assertion;
+    private final Dashboard dashboard;
+    private final Project project;
+    private final ProjectSettingsForm projectSettingsForm;
+    private final Helper helper;
+    private final Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.

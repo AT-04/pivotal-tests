@@ -17,9 +17,9 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class ProjectSteps {
 
+    private final Helper helper;
     private Dashboard dashboard;
     private ProjectCreateForm projectCreateForm;
-    private Helper helper;
     private ProjectSettingsForm projectSettingsForm;
 
     /**

@@ -33,9 +33,6 @@ public class Dashboard extends BasePage {
     @FindBy(id = "create-project-button")
     private WebElement projectBtn;
 
-    @FindBy(className = "tc_header_text_logo")
-    private WebElement logoLabel;
-
     @FindBy(className = "projectTileHeader__projectName")
     private List<WebElement> projectTitlesList;
 
@@ -100,16 +97,6 @@ public class Dashboard extends BasePage {
     }
 
     /**
-     * This method perform a click on the Logo label.
-     *
-     * @return a DashboardMenu class instance.
-     */
-    public DashboardMenu clickLogoLabel() {
-        CommonActions.clickButton(logoLabel);
-        return new DashboardMenu();
-    }
-
-    /**
      * This method perform a click on the Account list element.
      *
      * @return a Account class instance.
@@ -152,19 +139,6 @@ public class Dashboard extends BasePage {
     public boolean isProjectFound(String name) {
         WebElement webElement = CommonActions.findWebElement(projectTitlesList, name);
         return webElement != null;
-    }
-
-    /**
-     * This method enters to a project main page specified by the name parameter.
-     *
-     * @param nameProject is the project name.
-     * @return a new Project instance.
-     */
-    public Project clickInProject(String nameProject) {
-        String xpath = String.format("//a[text()='%s']", nameProject);
-        WebElement webElement = webDriver.findElement(By.xpath(xpath));
-        CommonActions.clickButton(webElement);
-        return new Project();
     }
 
     /**

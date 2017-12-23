@@ -19,11 +19,11 @@ import org.fundacionjala.pivotal.util.SharedVariableList;
 public class RequestSteps {
 
     private static final String NAME = "name";
-    private Response response;
-    private Helper helper;
     private static final int LOW = 10;
     private static final int HIGH = 99;
     private static final String AT = "AT-04";
+    private final Helper helper;
+    private Response response;
 
     /**
      * Step definition constructor using dependence injection.

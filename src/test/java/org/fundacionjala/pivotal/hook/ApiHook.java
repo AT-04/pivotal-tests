@@ -20,8 +20,8 @@ public class ApiHook {
     private static final String WORKSPACE_TYPE = "workspace";
     private static final String PROJECT_TYPE = "project";
     private static final String AT04 = "AT-04";
-    public static final String NAME = "name";
-    private Helper helper;
+    private static final String NAME = "name";
+    private final Helper helper;
 
     /**
      * Api Hook constructor using Dependency Injection.

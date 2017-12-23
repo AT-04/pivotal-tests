@@ -22,7 +22,7 @@ public abstract class CloudBasedBrowser implements Browser {
     protected static final String ACCESS_KEY = ENV.getRemoteKey();
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private String url;
+    private final String url;
 
     /**
      * This is the constructor.

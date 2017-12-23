@@ -28,7 +28,7 @@ public final class Environment {
     private static final String REMOTE_RESOLUTION = "remoteResolution";
     private static final Logger LOGGER = LogManager.getLogger();
 
-    private static Environment instance;
+    private static Environment instance = new Environment();
     private Properties envProperties;
 
     /**
@@ -52,9 +52,6 @@ public final class Environment {
      * @return the singleton instance.
      */
     public static Environment getInstance() {
-        if (instance == null) {
-            instance = new Environment();
-        }
         return instance;
     }
 
