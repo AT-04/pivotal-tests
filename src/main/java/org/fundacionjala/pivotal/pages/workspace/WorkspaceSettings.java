@@ -17,7 +17,7 @@ public class WorkspaceSettings extends BaseSettingsForm {
      *
      * @param newName is new name for workspace.
      */
-    public void updateName(String newName) {
+    public void updateName(final String newName) {
         CommonActions.setInputField(workspaceNameTextField, newName);
     }
 }

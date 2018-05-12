@@ -55,7 +55,7 @@ public class Project extends BasePage {
      * @param nameStory is the name story.
      * @return true if the name story is visible.
      */
-    public boolean isVisibleStory(String nameStory) {
+    public boolean isVisibleStory(final String nameStory) {
         WebElement webElement = CommonActions.findWebElement(listStoryNames, nameStory);
         return webElement != null;
     }
@@ -66,7 +66,7 @@ public class Project extends BasePage {
      * @param nameStory this variable contains the name of story.
      * @return the story Board page.
      */
-    public StoryBoard enterExistingStory(String nameStory) {
+    public StoryBoard enterExistingStory(final String nameStory) {
         String xPath = String.format("//span[contains(text(),'%s')]/ancestor::"
                 + "div[contains(@data-aid,'StoryPreviewItem')]/descendant::a[contains(@class,'expander')]", nameStory);
         WebElement webElement = webDriver.findElement(By.xpath(xPath));

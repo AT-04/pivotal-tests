@@ -40,7 +40,7 @@ public class Task extends BasePage {
      *
      * @param taskDescription String.
      */
-    public void setTaskDescription(String taskDescription) {
+    public void setTaskDescription(final String taskDescription) {
         clickAddNewTask();
         CommonActions.setInputField(descriptionTaskInputField, taskDescription);
         CommonActions.pressEnterKey(descriptionTaskInputField);
@@ -50,7 +50,7 @@ public class Task extends BasePage {
      * This method Check done the checkbox.
      * @param name String the name.
      */
-    public void clickTaskDoneCheckBox(String name) {
+    public void clickTaskDoneCheckBox(final String name) {
         String xPathSelector = String.format(
                 "//div[p='%s']/parent::div/child::input", name);
         WebElement element = webDriver.findElement(By.xpath(xPathSelector));
@@ -62,7 +62,7 @@ public class Task extends BasePage {
      *
      * @param taskDescription is name field for task.
      */
-    public void clickDeleteTask(String taskDescription) {
+    public void clickDeleteTask(final String taskDescription) {
         String xPathSelector = String.format(
                 "//div[@data-aid='TaskDescription']/p[text()='%s']"
                        + "/parent::div/following-sibling::nav/descendant::button[@data-aid='delete']", taskDescription);
@@ -76,7 +76,7 @@ public class Task extends BasePage {
      * @param taskVariable is the task description.
      * @return webElement.
      */
-    public boolean isDisplayed(String taskVariable) {
+    public boolean isDisplayed(final String taskVariable) {
         WebElement webElement = CommonActions.findWebElement(descriptionList, taskVariable);
         return webElement != null;
     }

@@ -22,7 +22,7 @@ public class AssertTaskSteps {
      * @param task   Task.
      * @param helper Helper.
      */
-    public AssertTaskSteps(Task task, Helper helper) {
+    public AssertTaskSteps(final Task task, final Helper helper) {
         this.task = task;
         this.helper = helper;
         this.assertion = helper.getAssertion();
@@ -42,7 +42,7 @@ public class AssertTaskSteps {
      * @param data task description.
      */
     @Then("^the \"([^\"]*)\" should not be displayed$")
-    public void theShouldNotBeDisplayed(String data) {
+    public void theShouldNotBeDisplayed(final String data) {
         assertion.assertFalse(task.isDisplayed(DataInterpreter.getValue(data).toString()));
     }
 
@@ -52,7 +52,7 @@ public class AssertTaskSteps {
      * @param number task name.
      */
     @And("^the task is displayed has checked \"([^\"]*)\"$")
-    public void theTaskIsDisplayedHasChecked(String number) {
+    public void theTaskIsDisplayedHasChecked(final String number) {
         assertion.assertTrue(task.getTaskCounts().contains(String.format("TASKS (%s/", number)));
     }
 }

@@ -32,7 +32,7 @@ public final class CommonActions {
      * @param webElement Is web element.
      * @param content    Is the content that will be set to the web element.
      */
-    public static void setInputField(WebElement webElement, String content) {
+    public static void setInputField(final WebElement webElement, final String content) {
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
         webElement.sendKeys(content);
@@ -43,7 +43,7 @@ public final class CommonActions {
      *
      * @param webElement Is the web element that will be pressed.
      */
-    public static void clickButton(WebElement webElement) {
+    public static void clickButton(final WebElement webElement) {
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -53,7 +53,7 @@ public final class CommonActions {
      *
      * @param webElement the WebElement non visible in the UI.
      */
-    public static void jsClickElement(WebElement webElement) {
+    public static void jsClickElement(final WebElement webElement) {
         ((JavascriptExecutor) DriverManager.getInstance().getWebDriver())
                 .executeScript("arguments[0].click();", webElement);
     }
@@ -64,7 +64,7 @@ public final class CommonActions {
      * @param webElement is the web element.
      * @return true if web element is visible or false if it isn't visible.
      */
-    public static boolean isVisible(WebElement webElement) {
+    public static boolean isVisible(final WebElement webElement) {
         try {
             return webElement.isDisplayed();
         } catch (NoSuchElementException e) {
@@ -81,7 +81,7 @@ public final class CommonActions {
      * @param content  is the content parameter.
      * @return the WebElement search result.
      */
-    public static WebElement findWebElement(List<WebElement> elements, String content) {
+    public static WebElement findWebElement(final List<WebElement> elements, final String content) {
         return elements.stream()
                 .filter(element -> content.equals(element.getText()))
                 .findAny()
@@ -94,7 +94,7 @@ public final class CommonActions {
      * @param webElement is the WebElement to extract the text.
      * @return the text content of the WebElement.
      */
-    public static String getTextContent(WebElement webElement) {
+    public static String getTextContent(final WebElement webElement) {
         DriverManager.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         return webElement.getText();
     }
@@ -113,7 +113,7 @@ public final class CommonActions {
      *
      * @param webElement is the WebElement.
      */
-    public static void pressEnterKey(WebElement webElement) {
+    public static void pressEnterKey(final WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
 

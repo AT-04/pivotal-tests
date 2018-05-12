@@ -28,7 +28,7 @@ public class ApiHook {
      *
      * @param helper object utility instance.
      */
-    public ApiHook(Helper helper) {
+    public ApiHook(final Helper helper) {
         this.helper = helper;
     }
 
@@ -64,7 +64,7 @@ public class ApiHook {
      * @param type     is the type of element.
      * @param endpoint is the endpoint format.
      */
-    private void deleteRequests(String type, String endpoint) {
+    private void deleteRequests(final String type, final String endpoint) {
         SharedVariableList.getList().stream()
                 .filter(variable -> variable.getType().equals(type))
                 .forEach(element -> {
@@ -80,7 +80,7 @@ public class ApiHook {
     public void deleteSingleProject() {
         JsonPath jsonPath = new JsonPath(RequestManager.get("/projects").asString());
         List<Map<String, Object>> projects = jsonPath.get();
-        for (Map<String, Object> map : projects) {
+        for (final Map<String, Object> map : projects) {
             if (map.get("name").equals(helper.getProjectVariable())) {
                 RequestManager.delete(String.format("/projects/%s", map.get("id").toString()));
             }
@@ -94,7 +94,7 @@ public class ApiHook {
     public void deleteSingleWorkSpace() {
         JsonPath jsonPath = new JsonPath(RequestManager.get("/my/workspaces").asString());
         List<Map<String, Object>> workspace = jsonPath.get();
-        for (Map<String, Object> map : workspace) {
+        for (final Map<String, Object> map : workspace) {
             if (map.get(NAME).equals(helper.getWorkspaceVariable())) {
                 RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
             }
@@ -108,7 +108,7 @@ public class ApiHook {
     public void deleteProjectsByPrefix() {
         JsonPath jsonPath = new JsonPath(RequestManager.get("/projects").asString());
         List<Map<String, Object>> project = jsonPath.get();
-        for (Map<String, Object> map : project) {
+        for (final Map<String, Object> map : project) {
             if (map.get(NAME).toString().contains(AT04)) {
                 RequestManager.delete(String.format("/projects/%s", map.get("id").toString()));
             }
@@ -122,7 +122,7 @@ public class ApiHook {
     public void deleteWorkspaceByPrefix() {
         JsonPath jsonPath = new JsonPath(RequestManager.get("/my/workspaces").asString());
         List<Map<String, Object>> workspace = jsonPath.get();
-        for (Map<String, Object> map : workspace) {
+        for (final Map<String, Object> map : workspace) {
             if (map.get("name").toString().contains(AT04)) {
                 RequestManager.delete(String.format("/my/workspaces/%s", map.get("id").toString()));
             }

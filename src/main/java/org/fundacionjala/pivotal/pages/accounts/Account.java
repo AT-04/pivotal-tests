@@ -15,7 +15,7 @@ public class Account extends BasePage {
      * @param name is the name of the account.
      * @return a Account Management page object instance.
      */
-    private AccountManagement clickManageAccount(String name) {
+    private AccountManagement clickManageAccount(final String name) {
         String path = String.format("//div[text()='%s']/ancestor::h3/following::a[contains(@id,'manage')]", name);
         webDriver.findElement(By.xpath(path)).click();
         return new AccountManagement();
@@ -26,7 +26,7 @@ public class Account extends BasePage {
      *
      * @param name the name of the account to be deleted.
      */
-    public void deleteAccount(String name) {
+    public void deleteAccount(final String name) {
         clickManageAccount(name)
                 .clickSettingsButton()
                 .deleteAccount();

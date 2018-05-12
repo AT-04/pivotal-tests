@@ -24,7 +24,7 @@ public final class SharedVariableList {
      *
      * @param sharedVariable is the shared Variable object.
      */
-    private static void addSharedVariable(SharedVariable sharedVariable) {
+    private static void addSharedVariable(final SharedVariable sharedVariable) {
         shareVariablesList.add(sharedVariable);
     }
 
@@ -34,7 +34,7 @@ public final class SharedVariableList {
      * @param name     is the name of the variable.
      * @param response is the response body.
      */
-    public static void addVariable(String name, Response response) {
+    public static void addVariable(final String name, final Response response) {
         addSharedVariable(new SharedVariable(name, response.jsonPath().get("")));
     }
 
@@ -45,7 +45,7 @@ public final class SharedVariableList {
      * @param attribute    is the specified attribute.
      * @return the string representation of the attribute.
      */
-    public static String findAttribute(String variableName, String attribute) {
+    public static String findAttribute(final String variableName, final String attribute) {
         Optional<SharedVariable> firstName =  shareVariablesList.stream()
                 .filter(shareVariableItem -> variableName.equalsIgnoreCase(shareVariableItem.getName()))
                 .findFirst();

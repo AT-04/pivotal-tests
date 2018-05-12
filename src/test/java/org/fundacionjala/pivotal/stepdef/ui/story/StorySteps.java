@@ -27,7 +27,7 @@ public class StorySteps {
      * @param storyBoard is the StoryBoard page object.
      * @param helper     is the helper utility class instance.
      */
-    public StorySteps(Project project, StoryBoard storyBoard, Helper helper) {
+    public StorySteps(final Project project, final StoryBoard storyBoard, final Helper helper) {
         this.helper = helper;
         this.project = project;
         this.storyBoard = storyBoard;
@@ -39,7 +39,7 @@ public class StorySteps {
      * @param storyAttributesMap this map contains the story attributes.
      */
     @When("^sets story with$")
-    public void theUserSetStorySettings(Map<StoryAttributes, String> storyAttributesMap) {
+    public void theUserSetStorySettings(final Map<StoryAttributes, String> storyAttributesMap) {
         project = storyBoard.setStoryAttributes(storyAttributesMap);
         helper.setStoryVariable(storyAttributesMap.get(StoryAttributes.STORY_NAME));
     }

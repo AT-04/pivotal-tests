@@ -35,7 +35,7 @@ public class SignIn extends BasePage {
      * @param username This variable contains the username.
      * @param password This variable contains the password.
      */
-    public SignIn(String username, String password) {
+    public SignIn(final String username, final String password) {
         this.username = username;
         this.password = password;
         Navigator.loadDashboardPage();
@@ -91,7 +91,7 @@ public class SignIn extends BasePage {
      * @param password This variable contains the password.
      * @return The dashboard page.
      */
-    public static Dashboard signInAs(String username, String password) {
+    public static Dashboard signInAs(final String username, final String password) {
         Dashboard dashboard;
         try {
             DriverManager.getInstance().updateTimeWait(TIME_WAIT_DURATION);
@@ -130,7 +130,7 @@ public class SignIn extends BasePage {
      * @param signInStrategy Is the object of the strategy to be used .
      * @return dashboard page object.
      */
-    protected Dashboard strategyProcess(SignInStrategy signInStrategy) {
+    protected Dashboard strategyProcess(final SignInStrategy signInStrategy) {
         return signInStrategy.signIn(this);
     }
 

@@ -51,7 +51,7 @@ public class WorkSpaces extends BasePage {
      *
      * @param nameProject is the project name.
      */
-    public void clickSelectedProjectFromTheDropDown(String nameProject) {
+    public void clickSelectedProjectFromTheDropDown(final String nameProject) {
         String selector = String.format("//ul[@data-aid='MenuList']/descendant::span[text()='%s']", nameProject);
         WebElement webElement = webDriver.findElement(By.xpath(selector));
         webElement.click();
@@ -71,7 +71,7 @@ public class WorkSpaces extends BasePage {
      * @param nameProject is the project name.
      * @return if the element is found.
      */
-    public boolean isProjectVisible(String nameProject) {
+    public boolean isProjectVisible(final String nameProject) {
         String selector = String.format("//section[@class='projects']/descendant::"
                 + "span[@class='full' and text()='%s']", nameProject);
         WebElement webElement = webDriver.findElement(By.xpath(selector));

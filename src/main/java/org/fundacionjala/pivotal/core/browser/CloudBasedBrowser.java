@@ -29,7 +29,7 @@ public abstract class CloudBasedBrowser implements Browser {
      *
      * @param url This variable contains the url authentication.
      */
-    public CloudBasedBrowser(String url) {
+    public CloudBasedBrowser(final String url) {
         this.url = url;
     }
 

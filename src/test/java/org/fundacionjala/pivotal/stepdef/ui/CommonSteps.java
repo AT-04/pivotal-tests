@@ -27,7 +27,7 @@ public class CommonSteps {
      * @param dashboard is the dashboard page object.
      * @param helper is Helper.
      */
-    public CommonSteps(Dashboard dashboard, Helper helper) {
+    public CommonSteps(final Dashboard dashboard, final Helper helper) {
         this.dashboard = dashboard;
         this.assertion = helper.getAssertion();
     }
@@ -46,7 +46,7 @@ public class CommonSteps {
      * @param name this variable contains the project name.
      */
     @When("^opens the project created as \"([^\"]*)\"$")
-    public void openTheProjectCreatedAs(String name) {
+    public void openTheProjectCreatedAs(final String name) {
         project = dashboard.enterToProject(DataInterpreter.getValue(name).toString());
     }
 
@@ -56,7 +56,7 @@ public class CommonSteps {
      * @param name this variable contains the story name.
      */
     @And("^opens the story created as \"([^\"]*)\"$")
-    public void opensTheStoryCreatedAs(String name) {
+    public void opensTheStoryCreatedAs(final String name) {
         project.enterExistingStory(DataInterpreter.getValue(name).toString());
     }
 
@@ -66,7 +66,7 @@ public class CommonSteps {
      * @param errorMessage that should be displayed.
      */
     @Then("^validation error message \"([^\"]*)\" should be displayed$")
-    public void verifyThatValidationErrorMessageIsDiplayed(String errorMessage) {
+    public void verifyThatValidationErrorMessageIsDiplayed(final String errorMessage) {
         assertion.assertTrue(CommonActions.getErrorMessage().contains(errorMessage));
     }
 

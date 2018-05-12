@@ -21,7 +21,7 @@ public class ProjectList extends BasePage {
      * @param name is the parameter search value.
      * @return a boolean value that represents the search result.
      */
-    public boolean isProjectNameRegistered(String name) {
+    public boolean isProjectNameRegistered(final String name) {
         return CommonActions.findWebElement(projectsList, name) != null;
     }
 }

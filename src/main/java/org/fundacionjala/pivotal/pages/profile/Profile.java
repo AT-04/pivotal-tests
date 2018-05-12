@@ -21,7 +21,7 @@ public class Profile extends BasePage {
      * @param username Is the user name.
      * @return true or false.
      */
-    public boolean isCorrectUserLogged(String username) {
+    public boolean isCorrectUserLogged(final String username) {
         return username.equals(userEmailLabel.getText()) || username.equals(usernameLabel.getText());
     }
 }

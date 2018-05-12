@@ -24,7 +24,7 @@ public final class ProjectStrategyLambda {
      * @param attributesMap is the Map that contains the attributes.
      * @param page          is the Create Project Form instance.
      */
-    public static void strategy(Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
+    public static void strategy(final Map<ProjectAttributes, String> attributesMap, final ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyOption = setAttributes(attributesMap, page);
         Set<ProjectAttributes> attributes = attributesMap.keySet();
         attributes.forEach(attributeItem -> strategyOption.get(attributeItem).executeStep());
@@ -38,7 +38,7 @@ public final class ProjectStrategyLambda {
      * @return the Map that contains Project Attributes with a specific Project Step.
      */
     private static Map<ProjectAttributes, Steps> setAttributes(
-            Map<ProjectAttributes, String> attributesMap, ProjectCreateForm page) {
+            final Map<ProjectAttributes, String> attributesMap, final ProjectCreateForm page) {
         Map<ProjectAttributes, Steps> strategyMap = new EnumMap<>(ProjectAttributes.class);
         strategyMap.put(ProjectAttributes.NAME,
                 () -> page.setNameInputField(attributesMap.get(ProjectAttributes.NAME)));

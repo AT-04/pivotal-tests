@@ -30,7 +30,7 @@ public class RequestSteps {
      *
      * @param helper is the helper utility class instance.
      */
-    public RequestSteps(Helper helper) {
+    public RequestSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -40,7 +40,7 @@ public class RequestSteps {
      * @param name the name of the shared variable.
      */
     @And("^stored as \\[([^\"]*)]$")
-    public void storedAsProject(String name) {
+    public void storedAsProject(final String name) {
         SharedVariableList.addVariable(name, response);
     }
 
@@ -52,7 +52,7 @@ public class RequestSteps {
      * @param map    is the map body content.
      */
     @When("^a \"(POST|PUT)\" request to \"([^\"]*)\" with$")
-    public void aRequestToWith(RequestType method, String param, Map<String, String> map) {
+    public void aRequestToWith(final RequestType method, final String param, final Map<String, String> map) {
         Map<String, String> myMap = new HashMap<>(map);
         appendRandomNumbers(myMap);
         String endpoint = DataInterpreter.builtEndPoint(param);
@@ -70,7 +70,7 @@ public class RequestSteps {
      * @param param  is the specified end point.
      */
     @When("^a \"(GET|DELETE)\" request to \"([^\"]*)\"$")
-    public void aRequestTo(RequestType method, String param) {
+    public void aRequestTo(final RequestType method, final String param) {
         String endpoint = DataInterpreter.builtEndPoint(param);
         response = RequestType.GET.equals(method)
                 ? RequestManager.get(endpoint)
@@ -84,7 +84,7 @@ public class RequestSteps {
      *
      * @param myMap this map contains the setting.
      */
-    private void appendRandomNumbers(Map<String, String> myMap) {
+    private void appendRandomNumbers(final Map<String, String> myMap) {
         for (Map.Entry<String, String> entry : myMap.entrySet()) {
             if (entry.getValue().length() > 0 && entry.getKey().equalsIgnoreCase(NAME)) {
                 myMap.put(entry.getKey(), String.format("%s%s%d", AT, entry.getValue(), new Random()

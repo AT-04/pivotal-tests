@@ -10,7 +10,7 @@ public class CustomRuntimeException extends RuntimeException {
      * @param message Custom message for the error.
      * @param cause The cause for the error was thrown.
      */
-    public CustomRuntimeException(String message, Throwable cause) {
+    public CustomRuntimeException(final String message, final Throwable cause) {
         super(message, cause);
     }
 }

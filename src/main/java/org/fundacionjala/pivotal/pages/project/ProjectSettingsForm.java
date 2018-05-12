@@ -55,7 +55,7 @@ public class ProjectSettingsForm extends BasePage {
      *
      * @param name is the project name new value.
      */
-    private void setProjectNameInputField(String name) {
+    private void setProjectNameInputField(final String name) {
         CommonActions.setInputField(projectNameInputField, name);
     }
 
@@ -84,7 +84,7 @@ public class ProjectSettingsForm extends BasePage {
      *
      * @param name is the new Project name.
      */
-    public void modifyProjectName(String name) {
+    public void modifyProjectName(final String name) {
         setProjectNameInputField(name);
         clickSaveButton();
     }

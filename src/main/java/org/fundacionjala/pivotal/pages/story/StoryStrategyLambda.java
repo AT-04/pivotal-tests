@@ -23,8 +23,8 @@ public final class StoryStrategyLambda {
      * @param attributesMap This variable contains the attributes of Story.
      * @param storyBoard    This variable contains story Page Object.
      */
-    public static void strategy(Map<StoryAttributes, String> attributesMap,
-                                StoryBoard storyBoard) {
+    public static void strategy(final Map<StoryAttributes, String> attributesMap,
+                                final StoryBoard storyBoard) {
         Map<StoryAttributes, Steps> strategyOption = strategySetAttributes(attributesMap, storyBoard);
         Set<StoryAttributes> attributes = attributesMap.keySet();
         attributes.forEach(attributeItem -> strategyOption.get(attributeItem).executeStep());
@@ -38,7 +38,7 @@ public final class StoryStrategyLambda {
      * @return The strategy map.
      */
     private static Map<StoryAttributes, Steps> strategySetAttributes(
-            Map<StoryAttributes, String> attributesMap, StoryBoard storyBoard) {
+            final Map<StoryAttributes, String> attributesMap, final StoryBoard storyBoard) {
 
         EnumMap<StoryAttributes, Steps> strategyMap = new EnumMap<>(StoryAttributes.class);
 

@@ -89,7 +89,7 @@ public class Dashboard extends BasePage {
      * @param name is the name of the Project.
      * @return a Project Settings Form class instance.
      */
-    public ProjectSettingsForm clickProjectConfig(String name) {
+    public ProjectSettingsForm clickProjectConfig(final String name) {
         String xpath = String.format("//a[text()='%s']/following::a[contains(@class,'SettingsIcon')]", name);
         WebElement webElement = webDriver.findElement(By.xpath(xpath));
         CommonActions.clickButton(webElement);
@@ -113,7 +113,7 @@ public class Dashboard extends BasePage {
      * @param username user name.
      * @return true if is correct user or false if it is not.
      */
-    public boolean isCorrectUserLogged(String username) {
+    public boolean isCorrectUserLogged(final String username) {
         Dashboard dashboard = new Dashboard();
         return dashboard.clickProfileButton().isCorrectUserLogged(username);
     }
@@ -124,7 +124,7 @@ public class Dashboard extends BasePage {
      * @param signIn is signIn page object.
      * @return singIn page Object.
      */
-    public SignIn signOut(SignIn signIn) {
+    public SignIn signOut(final SignIn signIn) {
         clickUsernameBtn();
         clickSignOutBtn();
         return signIn;
@@ -136,7 +136,7 @@ public class Dashboard extends BasePage {
      * @param name is the project name.
      * @return the search result.
      */
-    public boolean isProjectFound(String name) {
+    public boolean isProjectFound(final String name) {
         WebElement webElement = CommonActions.findWebElement(projectTitlesList, name);
         return webElement != null;
     }
@@ -156,7 +156,7 @@ public class Dashboard extends BasePage {
      * @param nameProject is the project name.
      * @return a new Project instance.
      */
-    public Project enterToProject(String nameProject) {
+    public Project enterToProject(final String nameProject) {
         String xpath = String.format("//a[text()='%s']", nameProject);
         WebElement webElement = webDriver.findElement(By.xpath(xpath));
         CommonActions.clickButton(webElement);
