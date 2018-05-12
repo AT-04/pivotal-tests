@@ -21,7 +21,7 @@ public class Helper {
      *
      * @param projectVariable the value to be set.
      */
-    public void setProjectVariable(String projectVariable) {
+    public void setProjectVariable(final String projectVariable) {
         this.projectVariable = projectVariable;
     }
 
@@ -57,7 +57,7 @@ public class Helper {
      *
      * @param body the actual body
      */
-    public void setBody(String body) {
+    public void setBody(final String body) {
         this.body = body;
     }
 
@@ -75,7 +75,7 @@ public class Helper {
      *
      * @param accountVariable the value to be set.
      */
-    public void setAccountVariable(String accountVariable) {
+    public void setAccountVariable(final String accountVariable) {
         this.accountVariable = accountVariable;
     }
 
@@ -102,7 +102,7 @@ public class Helper {
      *
      * @param storyVariable the variable value.
      */
-    public void setStoryVariable(String storyVariable) {
+    public void setStoryVariable(final String storyVariable) {
         this.storyVariable = storyVariable;
     }
 
@@ -111,7 +111,7 @@ public class Helper {
      *
      * @param workspaceVariable the variable value.
      */
-    public void setWorkspaceVariable(String workspaceVariable) {
+    public void setWorkspaceVariable(final String workspaceVariable) {
         this.workspaceVariable = workspaceVariable;
     }
 
@@ -138,7 +138,7 @@ public class Helper {
      *
      * @param taskVariable the variable value.
      */
-    public void setTaskVariable(String taskVariable) {
+    public void setTaskVariable(final String taskVariable) {
         this.taskVariable = taskVariable;
     }
 
@@ -156,7 +156,7 @@ public class Helper {
      *
      * @param assertion a instance of Soft Assertion.
      */
-    public void setAssertion(Assertion assertion) {
+    public void setAssertion(final Assertion assertion) {
         this.assertion = assertion;
     }
 }

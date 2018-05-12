@@ -52,7 +52,7 @@ public class ProjectCreateForm extends BasePage {
      *
      * @param projectName is the new Project name.
      */
-    public void setNameInputField(String projectName) {
+    public void setNameInputField(final String projectName) {
         CommonActions.setInputField(projectNameInputField, projectName);
     }
 
@@ -68,7 +68,7 @@ public class ProjectCreateForm extends BasePage {
      *
      * @param accountName is the new Account name.
      */
-    public void setNewAccountNameInputField(String accountName) {
+    public void setNewAccountNameInputField(final String accountName) {
         CommonActions.setInputField(newAccountNameInputField, accountName);
     }
 
@@ -106,7 +106,7 @@ public class ProjectCreateForm extends BasePage {
      * @param attributes the attributes map.
      * @return a Project class instance.
      */
-    public Project createProject(Map<ProjectAttributes, String> attributes) {
+    public Project createProject(final Map<ProjectAttributes, String> attributes) {
         ProjectStrategyLambda.strategy(attributes, this);
         clickCreateProjectButton();
         return new Project();
@@ -118,7 +118,7 @@ public class ProjectCreateForm extends BasePage {
      *
      * @param name is the Account name.
      */
-    public void setAccount(String name) {
+    public void setAccount(final String name) {
         clickAccountSelector();
         WebElement webElement = CommonActions.findWebElement(accountsList, name);
         if (webElement != null) {
@@ -133,7 +133,7 @@ public class ProjectCreateForm extends BasePage {
      *
      * @param name is the new Account name.
      */
-    private void createNewAccount(String name) {
+    private void createNewAccount(final String name) {
         clickCreateNewAccountSelectOption();
         setNewAccountNameInputField(name);
     }
@@ -143,7 +143,7 @@ public class ProjectCreateForm extends BasePage {
      *
      * @param privacy is the privacy type value.
      */
-    public void setPrivacy(String privacy) {
+    public void setPrivacy(final String privacy) {
         if ("public".equalsIgnoreCase(privacy)) {
             clickPublicRadioButton();
             return;

@@ -23,7 +23,7 @@ public final class DriverFactory {
      * @param driverType Enum value specified from DriverType.
      * @return a WebDriver instance.
      */
-    public static WebDriver getDriverManager(DriverType driverType) {
+    public static WebDriver getDriverManager(final DriverType driverType) {
         Map<DriverType, Browser> map = new EnumMap<>(DriverType.class);
         map.put(DriverType.CHROME, new ChromeBrowser());
         map.put(DriverType.FIREFOX, new FirefoxBrowser());

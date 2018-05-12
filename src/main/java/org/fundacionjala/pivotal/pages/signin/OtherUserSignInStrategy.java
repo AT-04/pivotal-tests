@@ -11,7 +11,7 @@ public class OtherUserSignInStrategy implements SignInStrategy {
      * {@inheritDoc}
      */
     @Override
-    public Dashboard signIn(SignIn signIn) {
+    public Dashboard signIn(final SignIn signIn) {
         Dashboard dashboard = new Dashboard();
         if (!dashboard.isCorrectUserLogged(signIn.getUsername())) {
             dashboard = dashboard.signOut(signIn).strategyProcess(new NormalSignInStrategy());

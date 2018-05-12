@@ -16,14 +16,14 @@ import org.testng.asserts.SoftAssert;
  */
 public class UiHook {
 
-    private Helper helper;
+    private final Helper helper;
 
     /**
      * Api Hook constructor using Dependency Injection.
      *
      * @param helper object utility instance.
      */
-    public UiHook(Helper helper) {
+    public UiHook(final Helper helper) {
         this.helper = helper;
     }
 
@@ -41,7 +41,7 @@ public class UiHook {
      * @param scenario variable for Cucumber features.
      */
     @After
-    public void takeScreenShot(Scenario scenario) {
+    public void takeScreenShot(final Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) DriverManager.getInstance().getWebDriver())
                     .getScreenshotAs(OutputType.BYTES);

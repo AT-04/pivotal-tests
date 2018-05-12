@@ -11,14 +11,14 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class VerificationSteps {
 
-    private Helper helper;
+    private final Helper helper;
 
     /**
      * Step definition constructor using dependence injection.
      *
      * @param helper is the helper utility class instance.
      */
-    public VerificationSteps(Helper helper) {
+    public VerificationSteps(final Helper helper) {
         this.helper = helper;
     }
 
@@ -38,7 +38,7 @@ public class VerificationSteps {
      * @param errorMessage about status code.
      */
     @Then("^the status code message \"([^\"]*)\" should be displayed$")
-    public void verifyThatValidationErrorMessageIsDiplayed(String errorMessage) {
+    public void verifyThatValidationErrorMessageIsDiplayed(final String errorMessage) {
         assertTrue(helper.getRequestBody().contains(errorMessage));
     }
 }

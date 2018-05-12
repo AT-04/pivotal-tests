@@ -1,6 +1,7 @@
 package org.fundacionjala.pivotal.pages.story;
 
 import java.util.EnumMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.fundacionjala.pivotal.core.util.CommonActions;
@@ -69,7 +70,7 @@ public class StoryBoard extends BasePage {
      * @param attributesMap This variable contains all attributes of story.
      * @return new project page object.
      */
-    public Project setStoryAttributes(Map<StoryAttributes, String> attributesMap) {
+    public Project setStoryAttributes(final Map<StoryAttributes, String> attributesMap) {
         StoryStrategyLambda.strategy(attributesMap, this);
         if (CommonActions.isVisible(storyAutoSaveButton)) {
             CommonActions.clickButton(storyAutoSaveButton);
@@ -84,7 +85,7 @@ public class StoryBoard extends BasePage {
      *
      * @param titleStory This variable contains the name of story.
      */
-    public void setStoryTitleInputField(String titleStory) {
+    public void setStoryTitleInputField(final String titleStory) {
         CommonActions.setInputField(storyTitleTextField, titleStory);
     }
 
@@ -93,9 +94,9 @@ public class StoryBoard extends BasePage {
      *
      * @param storyType This variable enum contains the types.
      */
-    public void setStoryType(StoryTypes storyType) {
+    public void setStoryType(final StoryTypes storyType) {
         CommonActions.clickButton(storyDropdownType);
-        String cssSelector = String.format("li[data-value='%s']", storyType.toString().toLowerCase());
+        String cssSelector = String.format("li[data-value='%s']", storyType.toString().toLowerCase(Locale.US));
         WebElement element = webDriverWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(cssSelector)));
         element.click();
     }
@@ -105,7 +106,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyPoints This variable enum contains the points.
      */
-    public void setPoints(StoryPoints storyPoints) {
+    public void setPoints(final StoryPoints storyPoints) {
         CommonActions.clickButton(storyDropdowneEstimatePoints);
         EnumMap<StoryPoints, String> mapPoints = new EnumMap<>(StoryPoints.class);
         mapPoints.put(StoryPoints.UN_ESTIMATE, "-1");
@@ -123,7 +124,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyBlockers This variable contains the blockers.
      */
-    public void setBlockers(String storyBlockers) {
+    public void setBlockers(final String storyBlockers) {
         CommonActions.clickButton(storyBlockerShow);
         CommonActions.setInputField(storyBlokerReasonTextField, storyBlockers);
         CommonActions.clickButton(storyBlockerAddButton);
@@ -134,7 +135,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyDescription This variable contains the description.
      */
-    public void setDescription(String storyDescription) {
+    public void setDescription(final String storyDescription) {
         CommonActions.clickButton(storyDescriptionShow);
         CommonActions.setInputField(storyDescriptionTextField, storyDescription);
         CommonActions.clickButton(storyDescriptionSaveButton);
@@ -145,7 +146,7 @@ public class StoryBoard extends BasePage {
      *
      * @param storyLabel This variable contains the label.
      */
-    public void setLabel(String storyLabel) {
+    public void setLabel(final String storyLabel) {
         CommonActions.setInputField(storyLabelInputField, storyLabel);
         CommonActions.pressEnterKey(storyLabelInputField);
     }

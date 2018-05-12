@@ -32,7 +32,7 @@ public final class Navigator {
      * @param projectId is the Project identifier.
      * @return a Project class instance.
      */
-    public static Project loadProjectPage(String projectId) {
+    public static Project loadProjectPage(final String projectId) {
         DriverManager.getInstance().getWebDriver()
                 .navigate().to(String.format("%s%s%s",
                 Environment.getInstance().getBaseUrl(), "/projects/", projectId));

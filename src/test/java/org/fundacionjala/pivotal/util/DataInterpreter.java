@@ -26,7 +26,7 @@ public final class DataInterpreter {
      * @param text is the String parameter to process.
      * @return the key value.
      */
-    public static Object getValue(String text) {
+    public static Object getValue(final String text) {
         Pattern pattern = Pattern.compile(REGEX_BRACKETS_INSIDE);
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
@@ -43,7 +43,7 @@ public final class DataInterpreter {
      * @param line the original string line parameter.
      * @return the built end point.
      */
-    public static String builtEndPoint(String line) {
+    public static String builtEndPoint(final String line) {
         String[] parts = line.split(SLASH);
         for (int i = 0; i < parts.length; i++) {
             parts[i] = getValue(parts[i]).toString();
@@ -59,7 +59,7 @@ public final class DataInterpreter {
      * @param message the original message parameter.
      * @return the rebuilt message.
      */
-    public static String rebuiltMessage(String message) {
+    public static String rebuiltMessage(final String message) {
         return message.replaceAll(REGEX_BRACKETS, getValue(message).toString());
     }
 }

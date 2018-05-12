@@ -28,7 +28,7 @@ public final class RequestManager {
      * @param endpoint the specified end point.
      * @return a response object.
      */
-    public static Response get(String endpoint) {
+    public static Response get(final String endpoint) {
         return given()
                 .spec(REQUEST)
                 .when()
@@ -42,7 +42,7 @@ public final class RequestManager {
      * @param body     is the body content.
      * @return a response object.
      */
-    public static Response post(String endpoint, String body) {
+    public static Response post(final String endpoint, final String body) {
         return given()
                 .spec(REQUEST)
                 .contentType(ContentType.JSON)
@@ -58,7 +58,7 @@ public final class RequestManager {
      * @param body     is the map body content.
      * @return a response object.
      */
-    public static Response post(String endpoint, Map<String, String> body) {
+    public static Response post(final String endpoint, final Map<String, String> body) {
         return given()
                 .spec(REQUEST)
                 .params(body)
@@ -73,7 +73,7 @@ public final class RequestManager {
      * @param body     is the body content.
      * @return is the body content.
      */
-    public static Response put(String endpoint, String body) {
+    public static Response put(final String endpoint, final String body) {
         return given()
                 .spec(REQUEST)
                 .contentType(ContentType.JSON)
@@ -89,7 +89,7 @@ public final class RequestManager {
      * @param body     is the map body content.
      * @return a response object.
      */
-    public static Response put(String endpoint, Map<String, String> body) {
+    public static Response put(final String endpoint, final Map<String, String> body) {
         return given()
                 .spec(REQUEST)
                 .params(body)
@@ -103,7 +103,7 @@ public final class RequestManager {
      * @param endpoint is the specified end point.
      * @return is the body content.
      */
-    public static Response delete(String endpoint) {
+    public static Response delete(final String endpoint) {
         return given()
                 .spec(REQUEST)
                 .when()

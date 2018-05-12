@@ -13,12 +13,13 @@ import org.testng.asserts.Assertion;
  * Created by pivotal-test Team.
  */
 public class AssertWorkspaceSteps {
-    private Dashboard dashboard;
-    private WorkSpaces workSpaces;
-    private Helper helper;
-    private WorkspaceDashboard workspaceDashboard;
-    private WorkspacesCreateForm workspacesCreateForm;
-    private Assertion assertion;
+
+    private final Helper helper;
+    private final Assertion assertion;
+    private final Dashboard dashboard;
+    private final WorkSpaces workSpaces;
+    private final WorkspaceDashboard workspaceDashboard;
+    private final WorkspacesCreateForm workspacesCreateForm;
 
     /**
      * Step definition constructor using dependence injection.
@@ -29,8 +30,9 @@ public class AssertWorkspaceSteps {
      * @param workspacesCreateForm is the workspacesCreateForm class instance.
      * @param dashboard            is the dashboard class instance.
      */
-    public AssertWorkspaceSteps(WorkSpaces workSpaces, Helper helper, WorkspaceDashboard workspaceDashboard,
-                                WorkspacesCreateForm workspacesCreateForm, Dashboard dashboard) {
+    public AssertWorkspaceSteps(final WorkSpaces workSpaces, final Helper helper,
+                                final WorkspaceDashboard workspaceDashboard,
+                                final WorkspacesCreateForm workspacesCreateForm, final Dashboard dashboard) {
         this.workSpaces = workSpaces;
         this.helper = helper;
         this.workspaceDashboard = workspaceDashboard;
@@ -61,7 +63,7 @@ public class AssertWorkspaceSteps {
      * @param errorMessage text of message.
      */
     @Then("^error message \"([^\"]*)\"$")
-    public void verifyThatMessageError(String errorMessage) {
+    public void verifyThatMessageError(final String errorMessage) {
         assertion.assertTrue(workspacesCreateForm.errorMessageWhenNameIsEmpty().contains(errorMessage));
     }
 
@@ -71,7 +73,7 @@ public class AssertWorkspaceSteps {
      * @param message text of message.
      */
     @Then("^message \"([^\"]*)\" should displayed$")
-    public void messageShouldDisplayed(String message) {
+    public void messageShouldDisplayed(final String message) {
         assertion.assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
 
@@ -81,7 +83,7 @@ public class AssertWorkspaceSteps {
      * @param nameWorkspace is name workspace.
      */
     @Then("^the \"([^\"]*)\" is not displayed in the dashboard$")
-    public void verifyThatIsnTDisplayedInTheDashboard(String nameWorkspace) {
+    public void verifyThatIsnTDisplayedInTheDashboard(final String nameWorkspace) {
         assertion.assertFalse(workspaceDashboard.isWorkspaceFound(DataInterpreter.getValue(nameWorkspace).toString()));
     }
 
@@ -91,7 +93,7 @@ public class AssertWorkspaceSteps {
      * @param newName is new name of workspace.
      */
     @Then("^workspace name should be displayed \"([^\"]*)\"$")
-    public void workspaceNameShouldBeDisplayed(String newName) {
+    public void workspaceNameShouldBeDisplayed(final String newName) {
         assertion.assertTrue(workspaceDashboard.workspaceIsDisplayed(newName));
     }
 
@@ -101,7 +103,7 @@ public class AssertWorkspaceSteps {
      * @param errorMessage is text message.
      */
     @Then("^error message \"([^\"]*)\" should be displayed$")
-    public void verifyThatMessageErrorWorkspace(String errorMessage) {
+    public void verifyThatMessageErrorWorkspace(final String errorMessage) {
         assertion.assertTrue(workspacesCreateForm.errorMessageWhenNameAlreadyExist().contains(errorMessage));
     }
 
@@ -119,7 +121,7 @@ public class AssertWorkspaceSteps {
      * @param projectName this variable contains the name of project.
      */
     @Then("^workspace with a \"([^\"]*)\" is displayed in the dashboard$")
-    public void workspaceWithAProjectIsDisplayedInTheDashboard(String projectName) {
+    public void workspaceWithAProjectIsDisplayedInTheDashboard(final String projectName) {
         String nameWorkSpace = helper.getWorkspaceVariable();
         String nameProject = DataInterpreter.getValue(projectName).toString();
         assertion.assertTrue(workspaceDashboard.isWorkspaceHasTheProject(nameWorkSpace, nameProject));

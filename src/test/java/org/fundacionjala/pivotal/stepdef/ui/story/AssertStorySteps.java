@@ -12,9 +12,9 @@ import org.testng.asserts.Assertion;
  */
 public class AssertStorySteps {
 
-    private Project project;
-    private Helper helper;
-    private Assertion assertion;
+    private final Project project;
+    private final Helper helper;
+    private final Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.
@@ -22,7 +22,7 @@ public class AssertStorySteps {
      * @param project is the Project class instance.
      * @param helper  is the helper utility class instance.
      */
-    public AssertStorySteps(Project project, Helper helper) {
+    public AssertStorySteps(final Project project, final Helper helper) {
         this.project = project;
         this.helper = helper;
         this.assertion = helper.getAssertion();
@@ -42,7 +42,7 @@ public class AssertStorySteps {
      * @param data contains the name of variable.
      */
     @Then("^the \"([^\"]*)\" is not displayed in Project Page$")
-    public void theIsNotDisplayedInProjectPage(String data) {
+    public void theIsNotDisplayedInProjectPage(final String data) {
         assertion.assertFalse(project.isVisibleStory(DataInterpreter.getValue(data).toString()));
     }
 

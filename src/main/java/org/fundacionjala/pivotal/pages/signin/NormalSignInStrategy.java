@@ -11,7 +11,7 @@ public class NormalSignInStrategy implements SignInStrategy {
      * {@inheritDoc}
      */
     @Override
-    public Dashboard signIn(SignIn signInPage) {
+    public Dashboard signIn(final SignIn signInPage) {
         // This condition verifies if the SignInAs Button is visible.
         if (signInPage.isSignInAsOtherBtnVisible()) {
             signInPage.clickSignInAsOtherBtn();

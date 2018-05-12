@@ -16,8 +16,9 @@ import org.fundacionjala.pivotal.util.Helper;
  * Created by pivotal-test Team.
  */
 public class WorkspaceSteps {
-    private Dashboard dashboard;
-    private Helper helper;
+
+    private final Helper helper;
+    private final Dashboard dashboard;
     private WorkSpaces workspace;
     private WorkspaceDashboard workspaceDashboard;
     private WorkspacesCreateForm workspacesCreateForm;
@@ -30,7 +31,8 @@ public class WorkspaceSteps {
      * @param workspacesCreateForm is the workspaces creation form instance.
      * @param helper               is the helper is instance.
      */
-    public WorkspaceSteps(Dashboard dashboard, WorkspacesCreateForm workspacesCreateForm, Helper helper) {
+    public WorkspaceSteps(final Dashboard dashboard, final WorkspacesCreateForm workspacesCreateForm,
+                          final Helper helper) {
         this.dashboard = dashboard;
         this.helper = helper;
         this.workspacesCreateForm = workspacesCreateForm;
@@ -58,13 +60,11 @@ public class WorkspaceSteps {
      * @param body is the attributes map to use.
      */
     @When("^sets workspace with$")
-    public void theUserCreateANewWorkspaceWithTheFollowingParameters(Map<String, String> body) {
+    public void theUserCreateANewWorkspaceWithTheFollowingParameters(final Map<String, String> body) {
         workspacesCreateForm.setNameInputField(DataInterpreter.getValue(body.get("name")).toString());
         workspacesCreateForm.clickCreateButton();
         workspace = new WorkSpaces();
         helper.setWorkspaceVariable(body.get("name"));
-
-
     }
 
     /**
@@ -81,7 +81,7 @@ public class WorkspaceSteps {
      * @param nameWorkspace is the name workspace.
      */
     @When("^opens the workspace settings created as \"([^\"]*)\"$")
-    public void theUserEnterToWorkspaceSettingPage(String nameWorkspace) {
+    public void theUserEnterToWorkspaceSettingPage(final String nameWorkspace) {
         workspaceDashboard = dashboard.clickWorkspaceBtn();
         workspaceSettings = workspaceDashboard.selectWorkspace(DataInterpreter.getValue(nameWorkspace).toString());
     }
@@ -92,7 +92,7 @@ public class WorkspaceSteps {
      * @param newName is the new name workspace.
      */
     @And("^modify the name workspace to \"([^\"]*)\"$")
-    public void modifyTheNameWorkspaceTo(String newName) {
+    public void modifyTheNameWorkspaceTo(final String newName) {
         helper.setWorkspaceVariable(newName);
         workspaceSettings.updateName(newName);
         workspaceSettings.clickSaveButton();
@@ -129,7 +129,7 @@ public class WorkspaceSteps {
      * @param name name of the project.
      */
     @And("^select the project with the name \"([^\"]*)\"$")
-    public void selectTheProjectWithTheName(String name) {
+    public void selectTheProjectWithTheName(final String name) {
         workspace.clickProjectsDropdown();
         workspace.clickSelectedProjectFromTheDropDown(DataInterpreter.getValue(name).toString());
         helper.setProjectVariable(DataInterpreter.getValue(name).toString());

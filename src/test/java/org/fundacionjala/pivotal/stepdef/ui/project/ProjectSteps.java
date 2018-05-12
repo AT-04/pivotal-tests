@@ -17,9 +17,9 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class ProjectSteps {
 
+    private final Helper helper;
     private Dashboard dashboard;
     private ProjectCreateForm projectCreateForm;
-    private Helper helper;
     private ProjectSettingsForm projectSettingsForm;
 
     /**
@@ -28,7 +28,7 @@ public class ProjectSteps {
      * @param dashboard is the dashboard instance.
      * @param helper    is the helper utility class instance.
      */
-    public ProjectSteps(Dashboard dashboard, Helper helper) {
+    public ProjectSteps(final Dashboard dashboard, final Helper helper) {
         this.dashboard = dashboard;
         this.helper = helper;
     }
@@ -47,7 +47,7 @@ public class ProjectSteps {
      * @param map is the attributes map to use.
      */
     @When("^sets project with$")
-    public void theUserCreateANewProjectWithTheFollowingParameters(Map<ProjectAttributes, String> map) {
+    public void theUserCreateANewProjectWithTheFollowingParameters(final Map<ProjectAttributes, String> map) {
         projectCreateForm.createProject(map);
         helper.setProjectVariable(map.get(ProjectAttributes.NAME));
         helper.setAccountVariable(map.get(ProjectAttributes.ACCOUNT));
@@ -59,7 +59,7 @@ public class ProjectSteps {
      * @param data is the data to be entered.
      */
     @When("^opens the project settings created as \"([^\"]*)\"$")
-    public void theUserEntersToSettingsPage(String data) {
+    public void theUserEntersToSettingsPage(final String data) {
         projectSettingsForm = dashboard.clickProjectConfig(DataInterpreter.getValue(data).toString());
     }
 
@@ -77,7 +77,7 @@ public class ProjectSteps {
      * @param newName is the new name for the project.
      */
     @And("^modify the name to \"([^\"]*)\"$")
-    public void modifyTheNameTo(String newName) {
+    public void modifyTheNameTo(final String newName) {
         helper.setProjectVariable(newName);
         projectSettingsForm.modifyProjectName(newName);
     }

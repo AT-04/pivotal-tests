@@ -15,11 +15,11 @@ import org.testng.asserts.Assertion;
  */
 public class AssertProjectSteps {
 
-    private Dashboard dashboard;
-    private Project project;
-    private ProjectSettingsForm projectSettingsForm;
-    private Helper helper;
-    private Assertion assertion;
+    private final Dashboard dashboard;
+    private final Project project;
+    private final ProjectSettingsForm projectSettingsForm;
+    private final Helper helper;
+    private final Assertion assertion;
 
     /**
      * Step definition constructor using dependence injection.
@@ -29,8 +29,8 @@ public class AssertProjectSteps {
      * @param helper              is the helper utility class instance.
      * @param projectSettingsForm is the project settings form instance.
      */
-    public AssertProjectSteps(Dashboard dashboard, Project project,
-                              Helper helper, ProjectSettingsForm projectSettingsForm) {
+    public AssertProjectSteps(final Dashboard dashboard, final Project project,
+                              final Helper helper, final ProjectSettingsForm projectSettingsForm) {
         this.dashboard = dashboard;
         this.project = project;
         this.projectSettingsForm = projectSettingsForm;
@@ -60,7 +60,7 @@ public class AssertProjectSteps {
      * @param message the message content.
      */
     @Then("^message \"([^\"]*)\" should be displayed$")
-    public void messageShouldAppear(String message) {
+    public void messageShouldAppear(final String message) {
         assertion.assertTrue(DataInterpreter.rebuiltMessage(message).equals(dashboard.getNoticeText()));
     }
 
@@ -70,7 +70,7 @@ public class AssertProjectSteps {
      * @param attribute the project name.
      */
     @And("^the \"([^\"]*)\" is not displayed in Dashboard$")
-    public void theIsNotDisplayedInDashboard(String attribute) {
+    public void theIsNotDisplayedInDashboard(final String attribute) {
         assertion.assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(attribute).toString()));
     }
 
@@ -80,7 +80,7 @@ public class AssertProjectSteps {
      * @param message the message that should appear.
      */
     @Then("^message \"([^\"]*)\" should appear in settings page$")
-    public void messageShouldAppearInSettingsPage(String message) {
+    public void messageShouldAppearInSettingsPage(final String message) {
         assertion.assertTrue(projectSettingsForm.getChangesSuccessText().equals(message));
     }
 
@@ -90,7 +90,7 @@ public class AssertProjectSteps {
      * @param name is the old project name.
      */
     @Then("^\"([^\"]*)\" is not displayed in dashboard$")
-    public void isNotDisplayedInDashboard(String name) {
+    public void isNotDisplayedInDashboard(final String name) {
         assertion.assertFalse(dashboard.isProjectFound(DataInterpreter.getValue(name).toString()));
     }
 

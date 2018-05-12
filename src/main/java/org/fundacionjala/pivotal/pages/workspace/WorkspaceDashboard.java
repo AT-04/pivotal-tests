@@ -16,9 +16,6 @@ public class WorkspaceDashboard extends BasePage {
     @FindBy(className = "WorkspaceTile__name")
     private List<WebElement> workSpacesList;
 
-    @FindBy(className = "WorkspaceTile__header")
-    private List<WebElement> workSpacesSettingList;
-
     @FindBy(xpath = "//*[@id='create-workspace-button']")
     private WebElement createWorkspaceButton;
 
@@ -28,7 +25,7 @@ public class WorkspaceDashboard extends BasePage {
      * @param workspaceName is the workspace name.
      * @return a WebElement.
      */
-    public boolean workspaceIsDisplayed(String workspaceName) {
+    public boolean workspaceIsDisplayed(final String workspaceName) {
         return CommonActions.findWebElement(workSpacesList, workspaceName).isDisplayed();
     }
 
@@ -38,7 +35,7 @@ public class WorkspaceDashboard extends BasePage {
      * @param workspaceName is the workspace name.
      * @return a new instance of WorkspaceSetting.
      */
-    public WorkspaceSettings selectWorkspace(String workspaceName) {
+    public WorkspaceSettings selectWorkspace(final String workspaceName) {
         StringBuilder selector = new StringBuilder();
         selector.append(String.format("//a[text()='%s']/following::a[contains(@class,'SettingsIcon')]", workspaceName));
         WebElement webElement = webDriver.findElement(By.xpath(selector.toString()));
@@ -62,7 +59,7 @@ public class WorkspaceDashboard extends BasePage {
      * @param workspaceName is the workspace name.
      * @return if the element is found.
      */
-    public boolean isWorkspaceFound(String workspaceName) {
+    public boolean isWorkspaceFound(final String workspaceName) {
         WebElement webElement = CommonActions.findWebElement(workSpacesList, workspaceName);
         return webElement != null;
     }
@@ -74,7 +71,7 @@ public class WorkspaceDashboard extends BasePage {
      * @param projectName   is the project name.
      * @return if the element is found.
      */
-    public boolean isWorkspaceHasTheProject(String workspaceName, String projectName) {
+    public boolean isWorkspaceHasTheProject(final String workspaceName, final String projectName) {
         StringBuilder selector = new StringBuilder();
         selector.append(String.format("//a[@class='WorkspaceTile__name' and text()='%s']/parent::div/"
                 + "following-sibling::div/child::div/child::a[text()='%s']", workspaceName, projectName));

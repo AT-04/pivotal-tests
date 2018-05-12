@@ -6,9 +6,10 @@ import java.util.Map;
  * Class containing Shared Variable.
  */
 public class SharedVariable {
+
     private static final String RESPONSE_TYPE = "kind";
-    private String variableName;
-    private Map<String, ?> attributesMap;
+    private final String variableName;
+    private final Map<String, ?> attributesMap;
 
     /**
      * Constructor for the Shared Variable class.
@@ -16,7 +17,7 @@ public class SharedVariable {
      * @param variableName  is the name of the variable.
      * @param attributesMap is the attributes map that contains keys and values.
      */
-    public SharedVariable(String variableName, Map<String, ?> attributesMap) {
+    public SharedVariable(final String variableName, final Map<String, ?> attributesMap) {
         this.variableName = variableName;
         this.attributesMap = attributesMap;
     }
@@ -45,7 +46,7 @@ public class SharedVariable {
      * @param attribute is the key identifier.
      * @return the string value representation.
      */
-    public String getAttributeValue(String attribute) {
+    public String getAttributeValue(final String attribute) {
         return attributesMap.get(attribute).toString();
     }
 }

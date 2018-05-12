@@ -26,7 +26,7 @@ public class BaseForm extends BasePage {
      *
      * @param name is the new Form name.
      */
-    public void setNameInputField(String name) {
+    public void setNameInputField(final String name) {
         CommonActions.setInputField(nameInputField, name);
     }
 }

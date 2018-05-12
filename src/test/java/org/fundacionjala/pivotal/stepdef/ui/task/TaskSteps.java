@@ -14,15 +14,15 @@ import org.fundacionjala.pivotal.util.Helper;
  */
 public class TaskSteps {
 
-    private Task task;
-    private Helper helper;
+    private final Helper helper;
+    private final Task task;
 
     /**
      * Default Constructor.
      * @param task Task.
      * @param helper Helper.
      */
-    public TaskSteps(Task task, Helper helper) {
+    public TaskSteps(final Task task, final Helper helper) {
         this.task = task;
         this.helper = helper;
     }
@@ -33,18 +33,18 @@ public class TaskSteps {
      * @param map Map.
      */
     @When("^sets task with$")
-    public void setsTaskWith(Map<String, String> map) {
+    public void setsTaskWith(final Map<String, String> map) {
         task.setTaskDescription(map.get("DESCRIPTION"));
         helper.setTaskVariable(map.get("DESCRIPTION"));
     }
 
     /**
-     * This definiton step delete a task.
+     * This definition step delete a task.
      *
      * @param data String.
      */
     @When("^delete the task \"([^\"]*)\"$")
-    public void deleteTheTask(String data) {
+    public void deleteTheTask(final String data) {
         task.clickDeleteTask(DataInterpreter.getValue(data).toString());
     }
 
@@ -53,7 +53,7 @@ public class TaskSteps {
      * @param name Task name.
      */
     @And("^check done the task \"([^\"]*)\"$")
-    public void checkDoneTheTask(String name) {
+    public void checkDoneTheTask(final String name) {
         task.clickTaskDoneCheckBox(name);
     }
 }

@@ -14,9 +14,9 @@ public final class Authentication {
 
     private static final String X_TRACKER_TOKEN_HEADER = "X-TrackerToken";
 
-    private static Authentication singleton;
+    private static Authentication singleton = new Authentication();
 
-    private RequestSpecification requestSpecification;
+    private final RequestSpecification requestSpecification;
 
     /**
      * This is the constructor for que Authentication singleton class.
@@ -34,9 +34,6 @@ public final class Authentication {
      * @return the singleton instance.
      */
     public static Authentication getSingleton() {
-        if (singleton == null) {
-            singleton = new Authentication();
-        }
         return singleton;
     }
 
